@@ -1,0 +1,72 @@
+{
+  "name": "my-app",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "pnpm@10.8.0",
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "pnpm run lint:fix && next build",
+    "start": "next start",
+    "lint": "next lint",
+    "lint:fix": "next lint --fix",
+    "preview": "pnpm run lint:fix && opennextjs-cloudflare build && opennextjs-cloudflare preview",
+    "deploy": "pnpm run lint:fix && opennextjs-cloudflare build && opennextjs-cloudflare deploy",
+    "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts",
+    "postinstall": "husky"
+  },
+  "dependencies": {
+    "@opennextjs/cloudflare": "1.0.0-beta.2",
+    "@zl-asica/react": "^0.4.1",
+    "lucide-react": "^0.487.0",
+    "next": "15.3.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^4.12.0",
+    "@eslint-react/eslint-plugin": "^1.43.0",
+    "@eslint/eslintrc": "^3",
+    "@next/eslint-plugin-next": "^15.3.0",
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^22.14.0",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "15.3.0",
+    "eslint-plugin-format": "^1.0.1",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.19",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.5.0",
+    "prettier": "^3.5.3",
+    "tailwindcss": "^4",
+    "typescript": "^5",
+    "wrangler": "^4.9.1"
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,ts,tsx,json,yml}": [
+      "eslint --fix"
+    ],
+    "**/*.{css,scss,less,styl,html,md}": [
+      "prettier --write"
+    ]
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "printWidth": 999999999999
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "last 2 versions",
+      "not dead",
+      "no op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

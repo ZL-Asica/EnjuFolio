@@ -1,0 +1,152 @@
+@import './utilities.css';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme static {
+  /* Primary Colors */
+  --color-primary-50: #fff1f3;
+  --color-primary-100: #ffe3e7;
+  --color-primary-200: #ffccd6;
+  --color-primary-300: #ff9fb2; /* Primary - Carnation Pink (Sakura) */
+  --color-primary-400: #fe6e8e;
+  --color-primary-500: #f83b69;
+  --color-primary-600: #e51955;
+  --color-primary-700: #c20e47;
+  --color-primary-800: #a20f43;
+  --color-primary-900: #8b103f;
+  --color-primary-950: #4e031e;
+
+  /* Secondary Colors */
+  --color-secondary-50: #f3f8fc;
+  --color-secondary-100: #e6f1f8;
+  --color-secondary-200: #c8e2ef;
+  --color-secondary-300: #91c7e0; /* Secondary - Spray (Sora) */
+  --color-secondary-400: #60afd0;
+  --color-secondary-500: #3b95bc;
+  --color-secondary-600: #2b789e;
+  --color-secondary-700: #246080;
+  --color-secondary-800: #21516b;
+  --color-secondary-900: #20455a;
+  --color-secondary-950: #152c3c;
+
+  /* Accent Colors */
+  --color-accent-50: #f1fcfa;
+  --color-accent-100: #cff8f0;
+  --color-accent-200: #9ff0e2;
+  --color-accent-300: #81e6d9; /* Accent - Turquoise Blue (Midori) */
+  --color-accent-400: #38c9bb;
+  --color-accent-500: #1fada2;
+  --color-accent-600: #168b84;
+  --color-accent-700: #166f6b;
+  --color-accent-800: #165957;
+  --color-accent-900: #174a48;
+  --color-accent-950: #072c2c;
+
+  /* Fade in down animation */
+  --animate-fade-in-down: fade-in-down 0.6s ease-out;
+
+  @keyframes fade-in-down {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+@theme inline {
+  /* Basic Colors */
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --color-gray-light: var(--gray-light);
+  --color-gray-dark: var(--gray-dark);
+}
+
+@layer utilities {
+  :root {
+    --background: #fefefe;
+    --foreground: #2d3748;
+    --gray-light: #f9fafb;
+    --gray-dark: #1f2937;
+  }
+
+  .dark:root {
+    --background: #161b22;
+    --foreground: #e2e8f0;
+    --gray-light: #1f2937;
+    --gray-dark: #d1d5db;
+  }
+}
+
+html,
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+}
+
+/****************************************************
+ * ACCESSIBILITY
+ ****************************************************/
+
+/* Remove default focus outline */
+*:focus {
+  outline: none;
+}
+
+/* Add focus outline for keyboard users */
+*:focus-visible {
+  outline: 2px solid var(--colors-accent-500);
+  outline-offset: 4px;
+}
+
+/* Enhance focus for form inputs */
+h2:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--colors-secondary-500);
+  outline-offset: 2px;
+}
+
+/* Color Utils */
+@utility text-primary {
+  color: var(--color-primary-300);
+  @variant dark {
+    color: var(--color-primary-200);
+  }
+}
+@utility text-secondary {
+  color: var(--color-secondary-400);
+  @variant dark {
+    color: var(--color-secondary-300);
+  }
+}
+@utility text-accent {
+  color: var(--color-accent-300);
+  @variant dark {
+    color: var(--color-accent-200);
+  }
+}
+
+@utility bg-primary {
+  background-color: var(--color-primary-300);
+  @variant dark {
+    background-color: var(--color-primary-200);
+  }
+}
+@utility bg-secondary {
+  background-color: var(--color-secondary-400);
+  @variant dark {
+    background-color: var(--color-secondary-300);
+  }
+}
+@utility bg-accent {
+  background-color: var(--color-accent-300);
+  @variant dark {
+    background-color: var(--color-accent-200);
+  }
+}
