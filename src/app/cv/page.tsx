@@ -157,7 +157,7 @@ export default function CVPage() {
             <dt className="font-semibold text-secondary dark:text-secondary-dark">Programming Languages</dt>
             <dd className="mt-1 flex flex-wrap gap-2">
               {['Python', 'JavaScript', 'TypeScript', 'Java', 'SQL', 'Swift', 'C++', 'C', 'HTML', 'CSS'].map(item => (
-                <span key={item} className="px-2 py-1 bg-primary-200 dark:bg-primary-600 rounded text-sm">{item}</span>
+                <span key={item} className="px-2 py-1 bg-primary-200 dark:bg-primary-400 rounded text-sm">{item}</span>
               ))}
             </dd>
           </div>
@@ -165,7 +165,7 @@ export default function CVPage() {
             <dt className="font-semibold text-secondary dark:text-secondary-dark">Frameworks & Servers</dt>
             <dd className="mt-1 flex flex-wrap gap-2">
               {['React', 'Expo', 'Next.js', 'Nuxt', 'Express.js', 'Hono', 'Vitest', 'Vue', 'Jekyll', 'Flask', 'Nginx', 'Linux'].map(item => (
-                <span key={item} className="px-2 py-1 bg-primary-200 dark:bg-primary-600 rounded text-sm">{item}</span>
+                <span key={item} className="px-2 py-1 bg-primary-200 dark:bg-primary-400 rounded text-sm">{item}</span>
               ))}
             </dd>
           </div>
@@ -173,7 +173,7 @@ export default function CVPage() {
             <dt className="font-semibold text-secondary dark:text-secondary-dark">Design & Media</dt>
             <dd className="mt-1 flex flex-wrap gap-2">
               {['Figma', 'Premiere Pro', 'Photoshop', 'InDesign', 'Final Cut Pro', 'Da Vinci Resolve', 'Cinema 4D'].map(item => (
-                <span key={item} className="px-2 py-1 bg-primary-200 dark:bg-primary-600 rounded text-sm">{item}</span>
+                <span key={item} className="px-2 py-1 bg-primary-200 dark:bg-primary-400 rounded text-sm">{item}</span>
               ))}
             </dd>
           </div>
@@ -181,7 +181,7 @@ export default function CVPage() {
             <dt className="font-semibold text-secondary dark:text-secondary-dark">DevOps</dt>
             <dd className="mt-1 flex flex-wrap gap-2">
               {['GitHub Actions', 'Docker', 'npm', 'AWS (Lambda, RDS, EC2)', 'Cloudflare (Workers, D1, KV)', 'Firebase'].map(item => (
-                <span key={item} className="px-2 py-1 bg-primary-200 dark:bg-primary-600 rounded text-sm">{item}</span>
+                <span key={item} className="px-2 py-1 bg-primary-200 dark:bg-primary-400 rounded text-sm">{item}</span>
               ))}
             </dd>
           </div>
@@ -189,7 +189,7 @@ export default function CVPage() {
             <dt className="font-semibold text-secondary dark:text-secondary-dark">Languages</dt>
             <dd className="mt-1 flex flex-wrap gap-2">
               {['English (Proficient)', 'Chinese (Native)'].map(item => (
-                <span key={item} className="px-2 py-1 bg-primary-200 dark:bg-primary-600 rounded text-sm">{item}</span>
+                <span key={item} className="px-2 py-1 bg-primary-200 dark:bg-primary-400 rounded text-sm">{item}</span>
               ))}
             </dd>
           </div>

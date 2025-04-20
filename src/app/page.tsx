@@ -4,7 +4,7 @@ import { readAllFileMeta } from '@/utils'
 import Image from 'next/image'
 
 const AboutStrong = ({ children }: { children: React.ReactNode }) => (
-  <strong className="font-semibold text-primary-400 dark:text-primary-200 hover:shadow-sm transition-all mx-1">
+  <strong className="font-semibold text-primary-400 dark:text-primary-300 hover:shadow-sm transition-all mx-1">
     {children}
   </strong>
 )
