@@ -2,8 +2,15 @@
 @import '../styles/theme.css';
 
 @theme inline {
-  --font-sans: var(--font-inter), 'Roboto', 'Helvetica Neue', 'Segoe UI', 'Ubuntu', 'DejaVu Sans', 'Noto Sans', Arial, sans-serif;
-  --font-mono: var(--font-jetbrains-mono), 'Fira Code', 'Menlo', 'Consolas', 'Courier New', monospace;
+  --font-sans:
+    var(--font-inter), 'Roboto', 'Helvetica Neue', 'Segoe UI', 'Ubuntu',
+    'DejaVu Sans', 'Noto Sans', Arial, sans-serif;
+  --font-serif:
+    var(--font-ibm-plex-serif), 'Georgia', 'Times New Roman', 'Times',
+    'Palatino Linotype', 'Palatino', 'Book Antiqua', serif;
+  --font-mono:
+    var(--font-jetbrains-mono), 'Fira Code', 'Menlo', 'Consolas', 'Courier New',
+    monospace;
 }
 
 /* TOC Scroll avoid hidden by header */

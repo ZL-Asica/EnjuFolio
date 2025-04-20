@@ -4,7 +4,7 @@
   "private": true,
   "packageManager": "pnpm@10.8.1",
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev",
     "build": "pnpm run lint:fix && next build",
     "start": "next start",
     "lint": "next lint",
@@ -15,12 +15,22 @@
     "postinstall": "husky"
   },
   "dependencies": {
+    "@fortawesome/react-fontawesome": "^0.2.2",
+    "@mdx-js/loader": "^3.1.0",
+    "@mdx-js/react": "^3.1.0",
+    "@next/mdx": "^15.3.1",
     "@opennextjs/cloudflare": "1.0.0-beta.3",
     "@zl-asica/react": "^0.4.1",
     "lucide-react": "^0.501.0",
     "next": "15.3.1",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "react-icons": "^5.5.0",
+    "react-syntax-highlighter": "^15.6.1",
+    "rehype-katex": "^7.0.1",
+    "remark-gemoji": "^8.0.0",
+    "remark-gfm": "^4.0.1",
+    "remark-math": "^6.0.0"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^4.12.0",
@@ -28,9 +38,11 @@
     "@eslint/eslintrc": "^3",
     "@next/eslint-plugin-next": "^15.3.1",
     "@tailwindcss/postcss": "^4.1.4",
+    "@types/mdx": "^2.0.13",
     "@types/node": "^22.14.1",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19",
+    "@types/react-syntax-highlighter": "^15.5.13",
     "eslint": "^9.25.0",
     "eslint-config-next": "15.3.1",
     "eslint-plugin-format": "^1.0.1",
@@ -44,7 +56,7 @@
     "wrangler": "^4.12.0"
   },
   "lint-staged": {
-    "**/*.{js,jsx,ts,tsx,json,yml}": [
+    "**/*.{js,jsx,ts,tsx,json,yml,mdx}": [
       "eslint --fix"
     ],
     "**/*.{css,scss,less,styl,html,md}": [
@@ -53,8 +65,7 @@
   },
   "prettier": {
     "semi": false,
-    "singleQuote": true,
-    "printWidth": 999999999999
+    "singleQuote": true
   },
   "browserslist": {
     "production": [

@@ -24,8 +24,8 @@ const HeaderMenu = ({ isMobile, ulClassName, onClickHandler }: HeaderMenuProps) 
   const { isDarkTheme, toggleTheme } = useTheme('elara-theme-color', 7)
 
   const menuItems: MenuItem[] = [
-    { href: '/projects', label: 'Projects', icon: <FolderKanban /> },
     { href: '/research', label: 'Research', icon: <Binoculars /> },
+    { href: '/projects', label: 'Projects', icon: <FolderKanban /> },
     { href: '/resume', label: 'Resume', icon: <FileUser /> },
     { href: '/contact', label: 'Contact', icon: <UserRoundSearch /> },
   ]

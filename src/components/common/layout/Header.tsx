@@ -3,7 +3,6 @@
 import { useClickOutside, useHideOnScrollDown, useToggle } from '@zl-asica/react'
 import { Menu } from 'lucide-react'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
 import { useEffect, useRef } from 'react'
 import HeaderMenu from './HeaderMenu'
 
@@ -12,8 +11,6 @@ const Header = () => {
   const menuReference = useRef<HTMLDivElement>(null)
   const headerRef = useRef<HTMLElement>(null)
   const isHeaderVisible = useHideOnScrollDown(headerRef)
-  const pathname = usePathname()
-  const isHomePage = pathname === '/'
 
   useClickOutside(menuReference, () => {
     if (isOpen) {
@@ -49,7 +46,7 @@ const Header = () => {
           aria-label="Navigate to Home Page"
           className="transition-all-300 text-hover-primary text-2xl font-bold text-foreground no-underline"
         >
-          {isHomePage ? <h1>Elara</h1> : <p>Elara</p>}
+          <p>Elara</p>
         </Link>
 
         {/* Mobile Menu Button */}
