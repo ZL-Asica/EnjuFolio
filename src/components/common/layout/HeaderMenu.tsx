@@ -26,7 +26,7 @@ const HeaderMenu = ({ isMobile, ulClassName, onClickHandler }: HeaderMenuProps) 
   const menuItems: MenuItem[] = [
     { href: '/research', label: 'Research', icon: <Binoculars /> },
     { href: '/projects', label: 'Projects', icon: <FolderKanban /> },
-    { href: '/resume', label: 'Resume', icon: <FileUser /> },
+    { href: '/cv', label: 'CV', icon: <FileUser /> },
     { href: '/contact', label: 'Contact', icon: <UserRoundSearch /> },
   ]
 
