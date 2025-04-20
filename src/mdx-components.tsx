@@ -1,8 +1,10 @@
 import type { MDXComponents } from 'mdx/types'
 import type { ImageProps } from 'next/image'
 import Image from 'next/image'
+import Link from 'next/link'
 import { isValidElement } from 'react'
-import { CodeBlock, KEY_ICONS, SakuraIcon } from './components/parser'
+import { CodeBlock, KEY_ICONS } from './components/parser'
+import DividerLine from './components/parser/DividerLine'
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -158,7 +160,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     a: ({ href = '#', children, ...props }: { href?: string, children?: React.ReactNode }) => {
       const isInternalLink = typeof href === 'string' && (href.startsWith('/') || href.startsWith('#'))
       return (
-        <a
+        <Link
           href={href}
           target={isInternalLink ? '_self' : '_blank'}
           rel="noopener noreferrer"
@@ -171,7 +173,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
           {...(props as Record<string, unknown>)}
         >
           {children}
-        </a>
+        </Link>
       )
     },
 
@@ -180,9 +182,24 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       <Image
         sizes="100vw"
         style={{ width: '100%', height: 'auto' }}
+        width={1000}
+        height={1000}
         priority={false}
         {...(props as ImageProps)}
       />
+    ),
+    video: (props: React.VideoHTMLAttributes<HTMLVideoElement> & { src: string }) => (
+      <video
+        className="rounded-lg shadow-md max-h-80"
+        controls
+        autoPlay
+        loop
+        muted
+        {...props}
+      >
+        <source src={props.src} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
     ),
 
     // Code related
@@ -274,19 +291,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ),
 
     // Misc
-    hr: () => (
-      <div className="relative my-12 flex items-center justify-center group">
-        <hr className="transition-all-500 h-0.5 w-2/5 bg-gradient-to-r from-transparent via-primary-300 to-transparent group-hover:w-1/2 group-hover:opacity-90" />
-
-        <div className="relative mx-4 h-8 w-8 flex items-center justify-center transition-transform duration-[3s] ease-in-out group-hover:rotate-[720deg]" aria-hidden="true">
-          <div className="absolute inset-0 flex items-center justify-center">
-            <SakuraIcon />
-          </div>
-        </div>
-
-        <hr className="transition-all-500 h-0.5 w-2/5 bg-gradient-to-l from-transparent via-primary-300 to-transparent group-hover:w-1/2 group-hover:opacity-90" />
-      </div>
-    ),
+    hr: () => <DividerLine />,
     br: () => (
       <br className="flex justify-center my-4" />
     ),

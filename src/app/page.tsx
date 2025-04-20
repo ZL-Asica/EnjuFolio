@@ -1,9 +1,21 @@
-import { newsItems } from '@/components/NewsData'
-import About from '@/markdown/About.mdx'
-import { formatDate, sortAndAssignIds } from '@/utils'
+import NewsItem from '@/components/NewsItem'
+import About from '@/contents/About.mdx'
+import { readAllFileMeta } from '@/utils'
 import Image from 'next/image'
 
-export default function Home() {
+const AboutStrong = ({ children }: { children: React.ReactNode }) => (
+  <strong className="font-semibold text-primary-400 dark:text-primary-200 hover:shadow-sm transition-all mx-1">
+    {children}
+  </strong>
+)
+
+export default async function Home() {
+  const news = (await readAllFileMeta('news')).sort((a, b) => {
+    const dateA = new Date(a.date)
+    const dateB = new Date(b.date)
+    return dateB.getTime() - dateA.getTime()
+  })
+
   return (
     <>
       <section
@@ -25,40 +37,30 @@ export default function Home() {
         >
           Zhuoran (Elara) Liu
         </h1>
-        <p className="text-base text-gray-600 mb-2">
+        <p className="text-base text-gray-dark mb-2">
           刘 卓然
         </p>
-        <p className="text-sm text-gray-500 mb-1" aria-label="Pronouns">
+        <p className="text-sm text-gray-dark mb-1" aria-label="Pronouns">
           (She / Her)
         </p>
-        <p className="text-lg text-gray-800 max-w-md mx-auto">
+        <p className="text-lg text-gray-dark max-w-md mx-auto">
           Master of Science in Computer Science @ Northwestern University
         </p>
       </section>
 
-      <section className="max-w-3xl mx-auto py-6 text-left prose prose-pink dark:prose-invert">
-        <About />
+      <section className="max-w-3xl mx-auto py-6 text-left motion-safe:animate-blur-in-glow">
+        <About components={{ strong: AboutStrong }} />
       </section>
 
       <section
-        className="max-w-3xl mx-auto py-6 text-left"
+        className="max-w-3xl mx-auto py-6 text-left motion-safe:animate-blur-in-glow"
         aria-labelledby="heading-news"
       >
         <h2 id="heading-news" className="text-2xl font-semibold mb-6">
           News
         </h2>
         <ul className="space-y-3">
-          {sortAndAssignIds(newsItems).map(item => (
-            <li
-              key={item.id}
-              className="text-base text-gray-800 flex items-start gap-3"
-            >
-              <span className="font-mono text-sm text-gray-500 min-w-[110px]">
-                {formatDate(item.date)}
-              </span>
-              {item.content}
-            </li>
-          ))}
+          {news.map(item => <NewsItem key={item.slug} slug={item.slug} />)}
         </ul>
       </section>
     </>

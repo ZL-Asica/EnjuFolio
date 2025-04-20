@@ -13,6 +13,23 @@ interface NewsItemWithId extends NewsItem {
   id: number
 }
 
+interface FileMeta {
+  title: string
+  authors: string[]
+  advisors?: string[]
+  venue?: string
+  year: string
+  date: string
+  abstract: string
+  slug: string
+  redirect?: string
+  doi?: string
+  url?: string
+  pdfUrl?: string
+  keywords?: string[]
+  github?: string
+}
+
 type SocialMediaKey =
   | 'github_username'
   | 'linkedin_username'
