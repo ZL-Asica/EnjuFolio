@@ -1,4 +1,4 @@
-# Enju - Academic Portfolio
+# Enju Portfolio
 
 > Enju (槐 🌳 in Japanese) — a symbol of knowledge and elegance.
 
@@ -20,7 +20,7 @@ A minimalist, accessible, and beautifully structured academic portfolio template
 │   │   ├── common            # Common components
 │   │   │  └── layout         # Layout components
 │   │   └── ...               # Other pages' components
-│   ├── hooks                 # Custom hooks for specialized logic
+│   ├── contents              # All pages' MDX contents
 │   └── types.d.ts            # Global type definitions
 ├── tsconfig.json             # Typescript config file
 ├── eslint.config.mjs         # Eslint configuration
@@ -99,7 +99,7 @@ pnpm run lint:fix
 [nextjs-link]: https://nextjs.org
 [node-badge]: https://img.shields.io/badge/node%3E=20-339933?logo=node.js&logoColor=white
 [node-link]: https://nodejs.org/
-[pnpm-badge]: https://img.shields.io/github/package-json/packageManager/ZL-Asica/Enju?label=&logo=pnpm&logoColor=fff&color=F69220
+[pnpm-badge]: https://img.shields.io/github/package-json/packageManager/ZL-Asica/Enju-Portfolio?label=&logo=pnpm&logoColor=fff&color=F69220
 [pnpm-link]: https://pnpm.io/
 [prettier-badge]: https://img.shields.io/badge/Prettier-F7B93E?logo=Prettier&logoColor=white
 [prettier-link]: https://www.npmjs.com/package/@zl-asica/prettier-config
