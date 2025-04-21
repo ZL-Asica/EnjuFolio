@@ -25,7 +25,7 @@ const ContentCard = ({ meta, page }: ContentCardProps) => {
         </Link>
       </h2>
 
-      <p className="text-xs sm:text-sm text-secondary mb-1">
+      <p className="text-xs sm:text-sm text-secondary-400 mb-1">
         {Array.isArray(authors) && authors.join(', ')}
         {venue !== undefined && (
           <>
@@ -34,14 +34,16 @@ const ContentCard = ({ meta, page }: ContentCardProps) => {
           </>
         )}
         {' '}
-        (
-        {formatDateMonth(date, true)}
-        )
+        <time dateTime={date}>
+          (
+          {formatDateMonth(date, true)}
+          )
+        </time>
       </p>
 
       {/* Advisors */}
       {meta.advisors !== undefined && meta.advisors.length > 0 && (
-        <p className="text-xs sm:text-sm text-secondary mb-1">
+        <p className="text-xs sm:text-sm text-secondary-400 mb-1">
           <span className="italic">Advised by:</span>
           {' '}
           {meta.advisors.join(', ')}

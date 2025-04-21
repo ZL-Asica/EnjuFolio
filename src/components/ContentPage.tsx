@@ -43,7 +43,9 @@ const ContentPage = ({ Content, frontmatter }: ContentPageProps) => {
           )}
           <span className="flex items-center" aria-label="Date with year and month">
             <BookOpen className="w-5 h-5 mr-1" />
-            {formatDateMonth(frontmatter.date)}
+            <time dateTime={frontmatter.date}>
+              {formatDateMonth(frontmatter.date)}
+            </time>
           </span>
         </p>
 
@@ -95,7 +97,7 @@ const ContentPage = ({ Content, frontmatter }: ContentPageProps) => {
               <Tag className="w-5 h-5 mr-1 text-accent-600 dark:text-accent-400" />
               Keywords:
             </span>
-            <div className="flex flex-wrap justify-center gap-2">
+            <span className="flex flex-wrap justify-center gap-2">
               {frontmatter.keywords.map(kw => (
                 <kbd
                   key={kw}
@@ -104,7 +106,7 @@ const ContentPage = ({ Content, frontmatter }: ContentPageProps) => {
                   {kw}
                 </kbd>
               ))}
-            </div>
+            </span>
           </p>
         )}
       </header>
@@ -112,7 +114,7 @@ const ContentPage = ({ Content, frontmatter }: ContentPageProps) => {
       {/* Abstract */}
       {frontmatter.abstract && (
         <section aria-labelledby="abstract-heading" className="mb-12">
-          <h2 id="abstract-heading" className="text-2xl font-semibold text-primary-600 dark:text-primary-400">
+          <h2 id="abstract-heading" className="text-2xl font-semibold text-primary-400 dark:text-primary-300">
             Abstract
           </h2>
           <p className="mt-2 text-gray-800 dark:text-gray-200">{frontmatter.abstract}</p>
@@ -122,9 +124,9 @@ const ContentPage = ({ Content, frontmatter }: ContentPageProps) => {
       <DividerLine />
 
       {/* Main Content */}
-      <section>
+      <article>
         <Content />
-      </section>
+      </article>
     </div>
   )
 }

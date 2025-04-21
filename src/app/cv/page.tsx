@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Brain, Computer, Cpu, Download, Eye, Globe, HeartPulse, Watch } from 'lucide-react'
+import { Brain, Computer, Cpu, Download, Eye, Globe, HeartPulse } from 'lucide-react'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
@@ -19,13 +19,14 @@ export default function CVPage() {
           <h1 className="text-4xl font-serif font-bold">
             Zhuoran (Elara) Liu
           </h1>
-          <p className="mt-1 text-primary-300 dark:text-primary-400">
+          <p className="mt-1 text-primary-400 dark:text-primary-300">
             MSCS, Northwestern University
           </p>
         </div>
         <Link
-          href=""
-          download
+          href="https://drive.google.com/file/d/1VKoOIOG33EzrZ1zqiE6a5SaIyphygqSa/view?usp=sharing"
+          target="_blank"
+          rel="noopener noreferrer"
           className="mt-4 sm:mt-0 inline-flex items-center text-secondary dark:text-secondary-dark text-hover-secondary"
           aria-label="Download CV PDF"
         >
@@ -48,7 +49,7 @@ export default function CVPage() {
             Website:
             <Link href="https://zla.app" className="ml-1 underline-interactive text-hover-primary">zla.app</Link>
           </li>
-          <li>Location: Evanston, IL, USA</li>
+          <li>Location: Evanston, Illinois, USA</li>
         </ul>
       </section>
 
@@ -84,8 +85,8 @@ export default function CVPage() {
             Health Informatics
           </li>
           <li className="flex items-center">
-            <Watch className="w-5 h-5 text-secondary dark:text-secondary-dark mr-2" />
-            Wearable Sensing
+            <Globe className="w-5 h-5 text-secondary dark:text-secondary-dark mr-2" />
+            Ubiquitous Computing
           </li>
           <li className="flex items-center">
             <Cpu className="w-5 h-5 text-secondary dark:text-secondary-dark mr-2" />
@@ -97,11 +98,7 @@ export default function CVPage() {
           </li>
           <li className="flex items-center">
             <Brain className="w-5 h-5 text-secondary dark:text-secondary-dark mr-2" />
-            LLM
-          </li>
-          <li className="flex items-center">
-            <Globe className="w-5 h-5 text-secondary dark:text-secondary-dark mr-2" />
-            UbiComp
+            Large Language Model
           </li>
         </ul>
       </section>

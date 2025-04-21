@@ -80,6 +80,7 @@ const SocialMediaLinks = ({
           <Icon
             size={iconSize}
             className="text-hover-primary transition-all-700 group-hover:scale-150"
+            aria-hidden="true"
           />
           {' '}
 
