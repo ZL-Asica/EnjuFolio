@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@fortawesome/react-fontawesome": "^0.2.2",
+    "@marsidev/react-turnstile": "^1.1.0",
     "@mdx-js/loader": "^3.1.0",
     "@mdx-js/react": "^3.1.0",
     "@next/mdx": "^15.3.1",
@@ -23,6 +24,7 @@
     "@zl-asica/react": "^0.4.1",
     "lucide-react": "^0.501.0",
     "next": "15.3.1",
+    "nodemailer": "^6.10.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-icons": "^5.5.0",
@@ -32,7 +34,8 @@
     "remark-gemoji": "^8.0.0",
     "remark-gfm": "^4.0.1",
     "remark-math": "^6.0.0",
-    "remark-mdx-frontmatter": "^5.1.0"
+    "remark-mdx-frontmatter": "^5.1.0",
+    "sonner": "^2.0.3"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^4.12.0",
@@ -42,6 +45,7 @@
     "@tailwindcss/postcss": "^4.1.4",
     "@types/mdx": "^2.0.13",
     "@types/node": "^22.14.1",
+    "@types/nodemailer": "^6.4.17",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19",
     "@types/react-syntax-highlighter": "^15.5.13",

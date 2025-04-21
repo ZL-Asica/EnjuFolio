@@ -45,3 +45,17 @@ export const formatDateMonth = (
   // Fallback: return raw or year
   return year || dateStr
 }
+
+export const formatTimeLeft = (msLeft: number): string => {
+  const totalSeconds = Math.ceil(msLeft / 1000)
+  const minutes = Math.floor(totalSeconds / 60)
+  const seconds = totalSeconds % 60
+
+  if (minutes > 0 && seconds > 0) {
+    return `${minutes} minute${minutes > 1 ? 's' : ''} and ${seconds} second${seconds > 1 ? 's' : ''}`
+  }
+  if (minutes > 0) {
+    return `${minutes} minute${minutes > 1 ? 's' : ''}`
+  }
+  return `${seconds} second${seconds > 1 ? 's' : ''}`
+}
