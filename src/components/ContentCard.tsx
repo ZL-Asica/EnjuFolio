@@ -1,4 +1,4 @@
-import { formatDateMonth } from '@/utils'
+import { formatAuthors, formatDateMonth } from '@/utils'
 import { ExternalLink, FileText, Github, Link as LinkIcon } from 'lucide-react'
 import Link from 'next/link'
 
@@ -26,7 +26,7 @@ const ContentCard = ({ meta, page }: ContentCardProps) => {
       </h2>
 
       <p className="text-xs sm:text-sm text-secondary-400 mb-1">
-        {Array.isArray(authors) && authors.join(', ')}
+        {formatAuthors(authors)}
         {venue !== undefined && (
           <>
             {' — '}

@@ -1,6 +1,6 @@
 import type { Element } from 'mdx/types'
 import { DividerLine } from '@/components/parser'
-import { formatDateMonth } from '@/utils'
+import { formatAuthors, formatDateMonth } from '@/utils'
 import { BookOpen, ExternalLink, FileIcon, FileText, Link as LinkIcon, Tag } from 'lucide-react'
 import Link from 'next/link'
 
@@ -21,7 +21,7 @@ const ContentPage = ({ Content, frontmatter }: ContentPageProps) => {
         {/* Authors */}
         {frontmatter.authors?.length > 0 && (
           <p className="mt-2 text-secondary-600 dark:text-secondary-400 flex items-center justify-center" aria-label="Authors">
-            {frontmatter.authors.join(', ')}
+            {formatAuthors(frontmatter.authors)}
           </p>
         )}
 
