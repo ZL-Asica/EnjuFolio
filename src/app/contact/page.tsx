@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import ContactForm from '@/components/ContactForm'
 import { Github, Linkedin, Mail } from 'lucide-react'
+import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'Contact | Elara\'s Portfolio',
@@ -30,35 +31,34 @@ export default function ContactPage() {
         <ul className="space-y-4">
           <li className="flex items-center">
             <Mail className="w-6 h-6 text-secondary-400 dark:text-secondary-300 mr-3" />
-            <a href="mailto:elara.liu@u.northwestern.edu" className="underline-interactive">
+            <Link href="mailto:elara.liu@u.northwestern.edu" className="underline-interactive">
               elara.liu@u.northwestern.edu
-            </a>
+            </Link>
           </li>
           <li className="flex items-center">
             <Linkedin className="w-6 h-6 text-secondary-400 dark:text-secondary-300 mr-3" />
-            <a
+            <Link
               href="https://linkedin.com/in/elara-liu"
               target="_blank"
               rel="noopener noreferrer"
               className="underline-interactive"
             >
               linkedin.com/in/elara-liu
-            </a>
+            </Link>
           </li>
           <li className="flex items-center">
             <Github className="w-6 h-6 text-secondary-400 dark:text-secondary-300 mr-3" />
-            <a
+            <Link
               href="https://github.com/ZL-Asica/"
               target="_blank"
               rel="noopener noreferrer"
               className="underline-interactive"
             >
               github.com/ZL-Asica
-            </a>
+            </Link>
           </li>
         </ul>
       </section>
-
       <ContactForm />
     </div>
   )

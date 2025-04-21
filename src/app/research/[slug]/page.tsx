@@ -1,8 +1,6 @@
-import type { Element } from 'mdx/types'
 import ContentPage from '@/components/ContentPage'
 import { generateRssFeed } from '@/utils'
 import { readFilesPaths } from '@/utils/fileUtils'
-import { redirect } from 'next/navigation'
 
 export async function generateMetadata({
   params,
@@ -43,19 +41,8 @@ export default async function ResearchContentPage({
 }) {
   const { slug } = await params
 
-  // eslint-disable-next-line ts/no-unsafe-assignment
-  const { default: Content, frontmatter } = (await import(
-    `@/contents/research/${slug}.mdx`
-  )) as { default: Element, frontmatter: FileMeta }
-
-  if (frontmatter.redirect !== undefined && frontmatter.redirect !== '') {
-    // Redirect to the new URL
-    redirect(frontmatter.redirect)
-  }
-
   return (
-  // eslint-disable-next-line ts/no-unsafe-assignment
-    <ContentPage Content={Content} frontmatter={frontmatter} />
+    <ContentPage page="research" slug={slug} />
   )
 }
 

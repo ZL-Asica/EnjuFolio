@@ -1,7 +1,8 @@
-import NewsItem from '@/components/NewsItem'
+import { NewsLoading } from '@/components/Loadings'
+import News from '@/components/News'
 import About from '@/contents/About.mdx'
-import { readAllFileMeta } from '@/utils'
 import Image from 'next/image'
+import { Suspense } from 'react'
 
 const AboutStrong = ({ children }: { children: React.ReactNode }) => (
   <strong className="font-semibold text-primary-400 dark:text-primary-300 hover:shadow-sm transition-all mx-1">
@@ -9,13 +10,7 @@ const AboutStrong = ({ children }: { children: React.ReactNode }) => (
   </strong>
 )
 
-export default async function Home() {
-  const news = (await readAllFileMeta('news')).sort((a, b) => {
-    const dateA = new Date(a.date)
-    const dateB = new Date(b.date)
-    return dateB.getTime() - dateA.getTime()
-  })
-
+export default function Home() {
   return (
     <>
       <section
@@ -56,12 +51,9 @@ export default async function Home() {
         className="max-w-3xl mx-auto py-6 text-left motion-safe:animate-blur-in-glow"
         aria-labelledby="heading-news"
       >
-        <h2 id="heading-news" className="text-2xl font-semibold mb-6">
-          News
-        </h2>
-        <ul className="space-y-3">
-          {news.map(item => <NewsItem key={item.slug} slug={item.slug} />)}
-        </ul>
+        <Suspense fallback={<NewsLoading />}>
+          <News />
+        </Suspense>
       </section>
     </>
   )

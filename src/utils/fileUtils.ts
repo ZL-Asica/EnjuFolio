@@ -3,6 +3,7 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import process from 'node:process'
+import { getMDXContent } from './mdx-loader'
 
 const baseDir = path.join(process.cwd(), 'src', 'contents')
 
@@ -40,8 +41,7 @@ export const readAllFileMeta = async (
 
   const metas = await Promise.all(
     slugs.map(async (slug) => {
-      const mod = await import(`@/contents/${fileDir}/${slug}.mdx`) as { frontmatter: FileMeta }
-      const md = mod.frontmatter
+      const { frontmatter: md } = await getMDXContent(fileDir, slug)
 
       return {
         title: md.title,
@@ -49,7 +49,7 @@ export const readAllFileMeta = async (
         advisors: md.advisors,
         venue: md.venue,
         year: String(md.year ?? new Date().getFullYear()),
-        date: md.date,
+        date: md.date ?? new Date().toISOString(),
         abstract: md.abstract,
         redirect: md.redirect,
         doi: md.doi,
@@ -61,5 +61,7 @@ export const readAllFileMeta = async (
     }),
   )
 
-  return metas
+  return metas.sort((a, b) => {
+    return new Date(b.date).getTime() - new Date(a.date).getTime()
+  })
 }

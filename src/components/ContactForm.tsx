@@ -1,10 +1,14 @@
 'use client'
 
+import { LoadingSpinner } from '@/components/Loadings'
 import { handleSubmit } from '@/utils'
 import { Turnstile } from '@marsidev/react-turnstile'
 import Form from 'next/form'
 import { useActionState, useEffect, useState } from 'react'
 import { toast } from 'sonner'
+
+// Input className
+const ClassName = 'w-full rounded border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 px-3 py-2 text-body dark:text-body-dark focus:outline-none focus:ring-2 focus:ring-accent-300'
 
 const ContactForm = () => {
   const [rateLimit, setRateLimit] = useState<string>('0')
@@ -60,7 +64,7 @@ const ContactForm = () => {
           name="name"
           required
           placeholder="Peter Anteater"
-          className="w-full rounded border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 px-3 py-2 text-body dark:text-body-dark focus:outline-none focus:ring-2 focus:ring-accent-300"
+          className={ClassName}
         />
 
         <label htmlFor="email" className="block mb-1 font-medium">
@@ -72,7 +76,7 @@ const ContactForm = () => {
           name="email"
           required
           placeholder="example@mail.com"
-          className="w-full rounded border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 px-3 py-2 text-body dark:text-body-dark focus:outline-none focus:ring-2 focus:ring-accent-300"
+          className={ClassName}
         />
 
         <label htmlFor="message" className="block mb-1 font-medium">
@@ -84,7 +88,7 @@ const ContactForm = () => {
           rows={5}
           required
           placeholder="Hello, I would like to..."
-          className="w-full rounded border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 px-3 py-2 text-body dark:text-body-dark focus:outline-none focus:ring-2 focus:ring-accent-300"
+          className={ClassName}
         />
 
         <Turnstile
@@ -103,26 +107,7 @@ const ContactForm = () => {
             ? (
                 <>
                   Sending...
-                  <svg
-                    className="animate-spin ml-2 h-4 w-4 text-background"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                  >
-                    <circle
-                      className="opacity-25"
-                      cx="12"
-                      cy="12"
-                      r="10"
-                      stroke="currentColor"
-                      strokeWidth="4"
-                    />
-                    <path
-                      className="opacity-75"
-                      fill="currentColor"
-                      d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
-                    />
-                  </svg>
+                  <LoadingSpinner />
                 </>
               )
             : (

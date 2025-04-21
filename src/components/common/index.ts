@@ -1,3 +1,2 @@
-export { default as Section } from './Section'
-export { default as SmoothScrollLink } from './SmoothScrollLink'
+export { default as IconLinks } from './IconLinks'
 export { default as TOC } from './TOC'

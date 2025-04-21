@@ -25,7 +25,7 @@ function Custom404() {
   }, [])
 
   return (
-    <main className="mx-8 mt-[30vh] flex flex-col items-center justify-center text-center">
+    <div className="mx-8 mt-[30vh] flex flex-col items-center justify-center text-center">
       <h1 className="mb-4 text-3xl font-bold text-primary-300 font-mono">
         404 - Not Found (；′⌒`)
       </h1>
@@ -44,7 +44,7 @@ function Custom404() {
       >
         Back to Home
       </Link>
-    </main>
+    </div>
   )
 }
 

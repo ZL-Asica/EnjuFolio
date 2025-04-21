@@ -11,4 +11,9 @@ export default antfu({
     '@next/next': nextPlugin,
   },
   lessOpinionated: true,
+}, {
+  files: ['./src/components/Loadings/**/*.ts', './src/components/Loadings/**/*.tsx'],
+  rules: {
+    'react/no-array-index-key': 'off',
+  },
 })
