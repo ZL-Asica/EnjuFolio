@@ -8,7 +8,7 @@ advisors:
 date: 2025-04
 abstract: >
   Comparing human experiences across locations is a core challenge in computational social science, HCI, and information retrieval. Although Yelp reviews provide abundant data, TF‑IDF’s document‑length bias, coarse category granularity, and ranking inconsistencies impede reliable cross‑location insights. We introduce a human–AI system that applies BM25 scoring with a threshold‑based relevance model to adjust term weights and surface conceptual shifts. Interactive visualizations make results accessible to both technical and non‑technical audiences. Evaluated on cross‑location review datasets, our approach delivers robust rankings and accurate detection of contextual differences, advancing human‑centered AI, scalable comparative analytics, and interpretability in information retrieval.
-pdfUrl: 'pdfs/Human-AI Tools for Contextualizing Differences_Bridging Data-Driven Insights with Real-World Interpretability.pdf'
+pdfUrl: 'https://drive.google.com/file/d/138tm0K-vmgOntLNjpWXhTzH3G2HSA0oJ/view?usp=sharing'
 url: 'https://dtr.northwestern.edu/projects/rec05fdcuNNGNmM8x'
 keywords:
   - BM25
@@ -19,7 +19,7 @@ keywords:
 
 ## Introduction
 
-Understanding how user experiences vary by region is key to delivering personalized, context‑aware insights. For example, a coffee shop ideal for working in one city may serve primarily as a social hub elsewhere. Existing recommendation and retrieval systems typically treat user behavior as uniform, overlooking how local customs, climate and social norms shape activities, emotions and expectations.  
+Understanding how user experiences vary by region is key to delivering personalized, context‑aware insights. For example, a coffee shop ideal for working in one city may serve primarily as a social hub elsewhere. Existing recommendation and retrieval systems typically treat user behavior as uniform, overlooking how local customs, climate and social norms shape activities, emotions and expectations.
 
 We address this gap by building a human–AI system that:
 
@@ -35,77 +35,90 @@ Our contributions:
 
 ## Related Work
 
-### Context‑Aware Recommendations  
-- Environmental factors (location, time) influence preferences and mood [Suhaim 2021].  
-- Cultural and socio‑economic dynamics shape e‑commerce recommendations but are rarely modeled in real time [Yohe 2023].  
+### Context‑Aware Recommendations
+
+- Environmental factors (location, time) influence preferences and mood [Suhaim 2021].
+- Cultural and socio‑economic dynamics shape e‑commerce recommendations but are rarely modeled in real time [Yohe 2023].
 - Graph‑based methods for location‑based social networks improve over popularity or CF by integrating user, place and context [Khazaei 2019].
 
-### Bias in AI  
-- Large language models reflect and amplify biases present in training data—gender, race, cultural stereotypes—which hinder fair contextual reasoning [Mehrabi 2021; Gallegos 2024].  
+### Bias in AI
+
+- Large language models reflect and amplify biases present in training data—gender, race, cultural stereotypes—which hinder fair contextual reasoning [Mehrabi 2021; Gallegos 2024].
 - Cultural nuance remains difficult to encode; purely LLM‑based approaches require extensive fine‑tuning and still miss localized meanings [Li 2024].
 
-### Information Retrieval & BM25  
-- BM25 outperforms TF‑IDF on variable‐length documents by applying non‑linear term weighting and document‑length normalization [Lv 2024].  
+### Information Retrieval & BM25
+
+- BM25 outperforms TF‑IDF on variable‐length documents by applying non‑linear term weighting and document‑length normalization [Lv 2024].
 - Widely used in search engines, digital libraries and retrieval‑augmented generation, BM25 offers a robust basis for our region‑comparison use case.
 
 ## Design Space
 
-### Design Problem  
+### Design Problem
+
 Users without technical expertise struggle to interpret raw frequency or similarity scores when exploring unfamiliar locales. LLMs can assist but often inject bias and lack transparency. We need a system that:
 
 - Adapts to geographic, cultural and social diversity.
 - Balances accuracy, speed and interpretability.
 - Presents findings in an intuitive, accessible format.
 
-### Design Goals  
-1. **Inclusivity:** Avoid AI‑driven inference biases by using purely statistical retrieval (BM25).  
-2. **Interpretability:** Translate scores into categories—“not relevant,” “marginal,” “relevant”—using location‑specific thresholds.  
+### Design Goals
+
+1. **Inclusivity:** Avoid AI‑driven inference biases by using purely statistical retrieval (BM25).
+2. **Interpretability:** Translate scores into categories—“not relevant,” “marginal,” “relevant”—using location‑specific thresholds.
 3. **Usability:** Deliver results in seconds via clear visualizations rather than cryptic numbers or complex narratives.
 
 ## System Description
 
-### User Interface & Workflow  
-1. **Select source/target locations** (state or city).  
-2. **Choose an activity** (single‑word query).  
-3. **View** side‑by‑side bar charts (top categories) and line charts (score distributions with “no engagement,” “significant,” and “relevance” thresholds).  
+### User Interface & Workflow
+
+1. **Select source/target locations** (state or city).
+2. **Choose an activity** (single‑word query).
+3. **View** side‑by‑side bar charts (top categories) and line charts (score distributions with “no engagement,” “significant,” and “relevance” thresholds).
 
 ![User Workflow](/images/research/account-difference-user-workflow.jpg)
 
 ### Technical Pipeline
 
-#### Data Processing & Storage  
-- Raw JSON → Parquet → PostgreSQL (12 tables).  
-- Text cleaning: regex, lemmatization (NLTK), spell‑correction (SymSpell), stopword removal.  
+#### Data Processing & Storage
+
+- Raw JSON → Parquet → PostgreSQL (12 tables).
+- Text cleaning: regex, lemmatization (NLTK), spell‑correction (SymSpell), stopword removal.
 - Parallel batch processing in Python for scalability.
 
-#### Contextual Difference Computation  
-- **TF‑IDF vs. BM25:** BM25’s $$k_1$$ and $$b$$ hyperparameters normalize term frequency against document length, yielding stable, meaningful rankings across locations.  
+#### Contextual Difference Computation
+
+- **TF‑IDF vs. BM25:** BM25’s $$k_1$$ and $$b$$ hyperparameters normalize term frequency against document length, yielding stable, meaningful rankings across locations.
 - **Conceptual shift**: $$\Delta = |BM25_{\text{source}} - BM25_{\text{target}}|$$
 
-#### Threshold‑Based Interpretation  
-- **No Engagement**: 5th percentile of scores  
-- **Significant Shift**: 15 % of (max – min)  
-- **Relevance**: 60 % of (max – min)  
+#### Threshold‑Based Interpretation
+
+- **No Engagement**: 5th percentile of scores
+- **Significant Shift**: 15 % of (max – min)
+- **Relevance**: 60 % of (max – min)
 - Converts raw BM25 into “not relevant,” “marginal,” “relevant,” or “not found.”
 
-#### Implementation Stack  
-- **Backend:** Python, Numba/NumPy for BM25, PostgreSQL  
-- **Frontend:** Next.js + MUI, TypeScript, Recharts, TanStack React Query, Prisma ORM  
-- **Visualization:** Accessible color palette (WCAG 2 compliant) for bar/line charts  
+#### Implementation Stack
+
+- **Backend:** Python, Numba/NumPy for BM25, PostgreSQL
+- **Frontend:** Next.js + MUI, TypeScript, Recharts, TanStack React Query, Prisma ORM
+- **Visualization:** Accessible color palette (WCAG 2 compliant) for bar/line charts
 
 ## Discussion
 
-### Key Insights  
-- **Adaptive thresholds** ensure meaningful comparisons across diverse contexts.  
-- **Graphical summaries** (bar/line charts) democratize access for non‑technical users.  
+### Key Insights
+
+- **Adaptive thresholds** ensure meaningful comparisons across diverse contexts.
+- **Graphical summaries** (bar/line charts) democratize access for non‑technical users.
 - The pipeline balances **speed**, **accuracy** and **interpretability**.
 
-### Challenges  
-- BM25 lacks semantic nuance (polysemy, idioms).  
+### Challenges
+
+- BM25 lacks semantic nuance (polysemy, idioms).
 - Yelp data may be unevenly distributed, requiring multi‑source integration to mitigate sampling bias.
 
-### Limitations & Future Work  
-- Integrate BERT‑based re‑ranking for semantic refinement.  
-- Expand beyond Yelp (Google Reviews, social media) for richer context.  
-- Support real‑time indexing and updates.  
+### Limitations & Future Work
+
+- Integrate BERT‑based re‑ranking for semantic refinement.
+- Expand beyond Yelp (Google Reviews, social media) for richer context.
+- Support real‑time indexing and updates.
 - Conduct user studies to validate interpretability and decision support.
