@@ -47,6 +47,7 @@ export const metadata: Metadata = {
     title: 'Zhuoran (Elara) Liu | Portfolio',
     description: 'Elara Liu\'s portfolio website',
   },
+  other: {},
 }
 
 export default function RootLayout({
@@ -56,6 +57,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <link rel="alternate" type="application/rss+xml" href="/feed.xml" title="Elara's Portfolio - RSS Feed" />
       <body
         className={`${inter.variable} ${IBMPlexSerif.variable} ${jetBrainsMono.variable} font-sans flex max-h-full min-h-screen flex-col antialiased`}
       >

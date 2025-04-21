@@ -1,5 +1,6 @@
 import type { Element } from 'mdx/types'
 import ContentPage from '@/components/ContentPage'
+import { generateRssFeed } from '@/utils'
 import { readFilesPaths } from '@/utils/fileUtils'
 import { redirect } from 'next/navigation'
 
@@ -58,7 +59,8 @@ export default async function ResearchContentPage({
   )
 }
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
+  await generateRssFeed()
   return readFilesPaths('research').map(slug => ({ slug }))
 }
 
