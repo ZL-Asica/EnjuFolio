@@ -61,7 +61,8 @@ export default async function ResearchContentPage({
 
 export async function generateStaticParams() {
   await generateRssFeed()
-  return readFilesPaths('research').map(slug => ({ slug }))
+  const paths = await readFilesPaths('research')
+  return paths.map(slug => ({ slug }))
 }
 
 export const dynamicParams = false

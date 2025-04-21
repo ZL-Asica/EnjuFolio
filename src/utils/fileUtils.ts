@@ -1,10 +1,12 @@
+'use server'
+
 import fs from 'node:fs'
 import path from 'node:path'
 import process from 'node:process'
 
 const baseDir = path.join(process.cwd(), 'src', 'contents')
 
-export const readFilesPaths = (fileDir: string): string[] => {
+export const readFilesPaths = async (fileDir: string): Promise<string[]> => {
   const actualPath = path.join(baseDir, fileDir)
 
   let files: string[] = []
@@ -34,7 +36,7 @@ export const readFilesPaths = (fileDir: string): string[] => {
 export const readAllFileMeta = async (
   fileDir: string,
 ): Promise<FileMeta[]> => {
-  const slugs = readFilesPaths(fileDir)
+  const slugs = await readFilesPaths(fileDir)
 
   const metas = await Promise.all(
     slugs.map(async (slug) => {

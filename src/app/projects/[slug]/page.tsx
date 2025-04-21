@@ -58,8 +58,9 @@ export default async function ProjectContentPage({
   )
 }
 
-export function generateStaticParams() {
-  return readFilesPaths('projects').map(slug => ({ slug }))
+export async function generateStaticParams() {
+  const paths = await readFilesPaths('projects')
+  return paths.map((slug: string) => ({ slug }))
 }
 
 export const dynamicParams = false
