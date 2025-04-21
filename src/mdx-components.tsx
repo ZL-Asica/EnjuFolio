@@ -5,15 +5,29 @@ import Link from 'next/link'
 import { isValidElement } from 'react'
 import { CodeBlock, KEY_ICONS } from './components/parser'
 import DividerLine from './components/parser/DividerLine'
+import { generateHierarchicalSlug, slugPrefix } from './utils'
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
+  const headingLevels = {
+    h2: 0,
+    h3: 0,
+    h4: 0,
+    h5: 0,
+    h6: 0,
+  }
+
+  const titleSlug = (slug: string, level: number) => slugPrefix(slug, level)
+
   return {
     // Heading related
     h2: ({ children }) => {
+      const slug = generateHierarchicalSlug('h2', headingLevels)
       return (
         <h2
           className="group text-hover-primary transition-colors-300 relative mb-6 mt-6 border-b-2 pb-1 text-3xl font-extrabold leading-loose"
+          id={slug}
         >
+          {titleSlug(slug, 2)}
           {children}
           <span className="transition-all-300 absolute bottom-[-0.1em] left-0 w-[20%] rounded-md border-b-4 border-primary-300 dark:border-primary-200 group-hover:w-[35%]" aria-hidden="true" />
         </h2>
@@ -21,43 +35,54 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     },
 
     h3: ({ children }) => {
+      const slug = generateHierarchicalSlug('h3', headingLevels)
       return (
         <h3
           className="group relative flex items-center my-5 pl-3 text-2xl font-bold leading-normal text-hover-primary transition-colors-300"
+          id={slug}
         >
           <span className="absolute left-0 h-full w-1 bg-primary rounded-full transition-all-300 group-hover:w-1.5" aria-hidden="true" />
+          {titleSlug(slug, 3)}
           {children}
         </h3>
       )
     },
 
     h4: ({ children }) => {
+      const slug = generateHierarchicalSlug('h4', headingLevels)
       return (
         <h4
           className="group relative flex items-center my-4 pl-3 text-xl font-semibold leading-normal text-hover-primary transition-colors-300"
+          id={slug}
         >
           <span className="absolute left-0 h-full w-1 bg-secondary rounded-full transition-all-300 group-hover:w-1.5" aria-hidden="true" />
+          {titleSlug(slug, 4)}
           {children}
         </h4>
       )
     },
 
     h5: ({ children }) => {
+      const slug = generateHierarchicalSlug('h5', headingLevels)
       return (
         <h5
           className="group relative flex items-center my-3 pl-3 text-lg font-medium leading-normal text-hover-primary transition-colors-300"
         >
           <span className="absolute left-0 h-2/3 w-0.5 bg-gray-400 dark:bg-gray-500 rounded-full transition-all-300 group-hover:w-1" aria-hidden="true" />
+          {titleSlug(slug, 5)}
           {children}
         </h5>
       )
     },
 
     h6: ({ children }) => {
+      const slug = generateHierarchicalSlug('h6', headingLevels)
       return (
         <h6
           className="group relative my-2 text-base font-medium leading-normal text-hover-primary transition-colors-300"
+          id={slug}
         >
+          {titleSlug(slug, 6)}
           {children}
           <span className="transition-all-300 absolute bottom-0 left-0 w-[10%] rounded-md border-b border-dashed border-gray-400 dark:border-gray-500 group-hover:w-[15%]" aria-hidden="true" />
         </h6>

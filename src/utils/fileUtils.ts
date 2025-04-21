@@ -65,3 +65,29 @@ export const readAllFileMeta = async (
     return new Date(b.date).getTime() - new Date(a.date).getTime()
   })
 }
+
+export const readFileContent = async (
+  fileDir: string,
+  slug: string,
+): Promise<string> => {
+  const actualPath = path.join(baseDir, fileDir, `${slug}.mdx`)
+
+  let content = ''
+  try {
+    // Read the file content
+    content = fs.readFileSync(actualPath, 'utf-8')
+  }
+  catch (error_) {
+    console.error(`Error reading file ${actualPath}:`, error_)
+    return ''
+  }
+
+  // Drop frontmatter if exists
+  const frontmatterRegex = /---\n[\s\S]+?---\n/
+  const match = content.match(frontmatterRegex)
+  if (match) {
+    content = content.replace(match[0], '')
+  }
+
+  return content.trim()
+}

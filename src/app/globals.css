@@ -24,6 +24,6 @@
 }
 
 /* TOC Scroll avoid hidden by header */
-.post-content [id] {
+.page-content [id] {
   scroll-margin-top: 100px;
 }

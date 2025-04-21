@@ -1,3 +1,7 @@
+'use client'
+
+import { slugPrefix } from '@/utils'
+
 interface TOCLinkProps {
   item: TocItems
   activeSlug: string
@@ -6,24 +10,25 @@ interface TOCLinkProps {
 
 const TOCLink = ({ item, activeSlug, handleLinkClick }: TOCLinkProps) => {
   const isActive = activeSlug === item.slug
+  const titleSlug = slugPrefix(item.slug, item.level)
 
   return (
     <li
       key={item.slug}
-      className={`list-none py-1 text-base transition-all-300 ${
-        isActive ? 'font-bold text-primary-300' : 'text-foreground-dark'
+      className={`list-none py-1 text-base transition-all ${
+        isActive ? 'font-bold text-primary' : 'text-gray-dark'
       } `}
-      style={{ marginLeft: `${(item.level - 2) * 0.8}em` }}
+      style={{ marginLeft: `${(item.level - 2) * 0.7}em` }}
     >
       <a
         href={`#${item.slug}`}
-        onClick={(event) => {
-          event.preventDefault()
+        onClick={(event_) => {
+          event_.preventDefault()
           handleLinkClick(item.slug)
         }}
-        className="block break-words no-underline transition-all-300 hover:text-primary-300"
+        className="block break-words no-underline transition-all text-hover-primary"
       >
-        {item.title}
+        {`${titleSlug}${item.title}`}
       </a>
     </li>
   )
