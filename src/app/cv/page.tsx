@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { EmailLink } from '@/components/common'
 import { CVEducationList, CVHeader, CVInterests, CVPublicationList, CVSection, CVSkillGrid, CVTeachingList } from '@/components/CV'
 
 export const metadata: Metadata = {
@@ -18,12 +19,7 @@ export default function CVPage() {
         <ul className="list-none space-y-1">
           <li>
             Email:
-            <a
-              href="mailto:elara.liu@u.northwestern.edu"
-              className="ml-1 underline-interactive text-hover-primary"
-            >
-              elara.liu@u.northwestern.edu
-            </a>
+            <EmailLink emailAddress="elara.liu@u.northwestern.edu" />
           </li>
           <li>
             Website:

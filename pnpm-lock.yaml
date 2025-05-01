@@ -27,8 +27,8 @@ importers:
         specifier: ^1.5.0
         version: 1.5.0(next@15.3.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react@19.1.0)
       '@zl-asica/react':
-        specifier: ^0.4.1
-        version: 0.4.1(react@19.1.0)
+        specifier: ^0.5.0
+        version: 0.5.0(react@19.1.0)
       lucide-react:
         specifier: ^0.503.0
         version: 0.503.0(react@19.1.0)
@@ -1147,8 +1147,8 @@ packages:
   '@vue/shared@3.5.13':
     resolution: {integrity: sha512-/hnE/qP5ZoGpol0a5mDi45bOd7t3tjYJBjsgCsivow7D48cJeV5l05RD82lPqi7gRiphZM37rnhW1l6ZoCNNnQ==}
 
-  '@zl-asica/react@0.4.1':
-    resolution: {integrity: sha512-F+EV9aHb006Xi0A9YTJHmD0ZbjaNCdLjwPqjAp0um4dUBW5JNwoWB2rAmmiuUhMNqS1Q1xnZ4lL0kdi13Q8+Pg==}
+  '@zl-asica/react@0.5.0':
+    resolution: {integrity: sha512-XTakOYxSLG8KCoqoIJGPk1AXOOyL4pnowFJu73Eyilj4YhWXwwL9X+JA9NJEzftH99gAZ0Xp5sj6OsPHt1U8oQ==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       react: ^17.0.0 || ^18.0.0 || ^19.0.0
@@ -4650,7 +4650,7 @@ snapshots:
 
   '@vue/shared@3.5.13': {}
 
-  '@zl-asica/react@0.4.1(react@19.1.0)':
+  '@zl-asica/react@0.5.0(react@19.1.0)':
     dependencies:
       react: 19.1.0
 

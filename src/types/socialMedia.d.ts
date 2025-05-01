@@ -9,7 +9,7 @@ type SocialMediaKey =
   | 'rss'
 
 interface SocialMediaDataItem {
-  url: string
+  url: string | null
   Icon: React.ComponentType<{ size: number, className?: string }>
   label: string
 }
