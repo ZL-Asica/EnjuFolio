@@ -12,7 +12,7 @@ export default antfu({
   },
   lessOpinionated: true,
 }, {
-  files: ['./src/components/Loadings/**/*.ts', './src/components/Loadings/**/*.tsx'],
+  files: ['./src/components/Loadings/**/*.ts', './src/components/Loadings/**/*.tsx', './src/app/**/loading.tsx'],
   rules: {
     'react/no-array-index-key': 'off',
   },
