@@ -40,7 +40,7 @@ const CVSkillGrid = () => {
               {group.skills.map(skill => (
                 <span
                   key={skill}
-                  className="px-2 py-1 bg-primary-200 dark:bg-primary-400 rounded text-sm"
+                  className="px-2 py-1 bg-primary-200 dark:bg-primary-500 rounded text-sm"
                 >
                   {skill}
                 </span>

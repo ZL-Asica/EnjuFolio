@@ -31,3 +31,8 @@ interface SkillGroup {
   label: string
   skills: string[]
 }
+
+interface Interest {
+  label: string
+  Icon: React.ElementType
+}
