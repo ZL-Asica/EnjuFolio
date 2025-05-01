@@ -2,7 +2,7 @@
 
 import type { ReactElement } from 'react'
 import { useTheme } from '@zl-asica/react'
-import { Binoculars, FileUser, FolderKanban, Moon, Sun, UserRoundSearch } from 'lucide-react'
+import { Binoculars, FileUser, FolderKanban, House, Moon, Sun } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Fragment } from 'react'
@@ -24,10 +24,10 @@ const HeaderMenu = ({ isMobile, ulClassName, onClickHandler }: HeaderMenuProps) 
   const { isDarkTheme, toggleTheme } = useTheme('elara-theme-color', 7)
 
   const menuItems: MenuItem[] = [
+    { href: '/', label: 'Home', icon: <House /> },
     { href: '/research', label: 'Research', icon: <Binoculars /> },
     { href: '/projects', label: 'Projects', icon: <FolderKanban /> },
     { href: '/cv', label: 'CV', icon: <FileUser /> },
-    { href: '/contact', label: 'Contact', icon: <UserRoundSearch /> },
   ]
 
   return (
