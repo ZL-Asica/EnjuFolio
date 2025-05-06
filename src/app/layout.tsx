@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { BackToTop, Footer, Header, ScrollPositionBar } from '@/components/common/layout'
+import { Analytics } from '@vercel/analytics/next'
 import { IBM_Plex_Serif, Inter, JetBrains_Mono } from 'next/font/google'
-import { Toaster } from 'sonner'
 
 import './globals.css'
 
@@ -65,11 +65,11 @@ export default function RootLayout({
         <ScrollPositionBar />
         <BackToTop />
         <Header />
-        <Toaster position="top-center" richColors />
         <main className="grow mt-20 px-4 sm:px-6 motion-safe:animate-mask-reveal">
           {children}
         </main>
         <Footer />
+        <Analytics mode="production" />
       </body>
     </html>
   )
