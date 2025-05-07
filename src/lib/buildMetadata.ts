@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import type { OpenGraphType } from 'next/dist/lib/metadata/types/opengraph-types'
-import { authorFullName, authorPreferredName, baseDescroption, buildImageUrl, SITE_NAME, siteBaseUrl } from '@/lib/constants'
+import { authorFullName, authorPreferredName, baseDescroption, SITE_NAME, siteBaseUrl } from '@/lib/constants'
+import { generateImageUrl } from '@/utils'
 
 interface MetadataInput {
   title: string
@@ -20,7 +21,7 @@ export const buildMetadata = ({
   image,
 }: MetadataInput): Metadata => {
   const fullUrl = `${siteBaseUrl}${urlPath}`
-  const imageUrl = buildImageUrl(image)
+  const imageUrl = generateImageUrl(siteBaseUrl, image)
 
   const basicMetadata: Metadata = {
     title,

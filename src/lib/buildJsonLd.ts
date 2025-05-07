@@ -1,5 +1,6 @@
 import type { CreativeWork, Person, WebSite, WithContext } from 'schema-dts'
-import { authorFullName, authorPreferredName, baseDescroption, buildImageUrl, SITE_NAME, siteBaseUrl } from '@/lib/constants'
+import { authorFullName, authorPreferredName, baseDescroption, SITE_NAME, siteBaseUrl } from '@/lib/constants'
+import { generateImageUrl } from '@/utils'
 
 interface JsonLdBase {
   title: string
@@ -44,7 +45,7 @@ const buildJsonLdBase = ({
     keywords: ['portfolio', 'academic', ...keywords],
     editor: authorFullName,
     publisher: authorFullName,
-    image: buildImageUrl(image),
+    image: generateImageUrl(siteBaseUrl, image),
     author: personJsonLd,
   }
 }
