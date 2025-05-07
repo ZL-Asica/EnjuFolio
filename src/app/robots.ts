@@ -1,4 +1,5 @@
 import type { MetadataRoute } from 'next'
+import { siteBaseUrl } from '@/lib/constants'
 
 async function robots(): Promise<MetadataRoute.Robots> {
   return {
@@ -13,7 +14,7 @@ async function robots(): Promise<MetadataRoute.Robots> {
       ],
       disallow: '/_next',
     },
-    sitemap: 'https://zla.app/sitemap.xml',
+    sitemap: `${siteBaseUrl}/sitemap.xml`,
   }
 }
 

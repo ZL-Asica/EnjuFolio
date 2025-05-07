@@ -1,3 +1,4 @@
+import { siteBaseUrl } from '@/lib/constants'
 import Link from 'next/link'
 import SocialMediaLinks from './SocialMediaLinks'
 
@@ -9,7 +10,7 @@ const Footer = () => {
         <p className="text-base text-gray-dark">
           {`© ${new Date().getFullYear()} `}
           <Link
-            href="https://zla.app/"
+            href={siteBaseUrl}
             target="_blank"
             aria-label="Elara Liu's portfolio"
             rel="noopener noreferrer"

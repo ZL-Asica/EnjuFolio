@@ -29,10 +29,10 @@ export default function CVPage() {
           <li>
             Website:
             <a
-              href="https://zla.app"
+              href="https://www.zla.app"
               className="ml-1 underline-interactive text-hover-primary"
             >
-              zla.app
+              https://www.zla.app
             </a>
           </li>
           <li>Location: Evanston, Illinois, USA</li>

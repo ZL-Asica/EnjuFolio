@@ -13,7 +13,7 @@ If you're interested in updates, click the **"Watch"** button at the top right, 
 
 ---
 
-🚀 **[Live Demo](https://zla.app)**
+🚀 **[Live Demo](https://www.zla.app)**
 
 [![Node.js][node-badge]][node-link] [![pnpm Version][pnpm-badge]][pnpm-link] | [![Next.js][nextjs-badge]][nextjs-link] [![Tailwind CSS][tailwind-badge]][tailwind-link] | [![Vercel][vercel-badge]][vercel-link] [![Eslint][eslint-badge]][eslint-link] [![Prettier][prettier-badge]][prettier-link]
 
