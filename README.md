@@ -1,8 +1,17 @@
-# Enju Portfolio
+# Enju Folio
 
 > Enju (槐 🌳 in Japanese) — a symbol of knowledge and elegance.
 
 A minimalist, accessible, and beautifully structured academic portfolio template built with Next.js and Tailwind CSS. Designed to showcase your research, projects, and publications with clarity and style.
+
+---
+
+🚧 **Under Construction**
+This project is still in development and not yet ready to be used as a theme or template — even though it currently has no major bugs or performance issues.
+
+If you're interested in updates, click the **"Watch"** button at the top right, select **"Custom" → "Releases"** to be notified when it's ready!
+
+---
 
 🚀 **[Live Demo](https://zla.app)**
 
@@ -20,8 +29,11 @@ A minimalist, accessible, and beautifully structured academic portfolio template
 │   │   ├── common            # Common components
 │   │   │  └── layout         # Layout components
 │   │   └── ...               # Other pages' components
+│   ├── hooks                 # Custom hooks
+│   ├── lib                   # For Metadata and JSON-LD
 │   ├── contents              # All pages' MDX contents
 │   └── types.d.ts            # Global type definitions
+├── next.config.ts            # Next.js config file
 ├── tsconfig.json             # Typescript config file
 ├── eslint.config.mjs         # Eslint configuration
 ├── package.json              # Project dependencies and scripts
