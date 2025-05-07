@@ -1,25 +1,38 @@
-import { siteBaseUrl } from '@/lib/constants'
+import { authorPreferredName } from '@/lib/constants'
 import Link from 'next/link'
 import SocialMediaLinks from './SocialMediaLinks'
 
 const Footer = () => {
   return (
-    <footer className="mb-1 mt-10 w-full">
-      <div className="mx-auto max-w-7xl px-4 py-4 text-center">
+    <footer className="mb-2 mt-10 w-full">
+      <div className="mx-auto max-w-7xl px-4 py-4 text-center space-y-2 text-base">
         <SocialMediaLinks />
-        <p className="text-base text-gray-dark">
-          {`© ${new Date().getFullYear()} `}
+        <p className="text-gray-dark">
+          {`© ${new Date().getFullYear()} ${authorPreferredName} | All rights reserved.`}
+        </p>
+        <p className="text-gray-dark">
+          {/* Please leave this theme credit intact. Really appreciate it! */}
+          Themed by
+          {' '}
           <Link
-            href={siteBaseUrl}
+            href="https://github.com/ZL-Asica/EnjuFolio"
             target="_blank"
-            aria-label="Elara Liu's portfolio"
             rel="noopener noreferrer"
             className="text-hover-primary underline-interactive"
           >
-            Elara Liu
+            EnjuFolio
           </Link>
           {' '}
-          | All rights reserved.
+          · Crafted by
+          {' '}
+          <Link
+            href="https://www.zla.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-hover-primary underline-interactive"
+          >
+            ZL Asica
+          </Link>
         </p>
       </div>
     </footer>

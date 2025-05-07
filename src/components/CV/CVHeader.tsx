@@ -1,3 +1,4 @@
+import { authorFullName } from '@/lib/constants'
 import { Download } from 'lucide-react'
 import Link from 'next/link'
 
@@ -5,7 +6,7 @@ const CVHeader = () => {
   return (
     <section className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-12">
       <div>
-        <h1 className="text-4xl font-serif font-bold">Zhuoran (Elara) Liu</h1>
+        <h1 className="text-4xl font-serif font-bold">{authorFullName}</h1>
         <p className="mt-1 text-primary-400 dark:text-primary-300">
           MSCS, Northwestern University
         </p>
