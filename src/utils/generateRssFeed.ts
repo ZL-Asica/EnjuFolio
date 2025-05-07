@@ -4,17 +4,16 @@ import fs from 'node:fs'
 import path from 'node:path'
 import process from 'node:process'
 
+import { siteBaseUrl } from '@/lib/constants'
 import RSS from 'rss'
 import { readAllFileMeta } from './fileUtils'
 
 const generateRssFeed = async (): Promise<void> => {
-  const siteUrl = 'https://zla.app'
-
   const feedOptions: RSS.FeedOptions = {
     title: 'Zhuoran (Elara) Liu | Portfolio',
     description: 'Zhuoran (Elara) Liu\'s portfolio website',
-    feed_url: `${siteUrl}/feed.xml`,
-    site_url: siteUrl,
+    feed_url: `${siteBaseUrl}/feed.xml`,
+    site_url: siteBaseUrl,
     language: 'en',
     copyright: `All rights reserved ${new Date().getFullYear()} by Zhuoran (Elara) Liu`,
     pubDate: new Date(),
@@ -26,18 +25,14 @@ const generateRssFeed = async (): Promise<void> => {
     feed = new RSS(feedOptions)
 
     // Add type to every file
-    const projects = (await readAllFileMeta('projects')).sort((a, b) => {
-      return new Date(b.date).getTime() - new Date(a.date).getTime()
-    }).map((file) => {
+    const projects = (await readAllFileMeta('projects')).map((file) => {
       return {
         ...file,
-        type: 'project',
+        type: 'projects',
       }
     })
 
-    const research = (await readAllFileMeta('research')).sort((a, b) => {
-      return new Date(b.date).getTime() - new Date(a.date).getTime()
-    }).map((file) => {
+    const research = (await readAllFileMeta('research')).map((file) => {
       return {
         ...file,
         type: 'research',
@@ -52,9 +47,9 @@ const generateRssFeed = async (): Promise<void> => {
       feed.item({
         title: file.title,
         description: file.abstract,
-        url: `${siteUrl}/${file.type}/${file.slug}`,
+        url: `${siteBaseUrl}/${file.type}/${file.slug}`,
         date: file.date,
-        author: 'Zhuoran Liu',
+        author: 'Zhuoran (Elara) Liu',
         categories: file.keywords,
       })
     }
