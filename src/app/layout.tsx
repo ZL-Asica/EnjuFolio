@@ -1,8 +1,9 @@
 import type { Metadata } from 'next'
 import { BackToTop, Footer, Header, ScrollPositionBar } from '@/components/common/layout'
+import { buildMetadata } from '@/lib'
 import { Analytics } from '@vercel/analytics/next'
-import { IBM_Plex_Serif, Inter, JetBrains_Mono } from 'next/font/google'
 
+import { IBM_Plex_Serif, Inter, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 
 const inter = Inter({
@@ -25,31 +26,13 @@ const jetBrainsMono = JetBrains_Mono({
   display: 'swap',
 })
 
-export const metadata: Metadata = {
-  title: 'Zhuoran (Elara) Liu | Portfolio',
-  description: 'Elara Liu\'s portfolio website',
-  keywords: 'portfolio, elara, zhuoran, Liu',
-  creator: 'Elara Liu',
-  publisher: 'Elara Liu',
-  authors: { name: 'Elara Liu', url: 'https://zla.app' },
-  alternates: { canonical: 'https://zla.app' },
-  // ! Remember to remove this line when deploying
-  robots: { index: false, follow: false },
-  openGraph: {
-    type: 'website',
-    title: 'Zhuoran (Elara) Liu | Portfolio',
-    description: 'Elara Liu\'s portfolio website',
-    url: 'https://zla.app',
-    siteName: 'Zhuoran (Elara) Liu | Portfolio',
-    locale: 'en_US',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Zhuoran (Elara) Liu | Portfolio',
-    description: 'Elara Liu\'s portfolio website',
-  },
-  other: {},
-}
+export const metadata: Metadata = buildMetadata({
+  title: 'Zhuoran (Elara) Liu | Academic Portfolio',
+  description: 'Zhuoran (Elara) Liu’s academic portfolio featuring research in HCI and Large Language Model, technical projects, and CV.',
+  urlPath: '/',
+  ogType: 'website',
+  image: '/images/profile.webp',
+})
 
 export default function RootLayout({
   children,

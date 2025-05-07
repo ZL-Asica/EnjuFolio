@@ -1,28 +1,30 @@
 import type { Metadata } from 'next'
 import ContentCards from '@/components/ContentCards'
+import { buildMetadata, buildWebsiteJsonLd } from '@/lib'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: 'Research | Elara\'s Portfolio',
-  description: 'Explore Elara Liu\'s research, showcasing her skills and creativity in various domains.',
-  keywords: 'research, elara, portfolio, Zhuoran',
-  authors: { name: 'Elara Liu', url: 'https://zla.app' },
-  openGraph: {
-    type: 'article',
-    title: 'Research | Elara\'s Portfolio',
-    description: 'Explore Elara Liu\'s research, showcasing her skills and creativity in various domains.',
-    tags: 'research, elara, portfolio, Zhuoran',
-    url: `https://zla.app/research`,
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: `Research | Elara's Portfolio`,
-    description: 'Explore Elara Liu\'s research, showcasing her skills and creativity in various domains.',
-  },
-  alternates: { canonical: `https://zla.app/research` },
-}
+  description: 'Explore Zhuoran (Elara) Liu’s academic research projects, showcasing her skills and creativity in various domains.',
+  keywords: ['research'],
+  urlPath: '/research',
+  ogType: 'website',
+})
 
 export default async function ResearchPage() {
+  const jsonld = buildWebsiteJsonLd({
+    title: 'Research | Elara\'s Portfolio',
+    description: 'A showcase of Zhuoran (Elara) Liu’s past and ongoing research work.',
+    keywords: ['research'],
+    urlPath: '/research',
+  })
+
   return (
-    <ContentCards page="research" />
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonld) }}
+      />
+      <ContentCards page="research" />
+    </>
   )
 }

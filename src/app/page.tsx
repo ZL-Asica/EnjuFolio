@@ -1,6 +1,7 @@
 import { NewsLoading } from '@/components/Loadings'
 import News from '@/components/News'
 import About from '@/contents/About.mdx'
+import { buildWebsiteJsonLd } from '@/lib'
 import Image from 'next/image'
 import { Suspense } from 'react'
 
@@ -10,15 +11,26 @@ const AboutStrong = ({ children }: { children: React.ReactNode }) => (
   </strong>
 )
 
-export default function Home() {
+export default function HomePage() {
+  const jsonld = buildWebsiteJsonLd({
+    title: 'Zhuoran (Elara) Liu | Academic Portfolio',
+    description: 'Zhuoran (Elara) Liu’s academic portfolio featuring research in HCI and Large Language Model, technical projects, and CV.',
+    urlPath: '/',
+    image: '/images/profile.webp',
+  })
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonld) }}
+      />
       <section
         className="max-w-5xl mx-auto text-center py-8"
         aria-labelledby="heading-name"
       >
         <Image
-          src="/images/avatar.jpg"
+          src="/images/profile.webp"
           alt="Zhuoran (Elara) Liu's avatar"
           width={280}
           height={280}

@@ -1,4 +1,5 @@
 import ContentPage from '@/components/ContentPage'
+import { buildMetadata } from '@/lib'
 import { generateRssFeed } from '@/utils'
 import { readFilesPaths } from '@/utils/fileUtils'
 
@@ -13,25 +14,14 @@ export async function generateMetadata({
     `@/contents/research/${slug}.mdx`
   )) as { frontmatter: FileMeta }
 
-  return {
+  return buildMetadata({
     title: `${frontmatter.title} | Elara's Portfolio`,
     description: frontmatter.abstract,
-    keywords: frontmatter.keywords,
-    authors: frontmatter.authors,
-    openGraph: {
-      type: 'article',
-      title: `${frontmatter.title} | Elara's Portfolio`,
-      description: frontmatter.abstract,
-      tags: frontmatter.keywords,
-      url: `https://zla.app/research/${slug}`,
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: `${frontmatter.title} | Elara's Portfolio`,
-      description: frontmatter.abstract,
-    },
-    alternates: { canonical: `https://zla.app/research/${slug}` },
-  }
+    keywords: ['research', ...(frontmatter.keywords || [])],
+    urlPath: `/research/${slug}`,
+    ogType: 'article',
+    image: frontmatter.thumbnail,
+  })
 }
 
 export default async function ResearchContentPage({

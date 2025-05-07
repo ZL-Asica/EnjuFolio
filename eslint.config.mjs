@@ -11,6 +11,10 @@ export default antfu({
     '@next/next': nextPlugin,
   },
   lessOpinionated: true,
+  rules: {
+    // For Next.js JSON-LD we need to allow the use of `dangerouslySetInnerHTML`
+    'react-dom/no-dangerously-set-innerhtml': 'off',
+  }
 }, {
   files: ['./src/components/Loadings/**/*.ts', './src/components/Loadings/**/*.tsx', './src/app/**/loading.tsx'],
   rules: {

@@ -24,4 +24,5 @@ interface FileMeta {
   pdfUrl?: string
   keywords?: string[]
   github?: string
+  thumbnail?: string
 }

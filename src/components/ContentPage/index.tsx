@@ -1,5 +1,6 @@
 import { TOC } from '@/components/common'
 import { DividerLine } from '@/components/parser'
+import { buildArticleJsonLd } from '@/lib'
 import { generateTOC } from '@/utils'
 import { getMDXContent } from '@/utils/mdx-loader'
 import { redirect } from 'next/navigation'
@@ -20,8 +21,20 @@ const ContentPage = async ({ page, slug }: ContentPageProps) => {
 
   const toc = await generateTOC(page, slug)
 
+  const jsonLd = buildArticleJsonLd({
+    title: `${frontmatter.title} | Elara's Portfolio`,
+    description: frontmatter.abstract,
+    keywords: frontmatter.keywords,
+    urlPath: `/${page}/${slug}`,
+    image: frontmatter.thumbnail,
+  })
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <div className="max-w-3xl mx-auto py-12 px-4 motion-safe:animate-blur-in-glow">
         <ContentHeader frontmatter={frontmatter} />
         {frontmatter.abstract && (

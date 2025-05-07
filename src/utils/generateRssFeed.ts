@@ -73,7 +73,7 @@ const generateRssFeed = async (): Promise<void> => {
     const outputPath = path.join(process.cwd(), 'public', 'feed.xml')
     fs.writeFileSync(outputPath, feed.xml({ indent: true }), 'utf8')
     // eslint-disable-next-line no-console
-    console.info('RSS feed generated at /feed.xml 🎉\n')
+    console.info('\nRSS feed generated at /feed.xml 🎉')
   }
   catch (writeError) {
     if (writeError instanceof Error) {
