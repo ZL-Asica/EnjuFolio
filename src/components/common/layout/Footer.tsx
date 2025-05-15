@@ -26,7 +26,7 @@ const Footer = () => {
           · Crafted by
           {' '}
           <Link
-            href="https://www.zla.app/"
+            href="https://zla.app/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-hover-primary underline-interactive"

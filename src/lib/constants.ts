@@ -1,5 +1,5 @@
 // Remove trailing slash
-export const siteBaseUrl = 'https://www.zla.app'.replace(/\/$/, '')
+export const siteBaseUrl = 'https://elaraliu.com'.replace(/\/$/, '')
 export const authorPreferredName = 'Elara Liu'
 export const authorFullName = 'Zhuoran (Elara) Liu'
 export const SITE_NAME = `${authorFullName} | Academic Portfolio`
