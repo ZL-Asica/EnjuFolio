@@ -32,7 +32,7 @@ export default function CVPage() {
               href="https://elaraliu.com"
               className="ml-1 underline-interactive text-hover-primary"
             >
-              https://elaraliu.com"
+              https://elaraliu.com
             </a>
           </li>
           <li>Location: Evanston, Illinois, USA</li>
