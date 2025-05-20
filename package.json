@@ -24,7 +24,8 @@
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
-    "postinstall": "husky"
+    "commitlint": "commitlint --edit",
+    "prepare": "husky"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.0",
@@ -48,6 +49,8 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "^4.13.0",
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
     "@eslint-react/eslint-plugin": "^1.49.0",
     "@next/eslint-plugin-next": "^15.3.2",
     "@tailwindcss/postcss": "^4.1.6",
