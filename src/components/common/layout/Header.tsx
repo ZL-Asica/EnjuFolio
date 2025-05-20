@@ -1,5 +1,6 @@
 'use client'
 
+import { EnjuConfig } from '@/enju.config'
 import { useClickOutside, useHideOnScrollDown, useToggle } from '@zl-asica/react'
 import { Menu } from 'lucide-react'
 import Link from 'next/link'
@@ -46,7 +47,7 @@ const Header = () => {
           aria-label="Navigate to Home Page"
           className="transition-all-300 text-hover-primary text-2xl font-bold text-foreground no-underline"
         >
-          <p>Elara</p>
+          <p>{EnjuConfig.siteShortName}</p>
         </Link>
 
         {/* Mobile Menu Button */}

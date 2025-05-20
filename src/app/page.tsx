@@ -1,7 +1,10 @@
 import { NewsLoading } from '@/components/Loadings'
 import News from '@/components/News'
 import About from '@/contents/About.mdx'
+import { EnjuConfig } from '@/enju.config'
 import { buildWebsiteJsonLd } from '@/lib'
+import { authorPictureBase } from '@/lib/configHelper'
+import { validString } from '@/utils'
 import Image from 'next/image'
 import { Suspense } from 'react'
 
@@ -13,10 +16,10 @@ const AboutStrong = ({ children }: { children: React.ReactNode }) => (
 
 export default function HomePage() {
   const jsonld = buildWebsiteJsonLd({
-    title: 'Zhuoran (Elara) Liu | Academic Portfolio',
-    description: 'Zhuoran (Elara) Liu’s academic portfolio featuring research in HCI and Large Language Model, technical projects, and CV.',
+    title: EnjuConfig.title,
+    description: EnjuConfig.description,
     urlPath: '/',
-    image: '/images/profile.webp',
+    image: authorPictureBase,
   })
 
   return (
@@ -30,8 +33,8 @@ export default function HomePage() {
         aria-labelledby="heading-name"
       >
         <Image
-          src="/images/profile.webp"
-          alt="Zhuoran (Elara) Liu's avatar"
+          src={authorPictureBase}
+          alt={`${EnjuConfig.homePage.name}'s avatar`}
           width={280}
           height={280}
           priority
@@ -42,17 +45,23 @@ export default function HomePage() {
           id="heading-name"
           className="text-3xl sm:text-4xl font-serif font-semibold mb-2"
         >
-          Zhuoran (Elara) Liu
+          {EnjuConfig.homePage.name}
         </h1>
-        <p className="text-base text-gray-dark mb-2">
-          刘 卓然
-        </p>
-        <p className="text-sm text-gray-dark mb-1" aria-label="Pronouns">
-          (She / Her)
-        </p>
-        <p className="text-lg text-gray-dark max-w-md mx-auto">
-          Master of Science in Computer Science @ Northwestern University
-        </p>
+        {validString(EnjuConfig.homePage.otherInfo) && (
+          <p className="text-base text-gray-dark mb-2">
+            {EnjuConfig.homePage.otherInfo}
+          </p>
+        )}
+        {validString(EnjuConfig.homePage.pronounce) && (
+          <p className="text-sm text-gray-dark mb-1" aria-label="Pronouns">
+            {EnjuConfig.homePage.pronounce}
+          </p>
+        )}
+        {validString(EnjuConfig.homePage.position) && (
+          <p className="text-lg text-gray-dark max-w-md mx-auto">
+            {EnjuConfig.homePage.position}
+          </p>
+        )}
       </section>
 
       <section className="max-w-3xl mx-auto py-6 text-left motion-safe:animate-blur-in-glow">

@@ -1,5 +1,6 @@
 import type { CreativeWork, Person, WebSite, WithContext } from 'schema-dts'
-import { authorFullName, authorPreferredName, baseDescroption, SITE_NAME, siteBaseUrl } from '@/lib/constants'
+import { EnjuConfig } from '@/enju.config'
+import { authorPicture, familyName, givenName, MetaAuthorName, siteBaseUrl } from '@/lib/configHelper'
 import { generateImageUrl } from '@/utils'
 
 interface JsonLdBase {
@@ -13,25 +14,25 @@ interface JsonLdBase {
 export const personJsonLd: WithContext<Person> = {
   '@context': 'https://schema.org',
   '@type': 'Person',
-  'name': authorFullName,
-  'additionalName': authorPreferredName,
-  'description': baseDescroption,
-  'affiliation': 'Northwestern University',
-  'alumniOf': 'University of California, Irvine',
-  'familyName': authorFullName.split(' ')[authorFullName.split(' ').length - 1],
-  'givenName': authorFullName.split(' ')[0],
-  'image': `${siteBaseUrl}/images/profile.webp`,
-  'sameAs': [
-    'https://github.com/ZL-Asica/',
-    'https://www.linkedin.com/in/elara-liu/',
-    'https://zla.pub/',
-  ],
+  'name': MetaAuthorName,
+  'additionalName': EnjuConfig.metaInfo.alsoKnownAs !== undefined
+    ? EnjuConfig.metaInfo.alsoKnownAs
+    : EnjuConfig.author !== MetaAuthorName
+      ? EnjuConfig.author
+      : undefined,
+  'description': EnjuConfig.description,
+  'affiliation': EnjuConfig.metaInfo.affiliation,
+  'alumniOf': EnjuConfig.metaInfo.alumniOf,
+  'familyName': familyName,
+  'givenName': givenName,
+  'image': authorPicture,
+  'sameAs': EnjuConfig.metaInfo.sameAs,
   'url': siteBaseUrl,
 }
 
 const buildJsonLdBase = ({
-  title = SITE_NAME,
-  description = baseDescroption,
+  title = EnjuConfig.title,
+  description = EnjuConfig.description,
   keywords = [],
   urlPath = '/',
   image,
@@ -43,8 +44,8 @@ const buildJsonLdBase = ({
     url: fullUrl,
     description,
     keywords: ['portfolio', 'academic', ...keywords],
-    editor: authorFullName,
-    publisher: authorFullName,
+    editor: MetaAuthorName,
+    publisher: MetaAuthorName,
     image: generateImageUrl(siteBaseUrl, image),
     author: personJsonLd,
   }

@@ -1,5 +1,9 @@
 {
   "editor.wordWrap": "on",
+  "cSpell.words": [
+    "enju"
+  ],
+
   // Disable the default formatter, use eslint instead
   "prettier.enable": false,
   "editor.formatOnSave": false,

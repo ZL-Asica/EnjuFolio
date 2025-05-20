@@ -1,8 +1,10 @@
 import type { Metadata } from 'next'
 import { BackToTop, Footer, Header, ScrollPositionBar } from '@/components/common/layout'
+import { EnjuConfig } from '@/enju.config'
 import { buildMetadata } from '@/lib'
-import { Analytics } from '@vercel/analytics/next'
+import { authorPictureBase, showRss } from '@/lib/configHelper'
 
+import { Analytics } from '@vercel/analytics/next'
 import { IBM_Plex_Serif, Inter, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 
@@ -27,11 +29,11 @@ const jetBrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = buildMetadata({
-  title: 'Zhuoran (Elara) Liu | Academic Portfolio',
-  description: 'Zhuoran (Elara) Liu’s academic portfolio featuring research in HCI and Large Language Model, technical projects, and CV.',
+  title: EnjuConfig.title,
+  description: EnjuConfig.description,
   urlPath: '/',
   ogType: 'website',
-  image: '/images/profile.webp',
+  image: authorPictureBase,
 })
 
 export default function RootLayout({
@@ -41,7 +43,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <link rel="alternate" type="application/rss+xml" href="/feed.xml" title="Elara's Portfolio - RSS Feed" />
+      {showRss && <link rel="alternate" type="application/rss+xml" href="/feed.xml" title={`${EnjuConfig.subTitle} - RSS Feed`} />}
       <body
         className={`${inter.variable} ${IBMPlexSerif.variable} ${jetBrainsMono.variable} font-sans flex max-h-full min-h-screen flex-col antialiased`}
       >

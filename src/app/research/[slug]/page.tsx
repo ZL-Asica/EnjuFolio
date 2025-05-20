@@ -1,5 +1,7 @@
 import ContentPage from '@/components/ContentPage'
+import { EnjuConfig } from '@/enju.config'
 import { buildMetadata } from '@/lib'
+import { showRss } from '@/lib/configHelper'
 import { generateRssFeed } from '@/utils'
 import { readFilesPaths } from '@/utils/fileUtils'
 
@@ -15,7 +17,7 @@ export async function generateMetadata({
   )) as { frontmatter: FileMeta }
 
   return buildMetadata({
-    title: `${frontmatter.title} | Elara's Portfolio`,
+    title: `${frontmatter.title} | ${EnjuConfig.subTitle}`,
     description: frontmatter.abstract,
     keywords: ['research', ...(frontmatter.keywords || [])],
     urlPath: `/research/${slug}`,
@@ -37,7 +39,9 @@ export default async function ResearchContentPage({
 }
 
 export async function generateStaticParams() {
-  await generateRssFeed()
+  if (showRss) {
+    await generateRssFeed()
+  }
   const paths = await readFilesPaths('research')
   return paths.map(slug => ({ slug }))
 }

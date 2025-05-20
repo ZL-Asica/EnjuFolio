@@ -1,4 +1,4 @@
-import { authorPreferredName } from '@/lib/constants'
+import { EnjuConfig } from '@/enju.config'
 import Link from 'next/link'
 import SocialMediaLinks from './SocialMediaLinks'
 
@@ -8,7 +8,7 @@ const Footer = () => {
       <div className="mx-auto max-w-7xl px-4 py-4 text-center space-y-2 text-base">
         <SocialMediaLinks />
         <p className="text-gray-dark">
-          {`© ${new Date().getFullYear()} ${authorPreferredName} | All rights reserved.`}
+          {`© ${new Date().getFullYear()} ${EnjuConfig.author} | All rights reserved.`}
         </p>
         <p className="text-gray-dark">
           {/* Please leave this theme credit intact. Really appreciate it! */}

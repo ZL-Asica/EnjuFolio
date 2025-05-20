@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import type { OpenGraphType } from 'next/dist/lib/metadata/types/opengraph-types'
-import { authorFullName, authorPreferredName, baseDescroption, SITE_NAME, siteBaseUrl } from '@/lib/constants'
+import { EnjuConfig } from '@/enju.config'
+import { MetaAuthorName, siteBaseUrl } from '@/lib/configHelper'
 import { generateImageUrl } from '@/utils'
 
 interface MetadataInput {
@@ -14,7 +15,7 @@ interface MetadataInput {
 
 export const buildMetadata = ({
   title,
-  description = baseDescroption,
+  description = EnjuConfig.description,
   keywords = [],
   urlPath = '/',
   ogType = 'website',
@@ -29,8 +30,8 @@ export const buildMetadata = ({
     applicationName: 'Enju Folio',
     generator: 'Next.js with Enju Folio',
     keywords: [
-      authorFullName,
-      authorPreferredName.split(' ')[0],
+      MetaAuthorName,
+      EnjuConfig.author.split(' ')[0],
       'Portfolio',
       'Academic',
       ...keywords, // Unpack keywords
@@ -41,7 +42,7 @@ export const buildMetadata = ({
       description,
       url: fullUrl,
       tags: ['Portfolio', 'Academic', ...keywords],
-      siteName: SITE_NAME,
+      siteName: EnjuConfig.title,
       locale: 'en_US',
     },
     twitter: {
@@ -50,9 +51,9 @@ export const buildMetadata = ({
       description,
     },
     creator: 'ZL-Asica',
-    publisher: authorFullName,
+    publisher: MetaAuthorName,
     robots: { index: true, follow: true },
-    authors: [{ name: authorFullName, url: siteBaseUrl }],
+    authors: [{ name: MetaAuthorName, url: siteBaseUrl }],
     alternates: { canonical: fullUrl },
   }
 

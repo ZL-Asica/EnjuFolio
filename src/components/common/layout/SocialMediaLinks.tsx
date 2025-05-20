@@ -1,5 +1,7 @@
 'use client'
 
+import { EnjuConfig } from '@/enju.config'
+import { showRss } from '@/lib/configHelper'
 import { useObfuscatedEmail } from '@zl-asica/react'
 import Link from 'next/link'
 import {
@@ -14,33 +16,33 @@ import {
 } from 'react-icons/fa6'
 
 const socialData: SocialData = {
-  github_username: {
-    url: 'https://github.com/ZL-Asica',
+  github: {
+    url: EnjuConfig.socialLinks.github,
     Icon: FaGithub,
     label: 'GitHub',
   },
-  linkedin_username: {
-    url: 'https://www.linkedin.com/in/elara-liu',
+  linkedin: {
+    url: EnjuConfig.socialLinks.linkedin,
     Icon: FaLinkedin,
     label: 'LinkedIn',
   },
-  instagram_id: {
-    url: 'https://www.instagram.com/zl_asica',
+  instagram: {
+    url: EnjuConfig.socialLinks.instagram,
     Icon: FaInstagram,
     label: 'Instagram',
   },
-  orcid_id: {
-    url: 'https://orcid.org/0009-0008-7221-2324',
+  orcid: {
+    url: EnjuConfig.socialLinks.orcid,
     Icon: FaOrcid,
     label: 'ORCID',
   },
-  telegram_username: {
-    url: 'https://t.me/zl_asica',
+  telegram: {
+    url: EnjuConfig.socialLinks.telegram,
     Icon: FaTelegram,
     label: 'Telegram',
   },
-  bluesky_username: {
-    url: 'https://bsky.app/profile/zla.app',
+  bluesky: {
+    url: EnjuConfig.socialLinks.bluesky,
     Icon: FaBluesky,
     label: 'Bluesky',
   },
@@ -65,36 +67,46 @@ const SocialMediaLinks = ({
   className = '',
   iconSize = 32,
 }: SocialMediaLinksProps) => {
-  const { href: emailUrl } = useObfuscatedEmail('elara.liu@u.northwestern.edu')
+  const { href: emailUrl } = useObfuscatedEmail(EnjuConfig.socialLinks.email ?? '')
+
+  const showEmail = socialData.email.url === null && emailUrl !== null
 
   return (
     <div
       className={`mx-4 mb-5 flex flex-wrap justify-center gap-y-4 space-x-4 ${className}`}
     >
-      {Object.entries(socialData).map(([key, { url, Icon, label }]) => {
-        const finalUrl = key === 'email' ? emailUrl : url
+      {Object.entries(socialData)
+        .filter(([key, { url }]) => {
+          if (key === 'email') {
+            return showEmail
+          }
+          if (key === 'rss') {
+            return showRss
+          }
+          return (url !== undefined && url !== null && typeof url === 'string' && url.length > 2)
+        })
+        .map(([key, { url, Icon, label }]) => {
+          const finalUrl = key === 'email' ? emailUrl : url
 
-        return (
-          <Link
-            key={key}
-            href={finalUrl ?? '#'}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={label}
-            prefetch={false}
-            className="group relative inline-block"
-          >
-            <span className="sr-only">{label}</span>
-            <Icon
-              size={iconSize}
-              className="text-hover-primary transition-all-700 group-hover:scale-150"
-              aria-hidden="true"
-            />
-            {' '}
-
-          </Link>
-        )
-      })}
+          return (
+            <Link
+              key={key}
+              href={finalUrl ?? '#'}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={label}
+              prefetch={false}
+              className="group relative inline-block"
+            >
+              <span className="sr-only">{label}</span>
+              <Icon
+                size={iconSize}
+                className="text-hover-primary transition-all-700 group-hover:scale-150"
+                aria-hidden="true"
+              />
+            </Link>
+          )
+        })}
     </div>
   )
 }

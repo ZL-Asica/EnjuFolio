@@ -1,15 +1,7 @@
-type SocialMediaKey =
-  | 'github_username'
-  | 'linkedin_username'
-  | 'instagram_id'
-  | 'orcid_id'
-  | 'telegram_username'
-  | 'bluesky_username'
-  | 'email'
-  | 'rss'
+type SocialMediaKey = keyof EnjuFolioSocialLinks
 
 interface SocialMediaDataItem {
-  url: string | null
+  url: string | null | undefined
   Icon: React.ComponentType<{ size: number, className?: string }>
   label: string
 }

@@ -1,4 +1,5 @@
 import ContentPage from '@/components/ContentPage'
+import { EnjuConfig } from '@/enju.config'
 import { buildMetadata } from '@/lib'
 import { readFilesPaths } from '@/utils/fileUtils'
 
@@ -14,7 +15,7 @@ export async function generateMetadata({
   )) as { frontmatter: FileMeta }
 
   return buildMetadata({
-    title: `${frontmatter.title} | Elara's Portfolio`,
+    title: `${frontmatter.title} | ${EnjuConfig.subTitle}`,
     description: frontmatter.abstract,
     keywords: ['project', ...(frontmatter.keywords || [])],
     urlPath: `/projects/${slug}`,

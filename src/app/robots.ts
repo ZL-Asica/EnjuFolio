@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next'
-import { siteBaseUrl } from '@/lib/constants'
+import { siteBaseUrl } from '@/lib/configHelper'
 
 async function robots(): Promise<MetadataRoute.Robots> {
   return {

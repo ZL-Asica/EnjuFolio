@@ -1,10 +1,12 @@
 import type { Metadata } from 'next'
 import ContentCards from '@/components/ContentCards'
+import { EnjuConfig } from '@/enju.config'
 import { buildMetadata, buildWebsiteJsonLd } from '@/lib'
+import { MetaAuthorName } from '@/lib/configHelper'
 
 export const metadata: Metadata = buildMetadata({
-  title: 'Research | Elara\'s Portfolio',
-  description: 'Explore Zhuoran (Elara) Liu’s academic research projects, showcasing her skills and creativity in various domains.',
+  title: `Research | ${EnjuConfig.subTitle}`,
+  description: `Explore ${MetaAuthorName}’s academic research projects, showcasing her skills and creativity in various domains.`,
   keywords: ['research'],
   urlPath: '/research',
   ogType: 'website',
@@ -12,8 +14,8 @@ export const metadata: Metadata = buildMetadata({
 
 export default async function ResearchPage() {
   const jsonld = buildWebsiteJsonLd({
-    title: 'Research | Elara\'s Portfolio',
-    description: 'A showcase of Zhuoran (Elara) Liu’s past and ongoing research work.',
+    title: `Research | ${EnjuConfig.subTitle}`,
+    description: `A showcase of ${MetaAuthorName}’s past and ongoing research work.`,
     keywords: ['research'],
     urlPath: '/research',
   })

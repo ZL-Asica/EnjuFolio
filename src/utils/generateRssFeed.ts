@@ -4,18 +4,19 @@ import fs from 'node:fs'
 import path from 'node:path'
 import process from 'node:process'
 
-import { siteBaseUrl } from '@/lib/constants'
+import { EnjuConfig } from '@/enju.config'
+import { siteBaseUrl } from '@/lib/configHelper'
 import RSS from 'rss'
 import { readAllFileMeta } from './fileUtils'
 
 const generateRssFeed = async (): Promise<void> => {
   const feedOptions: RSS.FeedOptions = {
-    title: 'Zhuoran (Elara) Liu | Portfolio',
-    description: 'Zhuoran (Elara) Liu\'s portfolio website',
+    title: EnjuConfig.title,
+    description: EnjuConfig.description,
     feed_url: `${siteBaseUrl}/feed.xml`,
     site_url: siteBaseUrl,
     language: 'en',
-    copyright: `All rights reserved ${new Date().getFullYear()} by Zhuoran (Elara) Liu`,
+    copyright: `All rights reserved ${new Date().getFullYear()} by ${EnjuConfig.author}`,
     pubDate: new Date(),
     generator: 'Next.js + RSS for Node provided by ZL Asica',
   }

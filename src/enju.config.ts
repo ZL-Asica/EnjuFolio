@@ -1,0 +1,41 @@
+export const EnjuConfig: EnjuFolioConfig = {
+  title: 'Zhuoran (Elara) Liu | Academic Portfolio',
+  subTitle: 'Elara\'s Portfolio',
+  siteShortName: 'Elara',
+  description: 'Zhuoran (Elara) Liu’s academic portfolio featuring research in HCI and Large Language Model, technical projects, and CV.',
+  url: 'https://elaraliu.com',
+  author: 'Elara Liu',
+  otherNames: ['Zhuoran Liu'],
+  homePage: {
+    name: 'Zhuoran (Elara) Liu',
+    picture: '/images/profile.webp',
+    otherInfo: '刘 卓然',
+    pronounce: '(She / Her)',
+    position: 'Master of Science in Computer Science @ Northwestern University',
+  },
+  metaInfo: {
+    affiliation: 'Northwestern University',
+    alumniOf: 'University of California, Irvine',
+    name: 'Zhuoran (Elara) Liu',
+    familyName: 'Liu',
+    givenName: 'Zhuoran',
+    sameAs: [
+      'https://github.com/ZL-Asica/',
+      'https://zla.pub/',
+      'https://www.linkedin.com/in/elara-liu/',
+    ],
+  },
+  socialLinks: {
+    github: 'https://github.com/ZL-Asica',
+    linkedin: 'https://www.linkedin.com/in/elara-liu',
+    instagram: 'https://www.instagram.com/zl_asica',
+    orcid: 'https://orcid.org/0009-0008-7221-2324',
+    telegram: 'https://t.me/zl_asica',
+    bluesky: 'https://bsky.app/profile/zla.app',
+    email: 'elara.liu@u.northwestern.edu',
+    rss: {
+      research: true,
+      projects: true,
+    },
+  },
+}
