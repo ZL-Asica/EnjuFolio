@@ -1,21 +1,29 @@
 import type { MetadataRoute } from 'next'
 import { siteBaseUrl } from '@/lib/configHelper'
 
-async function robots(): Promise<MetadataRoute.Robots> {
+const ALLOWED_STATIC_PATHS = [
+  '/', // Homepage
+  '/_next/static/css',
+  '/_next/image',
+  '/_next/static/media',
+  '/_next/static/chunks',
+]
+
+const DISALLOWED_PATHS = [
+  '/_next', // Avoid _next directory, except for static assets
+  '/*?', // Block all URLs with query parameters
+  '/*?*', // Fallback for any other query parameters
+]
+
+const SITEMAP_URL = `${siteBaseUrl}/sitemap.xml`
+
+export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
       userAgent: '*',
-      allow: [
-        '/',
-        '/_next/static/css',
-        '/_next/image',
-        '/_next/static/media',
-        '/_next/static/chunks',
-      ],
-      disallow: '/_next',
+      allow: ALLOWED_STATIC_PATHS,
+      disallow: DISALLOWED_PATHS,
     },
-    sitemap: `${siteBaseUrl}/sitemap.xml`,
+    sitemap: SITEMAP_URL,
   }
 }
-
-export default robots
