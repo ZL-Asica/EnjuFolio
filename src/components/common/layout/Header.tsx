@@ -1,10 +1,10 @@
 'use client'
 
-import { EnjuConfig } from '@/enju.config'
 import { useClickOutside, useHideOnScrollDown, useToggle } from '@zl-asica/react'
 import { Menu } from 'lucide-react'
 import Link from 'next/link'
 import { useEffect, useRef } from 'react'
+import { EnjuConfig } from '@/enju.config'
 import HeaderMenu from './HeaderMenu'
 
 const Header = () => {

@@ -1,3 +1,5 @@
+import Image from 'next/image'
+import { Suspense } from 'react'
 import { NewsLoading } from '@/components/Loadings'
 import News from '@/components/News'
 import About from '@/contents/About.mdx'
@@ -5,8 +7,6 @@ import { EnjuConfig } from '@/enju.config'
 import { buildWebsiteJsonLd } from '@/lib'
 import { authorPictureBase } from '@/lib/configHelper'
 import { validString } from '@/utils'
-import Image from 'next/image'
-import { Suspense } from 'react'
 
 const AboutStrong = ({ children }: { children: React.ReactNode }) => (
   <strong className="font-semibold text-primary-400 dark:text-primary-300 hover:shadow-sm transition-all mx-1">

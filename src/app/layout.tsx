@@ -1,11 +1,11 @@
 import type { Metadata } from 'next'
-import { BackToTop, Footer, Header, ScrollPositionBar } from '@/components/common/layout'
-import { EnjuConfig } from '@/enju.config'
-import { buildMetadata } from '@/lib'
-import { authorPictureBase, showRss } from '@/lib/configHelper'
-
 import { Analytics } from '@vercel/analytics/next'
 import { IBM_Plex_Serif, Inter, JetBrains_Mono } from 'next/font/google'
+import { BackToTop, Footer, Header, ScrollPositionBar } from '@/components/common/layout'
+import { EnjuConfig } from '@/enju.config'
+
+import { buildMetadata } from '@/lib'
+import { authorPictureBase, showRss } from '@/lib/configHelper'
 import './globals.css'
 
 const inter = Inter({

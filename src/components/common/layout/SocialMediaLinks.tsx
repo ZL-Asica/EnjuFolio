@@ -1,7 +1,5 @@
 'use client'
 
-import { EnjuConfig } from '@/enju.config'
-import { showRss } from '@/lib/configHelper'
 import { useObfuscatedEmail } from '@zl-asica/react'
 import Link from 'next/link'
 import {
@@ -14,6 +12,8 @@ import {
   FaRss,
   FaTelegram,
 } from 'react-icons/fa6'
+import { EnjuConfig } from '@/enju.config'
+import { showRss } from '@/lib/configHelper'
 
 const socialData: SocialData = {
   github: {

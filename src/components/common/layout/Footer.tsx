@@ -1,5 +1,5 @@
-import { EnjuConfig } from '@/enju.config'
 import Link from 'next/link'
+import { EnjuConfig } from '@/enju.config'
 import SocialMediaLinks from './SocialMediaLinks'
 
 const Footer = () => {

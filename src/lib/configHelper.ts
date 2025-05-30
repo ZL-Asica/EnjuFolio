@@ -1,6 +1,6 @@
+import { uniqueArray } from '@zl-asica/react/utils'
 import { EnjuConfig } from '@/enju.config'
 import { generateImageUrl, removeUrlTrailingSlash } from '@/utils'
-import { uniqueArray } from '@zl-asica/react/utils'
 
 export const siteBaseUrl = removeUrlTrailingSlash(EnjuConfig.url)
 

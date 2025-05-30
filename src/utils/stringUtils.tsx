@@ -1,5 +1,5 @@
-import { authorAllNames } from '@/lib/configHelper'
 import { assignUUID } from '@zl-asica/react/utils'
+import { authorAllNames } from '@/lib/configHelper'
 
 export const formatAuthors = (authors: string[]): React.ReactNode => {
   if (!Array.isArray(authors) || authors.length === 0) {

@@ -4,9 +4,9 @@ import fs from 'node:fs'
 import path from 'node:path'
 import process from 'node:process'
 
+import RSS from 'rss'
 import { EnjuConfig } from '@/enju.config'
 import { siteBaseUrl } from '@/lib/configHelper'
-import RSS from 'rss'
 import { readAllFileMeta } from './fileUtils'
 
 const generateRssFeed = async (): Promise<void> => {

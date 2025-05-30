@@ -56,4 +56,11 @@ interface EnjuFolioHomePageConfig {
    * ```
    */
   position?: string
+
+  /**
+   * The format of the date you want to display on the news section.
+   *
+   * Support
+   */
+  newsDateFormat?: string
 }

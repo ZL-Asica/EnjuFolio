@@ -1,6 +1,6 @@
+import { BookOpen, FileIcon } from 'lucide-react'
 import { IconLinks } from '@/components/common'
 import { formatAuthors, formatDateMonth } from '@/utils'
-import { BookOpen, FileIcon } from 'lucide-react'
 import ContentTags from './ContentTags'
 
 interface ContentHeaderProps {

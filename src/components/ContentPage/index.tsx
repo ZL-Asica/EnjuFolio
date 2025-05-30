@@ -1,9 +1,9 @@
+import { redirect } from 'next/navigation'
 import { TOC } from '@/components/common'
 import { DividerLine } from '@/components/parser'
 import { buildArticleJsonLd } from '@/lib'
 import { generateTOC } from '@/utils'
 import { getMDXContent } from '@/utils/mdx-loader'
-import { redirect } from 'next/navigation'
 import ContentHeader from './ContentHeader'
 
 interface ContentPageProps {

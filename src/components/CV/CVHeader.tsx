@@ -1,6 +1,6 @@
-import { EnjuConfig } from '@/enju.config'
 import { Download } from 'lucide-react'
 import Link from 'next/link'
+import { EnjuConfig } from '@/enju.config'
 
 const CVHeader = () => {
   return (

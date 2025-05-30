@@ -1,5 +1,5 @@
-import { IconLinks } from '@/components/common'
 import Link from 'next/link'
+import { IconLinks } from '@/components/common'
 import CardMeta from './CardMeta'
 
 interface CardContentProps {
