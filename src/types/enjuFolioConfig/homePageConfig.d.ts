@@ -60,7 +60,13 @@ interface EnjuFolioHomePageConfig {
   /**
    * The format of the date you want to display on the news section.
    *
-   * Support
+   * Support `YYYY-MM-DD`, `YYYY/MM/DD`, `MMM, YYYY` kinds of formats.
+   * `MMM` is using local month for a more human-readable format.
+   *
+   * @default
+   * ```ts
+   * MMM, YYYY
+   * ```
    */
   newsDateFormat?: string
 }

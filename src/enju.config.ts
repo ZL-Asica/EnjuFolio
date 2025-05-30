@@ -12,7 +12,7 @@ export const EnjuConfig: EnjuFolioConfig = {
     otherInfo: '刘 卓然',
     pronounce: '(She / Her)',
     position: 'Master of Science in Computer Science @ Northwestern University',
-    newsDateFormat: 'MM/YYYY',
+    newsDateFormat: 'MMM, YYYY',
   },
   metaInfo: {
     affiliation: 'Northwestern University',

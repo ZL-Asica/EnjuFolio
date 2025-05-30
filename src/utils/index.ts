@@ -1,4 +1,4 @@
-export { formatDate, formatDateMonth } from './dateUtils'
+export { formatDateMonth } from './dateUtils'
 export { readAllFileMeta, readFilesPaths } from './fileUtils'
 export { generateImageUrl } from './generateImageUrl'
 export { default as generateRssFeed } from './generateRssFeed'

@@ -1,12 +1,3 @@
-export const formatDate = (isoDate: string): string => {
-  const date = new Date(isoDate)
-  return date.toLocaleDateString(undefined, {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric',
-  })
-}
-
 /**
  * Format an ISO‐style date string (YYYY, YYYY‑MM or YYYY‑MM‑DD)
  * into either:

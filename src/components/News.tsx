@@ -1,4 +1,6 @@
-import { formatDate, getMDXContent, readAllFileMeta } from '@/utils'
+import { formatDate } from '@zl-asica/react/utils'
+import { EnjuConfig } from '@/enju.config'
+import { getMDXContent, readAllFileMeta } from '@/utils'
 
 const NewsParagraph = ({ children }: { children: React.ReactNode }) => (
   <p className="text-base leading-relaxed tracking-wide">
@@ -21,7 +23,7 @@ const News = async () => {
           key={meta.slug}
         >
           <span className="font-mono text-sm text-gray-500 min-w-[110px] dark:text-gray-400">
-            {formatDate(frontmatter.date)}
+            {formatDate(frontmatter.date, EnjuConfig.homePage.newsDateFormat)}
           </span>
           <Content components={{ p: NewsParagraph }} />
         </li>
