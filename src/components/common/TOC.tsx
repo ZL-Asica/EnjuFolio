@@ -1,7 +1,7 @@
 'use client'
 
 import { useIsBottom, useIsTop } from '@zl-asica/react'
-import { List } from 'lucide-react'
+import { LuList } from 'react-icons/lu'
 import { useTOCLogic } from '@/hooks'
 
 import TOCLink from './TOCLink'
@@ -33,7 +33,7 @@ const TOC = ({ items }: TOCProps) => {
           isOpen ? 'translate-y-2' : 'hover:scale-110'
         }`}
       >
-        <List size={24} strokeWidth={3} />
+        <LuList size={24} strokeWidth={3} />
       </button>
       <menu
         ref={tocReference}

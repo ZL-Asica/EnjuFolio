@@ -1,5 +1,5 @@
-import { Download } from 'lucide-react'
 import Link from 'next/link'
+import { LuDownload } from 'react-icons/lu'
 import { EnjuConfig } from '@/enju.config'
 
 const CVHeader = () => {
@@ -20,7 +20,7 @@ const CVHeader = () => {
         className="mt-4 sm:mt-0 inline-flex items-center text-secondary dark:text-secondary-dark text-hover-secondary"
         aria-label="Download CV PDF"
       >
-        <Download className="w-6 h-6 mr-2" />
+        <LuDownload className="w-6 h-6 mr-2" />
         Download CV
       </Link>
     </section>

@@ -1,4 +1,4 @@
-import { BookOpen, FileIcon } from 'lucide-react'
+import { LuBookOpen, LuFile } from 'react-icons/lu'
 import { IconLinks } from '@/components/common'
 import { formatAuthors, formatDateMonth } from '@/utils'
 import ContentTags from './ContentTags'
@@ -27,12 +27,12 @@ const ContentHeader = ({ frontmatter }: ContentHeaderProps) => {
       <p className="mt-3 text-accent-600 dark:text-accent-400 flex items-center justify-center space-x-2">
         {frontmatter.venue !== undefined && (
           <span className="flex items-center" aria-label="Venue">
-            <FileIcon className="w-5 h-5 mr-1" />
+            <LuFile className="w-5 h-5 mr-1" />
             {frontmatter.venue}
           </span>
         )}
         <span className="flex items-center" aria-label="Date with year and month">
-          <BookOpen className="w-5 h-5 mr-1" />
+          <LuBookOpen className="w-5 h-5 mr-1" />
           <time dateTime={frontmatter.date}>{formatDateMonth(frontmatter.date)}</time>
         </span>
       </p>

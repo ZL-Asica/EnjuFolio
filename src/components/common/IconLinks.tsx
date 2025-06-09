@@ -1,5 +1,5 @@
-import { ExternalLink, FileText, Github, Link as LinkIcon } from 'lucide-react'
 import Link from 'next/link'
+import { LuExternalLink, LuFileText, LuGithub, LuLink as LuLinkIcon } from 'react-icons/lu'
 
 interface LinkItem {
   href: string
@@ -20,25 +20,25 @@ const CardLinks = ({ meta, classNames }: CardLinksProps) => {
     doi !== undefined && {
       href: `https://doi.org/${doi}`,
       label: 'DOI link',
-      icon: <LinkIcon className="w-5 h-5 mr-1" />,
+      icon: <LuLinkIcon className="w-5 h-5 mr-1" />,
       text: doi,
     },
     pdfUrl !== undefined && {
       href: pdfUrl,
       label: 'PDF download',
-      icon: <FileText className="w-5 h-5 mr-1" />,
+      icon: <LuFileText className="w-5 h-5 mr-1" />,
       text: 'PDF',
     },
     url !== undefined && {
       href: url,
       label: 'External link',
-      icon: <ExternalLink className="w-5 h-5 mr-1" />,
+      icon: <LuExternalLink className="w-5 h-5 mr-1" />,
       text: 'Link',
     },
     github !== undefined && {
       href: github,
       label: 'GitHub link',
-      icon: <Github className="w-5 h-5 mr-1" />,
+      icon: <LuGithub className="w-5 h-5 mr-1" />,
       text: 'Code',
     },
   ].filter(Boolean) as LinkItem[]

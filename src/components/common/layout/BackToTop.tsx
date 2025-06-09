@@ -1,7 +1,7 @@
 'use client'
 
 import { backToTop, useIsBottom, useIsTop } from '@zl-asica/react'
-import { ArrowUp } from 'lucide-react'
+import { LuArrowUp } from 'react-icons/lu'
 
 const BackToTop = () => {
   const isVisible = !useIsTop(150)
@@ -20,7 +20,7 @@ const BackToTop = () => {
       disabled={!isVisible}
       aria-hidden={!isVisible}
     >
-      <ArrowUp size={24} strokeWidth={3} />
+      <LuArrowUp size={24} strokeWidth={3} />
     </button>
   )
 }

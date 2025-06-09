@@ -1,9 +1,9 @@
 'use client'
 
 import { useClickOutside, useHideOnScrollDown, useToggle } from '@zl-asica/react'
-import { Menu } from 'lucide-react'
 import Link from 'next/link'
 import { useEffect, useRef } from 'react'
+import { LuMenu } from 'react-icons/lu'
 import { EnjuConfig } from '@/enju.config'
 import HeaderMenu from './HeaderMenu'
 
@@ -59,7 +59,7 @@ const Header = () => {
           aria-expanded={isOpen ? 'true' : 'false'}
           aria-controls="mobile-menu"
         >
-          {!isOpen && <Menu strokeWidth={2.5} />}
+          {!isOpen && <LuMenu strokeWidth={2.5} />}
         </button>
 
         {/* Mobile Menu */}

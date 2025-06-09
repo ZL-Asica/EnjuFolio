@@ -1,4 +1,4 @@
-import { Tag } from 'lucide-react'
+import { LuTag } from 'react-icons/lu'
 
 interface ContentTagsProps {
   keywords?: string[]
@@ -12,7 +12,7 @@ const ContentTags = ({ keywords }: ContentTagsProps) => {
   return (
     <div className="mt-6 text-sm text-gray-700 dark:text-gray-300" aria-label="Keywords">
       <div className="flex items-center justify-center mb-2">
-        <Tag className="w-5 h-5 mr-1 text-accent-600 dark:text-accent-400" />
+        <LuTag className="w-5 h-5 mr-1 text-accent-600 dark:text-accent-400" />
         Keywords:
       </div>
       <div className="flex flex-wrap justify-center gap-2">
