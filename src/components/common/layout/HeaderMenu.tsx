@@ -38,14 +38,16 @@ const HeaderMenu = ({ isMobile, ulClassName, onClickHandler }: HeaderMenuProps) 
             <Link
               href={item.href}
               title={item.label}
-              className={`relative flex w-full items-center gap-4 px-4 py-3 text-lg font-medium no-underline transition-all-300 group-hover:text-primary
-                ${item.href !== '/' && currentPath.startsWith(item.href) ? 'text-primary' : ''}
-                `}
+              className={`relative flex w-full items-center gap-4 px-4 py-3 text-lg font-medium no-underline transition-all-300 group-hover:scale-110 group-hover:text-primary
+                ${item.href !== '/' && currentPath.startsWith(item.href) ? 'text-primary' : 'text-foreground/90'}
+              `}
               onClick={onClickHandler}
               aria-label={item.label}
             >
               <span
-                className="inline-block transition-transform duration-300 ease-in-out group-hover:scale-125"
+                className={`inline-block transition-transform duration-300 ease-in-out group-hover:scale-110 group-hover:text-primary hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.4)]
+                  ${item.href !== '/' && currentPath.startsWith(item.href) ? 'text-primary' : 'text-foreground/90'}
+                `}
                 aria-hidden
               >
                 {item.icon}
@@ -57,7 +59,7 @@ const HeaderMenu = ({ isMobile, ulClassName, onClickHandler }: HeaderMenuProps) 
           {/* Mobile - Divider */}
           {isMobile && (
             <li className="w-full" aria-hidden>
-              <div className="h-[1px] w-full bg-gradient-to-r from-gray-light via-primary-300 to-gray-light" />
+              <div className="h-[1px] w-full rounded-full bg-gradient-to-r from-gray-light via-primary-300 to-gray-light" />
             </li>
           )}
         </Fragment>
@@ -67,7 +69,7 @@ const HeaderMenu = ({ isMobile, ulClassName, onClickHandler }: HeaderMenuProps) 
       <li className={`${isMobile ? 'mt-4 flex w-full justify-around' : 'flex justify-center gap-4'}`}>
         <button
           type="button"
-          className="text-hover-primary transition-all-300 group flex h-12 w-12 items-center justify-center rounded-full bg-gray-100 text-gray-600 dark:text-gray-300 hover:bg-gray-200 hover:cursor-pointer dark:bg-gray-800 dark:hover:bg-gray-700"
+          className="text-hover-primary transition-all-300 group flex h-12 w-12 items-center justify-center rounded-full backdrop-blur-md bg-white/30 dark:bg-black/30 shadow-md hover:scale-110 hover:cursor-pointer"
           aria-label="Toggle Theme"
           onClick={() => {
             toggleTheme()
