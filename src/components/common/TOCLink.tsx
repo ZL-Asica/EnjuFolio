@@ -8,13 +8,15 @@ interface TOCLinkProps {
   handleLinkClick: (slug: string) => void
 }
 
-const TOCLink = ({ item, activeSlug, handleLinkClick }: TOCLinkProps) => {
+const TOCLink = ({
+  item,
+  activeSlug,
+  handleLinkClick,
+}: TOCLinkProps) => {
   const isActive = activeSlug === item.slug
-  const titleSlug = slugPrefix(item.slug, item.level)
 
   return (
     <li
-      key={item.slug}
       className={`list-none py-1 text-base transition-all ${
         isActive ? 'font-bold text-primary' : 'text-gray-dark'
       } `}
@@ -28,7 +30,7 @@ const TOCLink = ({ item, activeSlug, handleLinkClick }: TOCLinkProps) => {
         }}
         className="block break-words no-underline transition-all text-hover-primary"
       >
-        {`${titleSlug}${item.title}`}
+        {`${slugPrefix(item.slug, item.level)}${item.title}`}
       </a>
     </li>
   )

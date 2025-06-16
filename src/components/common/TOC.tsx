@@ -1,9 +1,9 @@
 'use client'
 
-import { useIsBottom, useIsTop } from '@zl-asica/react'
+import { useIsTop } from '@zl-asica/react'
 import { LuList } from 'react-icons/lu'
-import { useTOCLogic } from '@/hooks'
 
+import { useTOCLogic } from '@/hooks'
 import TOCLink from './TOCLink'
 
 interface TOCProps {
@@ -11,19 +11,21 @@ interface TOCProps {
 }
 
 const TOC = ({ items }: TOCProps) => {
-  const { activeSlug, isOpen, toggleOpen, handleLinkClick, tocReference } = useTOCLogic()
-  const isTop = !useIsTop(50)
-  const isBottom = !useIsBottom(50)
-  const isVisible = isTop && isBottom
+  const {
+    activeSlug,
+    isOpen,
+    toggleOpen,
+    handleLinkClick,
+    tocReference,
+  } = useTOCLogic(items, 100)
+  const isVisible = !useIsTop(50)
 
   if (items.length === 0) {
     return null
   }
 
   return (
-    <div
-      className={`transition-opacity-300 ${isVisible ? 'opacity-100' : 'pointer-events-none opacity-0'}`}
-    >
+    <div className={`transition-opacity-300 ${isVisible ? 'opacity-100' : 'pointer-events-none opacity-0'}`}>
       <button
         type="button"
         hidden={!isVisible}
@@ -42,9 +44,9 @@ const TOC = ({ items }: TOCProps) => {
           isOpen ? 'translate-x-0' : '-translate-x-full'
         } right-8 xl:right-[calc((100vw-1280px)/2+10px)] xl:block xl:translate-x-0 ${!isOpen && 'hidden xl:block'} scrollbar-custom text-wrap break-words`}
       >
-        <h2 className="mb-4 text-lg font-semibold text-primary">
+        <p className="mb-4 text-lg font-semibold text-primary">
           Table of Contents
-        </h2>
+        </p>
         <ul className="m-0 list-none p-0">
           {items.map(item => (
             <TOCLink
