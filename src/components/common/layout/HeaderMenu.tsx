@@ -45,7 +45,7 @@ const HeaderMenu = ({ isMobile, ulClassName, onClickHandler }: HeaderMenuProps) 
               aria-label={item.label}
             >
               <span
-                className={`inline-block transition-transform duration-300 ease-in-out group-hover:scale-110 group-hover:text-primary hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.4)]
+                className={`inline-block transition-transform duration-300 ease-in-out group-hover:scale-110 group-hover:text-primary
                   ${item.href !== '/' && currentPath.startsWith(item.href) ? 'text-primary' : 'text-foreground/90'}
                 `}
                 aria-hidden
@@ -69,14 +69,14 @@ const HeaderMenu = ({ isMobile, ulClassName, onClickHandler }: HeaderMenuProps) 
       <li className={`${isMobile ? 'mt-4 flex w-full justify-around' : 'flex justify-center gap-4'}`}>
         <button
           type="button"
-          className="text-hover-primary transition-all-300 group flex h-12 w-12 items-center justify-center rounded-full backdrop-blur-md bg-white/30 dark:bg-black/30 shadow-md hover:scale-110 hover:cursor-pointer"
+          className="text-hover-primary transition-all-300 group flex h-12 w-12 items-center justify-center rounded-full backdrop-blur-md bg-white/30 dark:bg-black/30 shadow-md hover:cursor-pointer"
           aria-label="Toggle Theme"
           onClick={() => {
             toggleTheme()
             onClickHandler && onClickHandler()
           }}
         >
-          <span className="flex h-6 w-6 items-center justify-center transition-all-300 group-hover:scale-125 ">
+          <span className="flex h-6 w-6 items-center justify-center transition-all-300 group-hover:scale-110 ">
             {isDarkTheme ? <Sun className="h-full w-full" /> : <Moon className="h-full w-full" />}
           </span>
         </button>
