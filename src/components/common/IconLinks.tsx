@@ -14,7 +14,7 @@ interface CardLinksProps {
 }
 
 const CardLinks = ({ meta, classNames }: CardLinksProps) => {
-  const { doi, pdfUrl, url, github } = meta
+  const { doi, pdf, url, github } = meta
 
   const links = [
     doi !== undefined && {
@@ -23,8 +23,8 @@ const CardLinks = ({ meta, classNames }: CardLinksProps) => {
       icon: <LuLinkIcon className="w-5 h-5 mr-1" />,
       text: doi,
     },
-    pdfUrl !== undefined && {
-      href: pdfUrl,
+    pdf !== undefined && {
+      href: pdf,
       label: 'PDF download',
       icon: <LuFileText className="w-5 h-5 mr-1" />,
       text: 'PDF',

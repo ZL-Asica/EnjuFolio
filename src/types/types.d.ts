@@ -21,7 +21,7 @@ interface FileMeta {
   redirect?: string
   doi?: string
   url?: string
-  pdfUrl?: string
+  pdf?: string
   keywords?: string[]
   github?: string
   thumbnail?: string

@@ -53,7 +53,7 @@ export const readAllFileMeta = async (
         abstract: md.abstract,
         redirect: md.redirect,
         doi: md.doi,
-        pdfUrl: md.pdfUrl,
+        pdf: md.pdf,
         url: md.url,
         github: md.github,
         slug: encodeURIComponent(slug),
