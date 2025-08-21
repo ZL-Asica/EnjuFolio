@@ -1,5 +1,6 @@
 import Link from 'next/link'
-import { LuExternalLink, LuFileText, LuGithub, LuLink as LuLinkIcon } from 'react-icons/lu'
+import { LuExternalLink, LuFileText, LuGithub } from 'react-icons/lu'
+import { SiDoi } from 'react-icons/si'
 
 interface LinkItem {
   href: string
@@ -20,7 +21,7 @@ const CardLinks = ({ meta, classNames }: CardLinksProps) => {
     doi !== undefined && {
       href: `https://doi.org/${doi}`,
       label: 'DOI link',
-      icon: <LuLinkIcon className="w-5 h-5 mr-1" />,
+      icon: <SiDoi className="w-4 h-4 mr-1" />,
       text: doi,
     },
     pdf !== undefined && {
