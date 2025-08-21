@@ -1,6 +1,6 @@
 ---
 title: SuzuBlog
-abstract: SuzuBlog is a Next.js–based blog system designed for maintainability and reader ergonomics rather than CMS feature bloat. The project favors file-based authorship (Markdown + YAML frontmatter), a single-site config (`config.yml`) for policy and branding, and a deployment model that keeps output fully static by default. The result is a minimalist personal blog with clear provenance, predictable performance, and low operational overhead.
+abstract: SuzuBlog is a Next.js–based blog system designed for maintainability and reader ergonomics rather than CMS feature bloat. The project favors file-based authorship (Markdown + YAML frontmatter), a single-site config (config.yml) for policy and branding, and a deployment model that keeps output fully static by default. The result is a minimalist personal blog with clear provenance, predictable performance, and low operational overhead.
 img:
 date: 2024-10
 category: Web
@@ -23,14 +23,14 @@ keywords:
 
 SuzuBlog is a Next.js–based blog system designed for maintainability and reader ergonomics rather than CMS feature bloat. The project favors **file-based authorship** (Markdown + YAML frontmatter), a **single-site config** (`config.yml`) for policy and branding, and a deployment model that keeps output **fully static** by default. The result is a minimalist personal blog with clear provenance, predictable performance, and low operational overhead.
 
-## Design Rationale (HCI)
+## Design Rationale
 
 - **Reading first.** Typography, spacing, and navigation are intentionally quiet; the sakura-inspired theme keeps cognitive load low and rhythm consistent across devices. Docs foreground “Sakura (Cherry Blossom) Themes” and accessibility-aware defaults.
 - **Content provenance.** Every post is a file with explicit frontmatter. Policy toggles (e.g., license, comments) are visible and auditable in version control.
 - **International reach.** i18n is configuration-led. Language strings and metadata adapt via `config.yml`, enabling multilingual personal sites without per-page boilerplate.
 - **Assistive defaults.** Semantic HTML and generated meta (sitemap/OG/Twitter/JSON-LD) are part of the template’s baseline, supporting discoverability and assistive tech.
 
-## System Overview (SE/CS)
+## System Overview
 
 **Architecture.**
 
@@ -61,7 +61,7 @@ This approach preserves **auditability** (changes are diffs), encourages **princ
 
 ![Figure 3: llms.txt excerpt](/images/projects/suzublog/llms-txt.png)
 
-SuzuBlog can emit an **`/llms.txt`** file to guide assistant crawlers toward canonical, plain-text sources—an emerging convention analogous (but not identical) to `robots.txt`. This strengthens **content provenance** for AI tools without adding authoring burden. The feature shipped in v1.9.0 and aligns with current community proposals around llms.txt semantics.
+SuzuBlog can emit an **`/llms.txt`** file to guide assistant crawlers toward canonical, plain-text sources—an emerging convention analogous (but not identical) to `robots.txt`. This strengthens **content provenance** for AI tools without adding authoring burden. The feature shipped in v1.9.0 and aligns with current community proposals around llms.txt semantics ([Check what is `llms.txt`](https://llmstxt.org/)).
 
 ## Performance & Reliability
 
@@ -70,7 +70,6 @@ SuzuBlog can emit an **`/llms.txt`** file to guide assistant crawlers toward can
 - **Static by default** → fast TTFB and stable render path.
 - **Deterministic builds** → simple rollbacks, easy diffs, and predictable performance envelopes.
 - **Minimal JS at rest** → the template favors content over interactivity unless explicitly requested in a post/page.
-  (Your portfolio can insert real Lighthouse/CI screenshots here.)
 
 ## Extensibility
 

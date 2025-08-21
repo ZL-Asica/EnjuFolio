@@ -1,15 +1,18 @@
+import { isEmpty } from '@zl-asica/react/utils'
 import CVSection from './CVSection'
 
 const educationData: Education[] = [
   {
     school: 'Northwestern University',
-    degree: 'Master of Science in Computer Science',
+    degree: 'M.S., Computer Science, Thesis Track',
     time: 'Sep 2024 – Present',
+    description: 'Advisor: Prof. Karan Ahuja',
   },
   {
     school: 'University of California, Irvine',
-    degree: 'Bachelor of Science (Hons) in Computer Science & Informatics',
+    degree: 'Double B.S. (Hons), Computer Science & Informatics',
     time: 'Sep 2020 – Jun 2024',
+    description: 'Dean\'s Honor List, ICS Honors Program',
   },
 ]
 
@@ -22,15 +25,20 @@ const CVEducationList = () => {
     <CVSection id="education" title="Education">
 
       <ul className="space-y-4">
-        {educationData.map(({ school, degree, time }) => (
+        {educationData.map(({ school, degree, time, description }) => (
           <li key={school}>
             <p className="font-semibold">{school}</p>
-            <p className="text-sm italic text-gray-700 dark:text-gray-300">
+            <p className="text-sm text-gray-700 dark:text-gray-300">
               {degree}
               ,
               {' '}
-              {time}
+              <span className="italic">{time}</span>
             </p>
+            {!isEmpty(description) && (
+              <p className="text-sm ml-5 sm:ml-2 md:ml-3 text-gray-700 dark:text-gray-300">
+                {description}
+              </p>
+            )}
           </li>
         ))}
       </ul>

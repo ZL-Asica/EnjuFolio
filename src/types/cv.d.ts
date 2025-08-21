@@ -8,6 +8,7 @@ interface Education {
   school: string
   degree: string
   time: string
+  description?: string
 }
 
 type PublicationType = 'Full Paper' | 'Poster' | 'WIP' | 'Demo'
@@ -24,7 +25,7 @@ interface TeachingExperience {
   course: string
   role: string
   term: string
-  description: string
+  description?: string
 }
 
 interface SkillGroup {

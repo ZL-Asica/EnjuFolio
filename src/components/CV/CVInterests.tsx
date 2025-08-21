@@ -1,16 +1,16 @@
 import {
   Brain,
   Computer,
-  Cpu,
   Eye,
   Globe,
   HeartPulse,
+  TabletSmartphone,
 } from 'lucide-react'
 import CVSection from './CVSection'
 
 const interests: Interest[] = [
   {
-    label: 'Human–Computer Interaction',
+    label: 'Human–AI Interaction',
     Icon: Computer,
   },
   {
@@ -18,12 +18,12 @@ const interests: Interest[] = [
     Icon: Brain,
   },
   {
-    label: 'Machine Learning',
-    Icon: Cpu,
-  },
-  {
     label: 'Ubiquitous Computing',
     Icon: Globe,
+  },
+  {
+    label: 'Mobile Health',
+    Icon: TabletSmartphone,
   },
   {
     label: 'UX & Accessibility',

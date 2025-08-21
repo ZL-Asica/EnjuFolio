@@ -3,11 +3,11 @@ import CVSection from './CVSection'
 const skillGroups: SkillGroup[] = [
   {
     label: 'Programming Languages',
-    skills: ['Python', 'JavaScript', 'TypeScript', 'Java', 'SQL', 'Swift', 'C++', 'HTML', 'CSS'],
+    skills: ['Python', 'JavaScript', 'TypeScript', 'Java', 'SQL', 'Go', 'C++', 'HTML', 'CSS'],
   },
   {
     label: 'Frameworks & Servers',
-    skills: ['React', 'Expo', 'Next.js', 'Nuxt', 'Express.js', 'Hono', 'Vitest', 'Vue', 'Jekyll', 'Nginx', 'Linux'],
+    skills: ['React', 'Expo', 'Next.js', 'Nuxt', 'FastAPI', 'Hono', 'Vitest', 'Vue', 'Nginx', 'Linux'],
   },
   {
     label: 'Design & Media',

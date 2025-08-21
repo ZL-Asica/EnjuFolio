@@ -1,3 +1,4 @@
+import { isEmpty } from '@zl-asica/react/utils'
 import CVSection from './CVSection'
 
 const teachingData: TeachingExperience[] = [
@@ -5,31 +6,31 @@ const teachingData: TeachingExperience[] = [
     course: 'AP Computer Science A',
     role: 'Instructor',
     term: 'Spring 2025',
-    description: 'Prepared modules on Java, OOP, and Data Structures.',
+    description: 'Independent, Remote',
   },
   {
-    course: 'Consumer Health Informatics',
+    course: 'IN4MATX 173 - Consumer Health Informatics',
     role: 'Reader',
     term: 'Spring 2024',
-    description: 'Helped Prof. Yunan Chen on teaching and grading.',
+    description: 'Department of Informatics, University of California, Irvine',
   },
   {
-    course: 'Programming with Software Libraries',
+    course: 'I&C SCI 32 - Programming with Software Libraries',
     role: 'Learning Assistant',
     term: 'Winter 2024',
-    description: 'Helped coach students on Python libraries and assignments.',
+    description: 'Department of Computer Science, University of California, Irvine',
   },
   {
-    course: 'Programming with Software Libraries',
+    course: 'I&C SCI 32 - Programming with Software Libraries',
     role: 'Tutor',
     term: 'Spring 2023',
-    description: 'Taught students Python libraries and related concepts.',
+    description: 'HD Education, Remote',
   },
   {
-    course: 'Boolean Algebra & Logic',
+    course: 'I&C SCI 6B - Boolean Algebra & Logic',
     role: 'Learning Assistant',
     term: 'Winter 2021',
-    description: 'Introduction to discrete mathematics.',
+    description: 'Department of Computer Science, University of California, Irvine',
   },
 ]
 
@@ -55,7 +56,11 @@ const CVTeachingList = () => {
                 )
               </span>
             </p>
-            <p className="text-sm text-gray-700 dark:text-gray-300">{description}</p>
+            {!isEmpty(description) && (
+              <p className="text-sm text-gray-700 dark:text-gray-300">
+                {description}
+              </p>
+            )}
           </li>
         ))}
       </ul>
