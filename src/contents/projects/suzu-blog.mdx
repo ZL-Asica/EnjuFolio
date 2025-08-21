@@ -1,32 +1,110 @@
 ---
 title: SuzuBlog
-abstract: SuzuBlog is a minimalist, high-performance blog system inspired by Japanese aesthetics, built with Next.js.
+abstract: SuzuBlog is a Next.js–based blog system designed for maintainability and reader ergonomics rather than CMS feature bloat. The project favors file-based authorship (Markdown + YAML frontmatter), a single-site config (`config.yml`) for policy and branding, and a deployment model that keeps output fully static by default. The result is a minimalist personal blog with clear provenance, predictable performance, and low operational overhead.
 img:
 date: 2024-10
 category: Web
 github: https://github.com/ZL-Asica/SuzuBlog
 url: https://suzu.zla.app/
+doi: '10.5281/zenodo.15377307'
+keywords:
+  - static generation
+  - config-as-code
+  - i18n
+  - a11y
+  - content provenance
+  - LLM readiness
+  - CI ergonomics
 ---
 
-**SuzuBlog**, named after the Japanese word **鈴** (suzu, meaning "bell" 🎐), is a minimalist, high-performance blog system inspired by **Japanese aesthetics**, built with **Next.js**. The project emphasizes delivering a calm, visually clean, and efficient reading experience with **lightweight content management** powered by Markdown and YAML.
+![Hero: SuzuBlog landing preview — minimalist theme](/images/projects/suzublog/hero.png)
 
-🚀 **[Live Demo](https://www.zla.pub)** | 📚 **[Documentation](https://suzu.zla.app)** | 🔧 **[GitHub Repo](https://github.com/ZL-Asica/SuzuBlog)**
+## Abstract
 
-## Background
+SuzuBlog is a Next.js–based blog system designed for maintainability and reader ergonomics rather than CMS feature bloat. The project favors **file-based authorship** (Markdown + YAML frontmatter), a **single-site config** (`config.yml`) for policy and branding, and a deployment model that keeps output **fully static** by default. The result is a minimalist personal blog with clear provenance, predictable performance, and low operational overhead.
 
-After years of frustration with the maintenance, security risks, and performance issues of other frameworks (such as Hexo, Jekyll, Typecho, WordPress), I decided to create Suzu Blog using Next.js. It is simple, efficient, and highly customizable, designed for anyone looking to build a modern blog quickly.
+## Design Rationale (HCI)
 
-## Project Overview
+- **Reading first.** Typography, spacing, and navigation are intentionally quiet; the sakura-inspired theme keeps cognitive load low and rhythm consistent across devices. Docs foreground “Sakura (Cherry Blossom) Themes” and accessibility-aware defaults.
+- **Content provenance.** Every post is a file with explicit frontmatter. Policy toggles (e.g., license, comments) are visible and auditable in version control.
+- **International reach.** i18n is configuration-led. Language strings and metadata adapt via `config.yml`, enabling multilingual personal sites without per-page boilerplate.
+- **Assistive defaults.** Semantic HTML and generated meta (sitemap/OG/Twitter/JSON-LD) are part of the template’s baseline, supporting discoverability and assistive tech.
 
-SuzuBlog strives to combine **aesthetic simplicity** with **technical excellence**, creating a platform tailored for personal and professional bloggers who value both **form and function**. Inspired by elements of traditional Japanese design, the blog offers:
+## System Overview (SE/CS)
 
-- **🚀 Next.js Powered** – Supports ISR & SSG for lightning-fast performance.
-- **📄 Markdown Support** – Code highlighting with copy button, LaTeX rendering, optimized images, and elegant styling.
-- **🔍 SEO Ready** – Auto-generates sitemap, Open Graph, Twitter Cards, and more.
-- **🌍 Multi-Language** – Supports English, Chinese, Japanese, and more via `config.yml`.
-- **📺 Anime List** – Fetch & display anime info from AniList API.
-- **🌓 Dark Mode** – Adapts to system preferences seamlessly.
-- **📢 RSS Feed** – Auto-generated RSS for easy content distribution.
-- **♿ Accessibility First** – Semantic HTML, ARIA support, WCAG-compliant colors.
+**Architecture.**
 
-SuzuBlog is crafted to be a platform that grows alongside its users, balancing simplicity with flexibility. Feedback from early users will play a crucial role in shaping the evolution of this project. 🌸
+- **Framework:** Next.js (App Router) + TypeScript + Tailwind CSS.
+- **Content model:** Markdown posts with YAML frontmatter. Special pages live under `_pages` (e.g., About, Friends).
+- **Configuration:** `config.yml` is the single source of truth for SEO, social links, language, analytics, special pages, and integrations.
+- **Build & delivery:** Targets SSG/ISR for predictable speed and hosting portability.
+
+**Operational ergonomics.**
+
+- **Template sync.** A GitHub Action (“Sync SuzuBlog Main Branch”) keeps downstream sites in step with template updates while protecting content and config—useful for long-lived academic pages.
+- **Release hygiene.** Versioned releases document changes (e.g., SEO/JSON-LD improvements; code highlighting via Shiki), aiding reproducibility and citation.
+
+## Configuration-as-Policy
+
+![Figure 2: Excerpt of config.yml showing site/i18n](/images/projects/suzublog/config.png)
+
+**Single-file governance.** SuzuBlog centralizes site policy in `config.yml`, which covers:
+
+- **Site identity & meta:** title/description/keywords, author, canonical URL.
+- **i18n knobs:** language code and localized naming; optional AniList page under `/about/anime`.
+- **Comments:** choice of Disqus or self-hostable Twikoo, enabled by two keys (no code edits).
+- **Custom head/footer & scripts:** controlled injection points for analytics or research pixels—kept explicit and versioned.
+
+This approach preserves **auditability** (changes are diffs), encourages **principled defaults**, and avoids hidden runtime state common in CMS plugins.
+
+## LLM Readiness & Content Stewardship
+
+![Figure 3: llms.txt excerpt](/images/projects/suzublog/llms-txt.png)
+
+SuzuBlog can emit an **`/llms.txt`** file to guide assistant crawlers toward canonical, plain-text sources—an emerging convention analogous (but not identical) to `robots.txt`. This strengthens **content provenance** for AI tools without adding authoring burden. The feature shipped in v1.9.0 and aligns with current community proposals around llms.txt semantics.
+
+## Performance & Reliability
+
+![Figure 4: Lighthouse](/images/projects/suzublog/lighthouse.png)
+
+- **Static by default** → fast TTFB and stable render path.
+- **Deterministic builds** → simple rollbacks, easy diffs, and predictable performance envelopes.
+- **Minimal JS at rest** → the template favors content over interactivity unless explicitly requested in a post/page.
+  (Your portfolio can insert real Lighthouse/CI screenshots here.)
+
+## Extensibility
+
+![Figure 5: Plug-in points — comments, social cards, analytics](/images/projects/suzublog/plug-in-points.png)
+
+- **Pluggable comments:** Disqus or Twikoo via config flags; it’s trivial to disable for research pages that disallow public discussion.
+- **Programmable pages:** Simple data-driven sections (e.g., Friends) render from structured content files.
+- **Theme surface:** Tokenizable Tailwind layer keeps design swaps localized.
+
+## Security & Privacy Posture
+
+- **No admin panel, no server session** by default → smaller attack surface.
+- **Explicit embeds only** (e.g., comments/analytics via config) → easy to review and strip for compliance.
+- **Provenance via Git** → every public change is reviewable.
+
+## Use Cases on an Academic Portfolio
+
+- **Research notes & preprints** with clear licensing and metadata.
+- **Project showcases** where each page doubles as a reproducible artifact (files + config).
+- **Teaching** pages that benefit from static, long-lived links and minimal maintenance.
+
+## Citation
+
+If you use this software in your research or projects, please cite it as follows:
+
+```bibtex
+@software{liu_2025_16729220,
+  author       = {Liu, Zhuoran},
+  title        = {SuzuBlog},
+  year         = 2025,
+  publisher    = {Zenodo},
+  doi          = {10.5281/zenodo.15377307},
+  url          = {https://doi.org/10.5281/zenodo.15377307},
+}
+```
+
+Add `version = {<specific version>}` field for the specific version you want to exactly cited to.
