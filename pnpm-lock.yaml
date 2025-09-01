@@ -15,8 +15,8 @@ importers:
         specifier: ^3.1.0
         version: 3.1.0(@types/react@19.1.10)(react@19.1.1)
       '@next/mdx':
-        specifier: ^15.5.0
-        version: 15.5.0(@mdx-js/loader@3.1.0(acorn@8.15.0))(@mdx-js/react@3.1.0(@types/react@19.1.10)(react@19.1.1))
+        specifier: ^15.5.2
+        version: 15.5.2(@mdx-js/loader@3.1.0(acorn@8.15.0))(@mdx-js/react@3.1.0(@types/react@19.1.10)(react@19.1.1))
       '@vercel/analytics':
         specifier: ^1.5.0
         version: 1.5.0(next@15.5.0(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(react@19.1.1)
@@ -588,8 +588,8 @@ packages:
   '@next/eslint-plugin-next@15.5.0':
     resolution: {integrity: sha512-+k83U/fST66eQBjTltX2T9qUYd43ntAe+NZ5qeZVTQyTiFiHvTLtkpLKug4AnZAtuI/lwz5tl/4QDJymjVkybg==}
 
-  '@next/mdx@15.5.0':
-    resolution: {integrity: sha512-TxfWpIDHx9Xy/GgZwegrl+HxjzeQml0bTclxX72SqJLi83IhJaFiglQbfMTotB2hDRbxCGKpPYh0X20+r1Trtw==}
+  '@next/mdx@15.5.2':
+    resolution: {integrity: sha512-Lz9mdoKRfSNc7T1cSk3gzryhRcc7ErsiAWba1HBoInCX4ZpGUQXmiZLAAyrIgDl7oS/UHxsgKtk2qp/Df4gKBg==}
     peerDependencies:
       '@mdx-js/loader': '>=0.15.0'
       '@mdx-js/react': '>=0.15.0'
@@ -2049,6 +2049,9 @@ packages:
 
   magic-string@0.30.17:
     resolution: {integrity: sha512-sNPKHvyjVf7gyjwS4xGTaW/mCnF8wnjtifKBEhxfZ7E/S8tQ0rssrwGNn6q8JH/ohItJfSQp9mBtQYuTlH5QnA==}
+
+  magic-string@0.30.18:
+    resolution: {integrity: sha512-yi8swmWbO17qHhwIBNeeZxTceJMeBvWJaId6dyvTSOwTipqeHhMhOrz6513r1sOKnpvQ7zkhlG8tPrpilwTxHQ==}
 
   markdown-extensions@2.0.0:
     resolution: {integrity: sha512-o5vL7aDWatOTX8LzaS1WMoaoxIiLRQJuIKKe2wAw6IeULDHaqbiqiggmx+pKvZDb1Sj+pE46Sn1T7lCqfFtg1Q==}
@@ -3560,7 +3563,7 @@ snapshots:
     dependencies:
       fast-glob: 3.3.1
 
-  '@next/mdx@15.5.0(@mdx-js/loader@3.1.0(acorn@8.15.0))(@mdx-js/react@3.1.0(@types/react@19.1.10)(react@19.1.1))':
+  '@next/mdx@15.5.2(@mdx-js/loader@3.1.0(acorn@8.15.0))(@mdx-js/react@3.1.0(@types/react@19.1.10)(react@19.1.1))':
     dependencies:
       source-map: 0.7.6
     optionalDependencies:
@@ -3879,7 +3882,7 @@ snapshots:
       '@vue/compiler-ssr': 3.5.13
       '@vue/shared': 3.5.13
       estree-walker: 2.0.2
-      magic-string: 0.30.17
+      magic-string: 0.30.18
       postcss: 8.5.6
       source-map-js: 1.2.1
 
@@ -4594,7 +4597,7 @@ snapshots:
     dependencies:
       '@types/estree-jsx': 1.0.5
       astring: 1.9.0
-      source-map: 0.7.4
+      source-map: 0.7.6
 
   estree-util-value-to-estree@3.4.0:
     dependencies:
@@ -5104,6 +5107,10 @@ snapshots:
       react: 19.1.1
 
   magic-string@0.30.17:
+    dependencies:
+      '@jridgewell/sourcemap-codec': 1.5.5
+
+  magic-string@0.30.18:
     dependencies:
       '@jridgewell/sourcemap-codec': 1.5.5
 
