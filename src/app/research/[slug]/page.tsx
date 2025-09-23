@@ -13,7 +13,7 @@ export async function generateMetadata({
   const { slug } = await params
 
   const { frontmatter } = (await import(
-    `@/contents/research/${slug}.mdx`
+    `@/contents/research/${slug}.mdx`,
   )) as { frontmatter: FileMeta }
 
   return buildMetadata({
