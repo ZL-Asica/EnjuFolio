@@ -67,7 +67,7 @@
     "prettier": "^3.6.2",
     "rss": "^1.2.2",
     "tailwindcss": "^4.1.13",
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.3"
   },
   "lint-staged": {
     "**/*.{md,mdx}": [
