@@ -1,3 +1,33 @@
+interface Hobby {
+  /**
+   * An optional emoji representing your hobby or interest.
+   * @example
+   * ```ts
+   * 🏞️
+   * ```
+   */
+  emoji?: string
+
+  /**
+   * The name of your hobby or interest.
+   * @example
+   * ```ts
+   * Hiking
+   * ```
+   */
+  name: string
+
+  /**
+   * The description of your hobby or interest.
+   * @example
+   * ```ts
+   * Exploring nature trails and mountains.
+   * ```
+   */
+  name: string
+  description: string
+}
+
 interface EnjuFolioHomePageConfig {
   /**
    * The name that you want to display on the home page.
@@ -56,6 +86,16 @@ interface EnjuFolioHomePageConfig {
    * ```
    */
   position?: string
+
+  /**
+   * Your hobbies or interests.
+   * @example
+   * ```ts
+   * { emoji: '🏞️', name: 'Hiking', description: 'Exploring nature trails and mountains.' },
+   * { emoji: '📸', name: 'Photography', description: 'Capturing moments through the lens.' },
+   * ```
+   */
+  hobbies?: Hobby[]
 
   /**
    * The format of the date you want to display on the news section.

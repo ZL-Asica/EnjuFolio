@@ -31,7 +31,7 @@ const Footer = () => {
             rel="noopener noreferrer"
             className="text-hover-primary underline-interactive"
           >
-            ZL Asica
+            ZL Asica (Elara Liu)
           </Link>
         </p>
       </div>

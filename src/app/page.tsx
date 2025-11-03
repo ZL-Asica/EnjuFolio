@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import { Suspense } from 'react'
+import Hobbies from '@/components/Hobbies'
 import { NewsLoading } from '@/components/Loadings'
 import News from '@/components/News'
 import About from '@/contents/About.mdx'
@@ -67,6 +68,10 @@ export default function HomePage() {
       <section className="max-w-3xl mx-auto py-6 text-left motion-safe:animate-blur-in-glow">
         <About components={{ strong: AboutStrong }} />
       </section>
+
+      {EnjuConfig.homePage.hobbies && (
+        <Hobbies hobbies={EnjuConfig.homePage.hobbies} />
+      )}
 
       <section
         className="max-w-3xl mx-auto py-6 text-left motion-safe:animate-blur-in-glow"

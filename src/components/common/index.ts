@@ -1,3 +1,4 @@
 export { default as EmailLink } from './EmailLink'
 export { default as IconLinks } from './IconLinks'
+export { default as SectionUnderline } from './SectionUnderline'
 export { default as TOC } from './TOC'

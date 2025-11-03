@@ -1,4 +1,5 @@
 import { formatDate } from '@zl-asica/react/utils'
+import { SectionUnderline } from '@/components/common'
 import { EnjuConfig } from '@/enju.config'
 import { getMDXContent, readAllFileMeta } from '@/utils'
 
@@ -33,9 +34,17 @@ const News = async () => {
 
   return (
     <>
-      <h2 id="heading-news" className="text-2xl font-semibold mb-6">
-        News
-      </h2>
+      <div className="flex items-baseline gap-3">
+        <h2 id="heading-news" className="text-2xl font-semibold tracking-tight">
+          News
+        </h2>
+        <span className="text-[0.7rem] uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400">
+          latest updates
+        </span>
+      </div>
+
+      <SectionUnderline className="mb-6" />
+
       <ul className="space-y-3">
         {items}
       </ul>

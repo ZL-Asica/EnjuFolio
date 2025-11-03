@@ -12,6 +12,13 @@ export const EnjuConfig: EnjuFolioConfig = {
     otherInfo: '刘 卓然',
     pronounce: '(She / Her)',
     position: 'Master of Science in Computer Science @ Northwestern University',
+    hobbies: [
+      { emoji: '☕', name: 'Pour-over coffee', description: 'Dialing in light roasts and trying new beans' },
+      { emoji: '🥐', name: 'Bakeries & pastries', description: 'Hunting for good pastries and baking bakeries at home' },
+      { emoji: '🏂', name: 'Snowboarding', description: 'Switching my brain off for a while and just focusing on the next turn' },
+      { emoji: '💻', name: 'Open-source', description: 'Sharing little tools and solutions that make life easier' },
+      { emoji: '✈️', name: 'Travel', description: 'Exploring new cities, cafés, and everyday routines around the world' },
+    ],
     newsDateFormat: 'MMM, YYYY',
   },
   metaInfo: {
