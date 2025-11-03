@@ -6,7 +6,7 @@ const educationData: Education[] = [
     school: 'Northwestern University',
     degree: 'M.S., Computer Science, Thesis Track',
     time: 'Sep 2024 – Present',
-    description: 'Advisor: Prof. Karan Ahuja',
+    description: 'Advisor: Dr. Karan Ahuja, Dr. Haoqi Zhang; Committee Member: Dr. Darren Gergle',
   },
   {
     school: 'University of California, Irvine',

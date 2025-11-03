@@ -21,12 +21,6 @@ const teachingData: TeachingExperience[] = [
     description: 'Department of Computer Science, University of California, Irvine',
   },
   {
-    course: 'I&C SCI 32 - Programming with Software Libraries',
-    role: 'Tutor',
-    term: 'Spring 2023',
-    description: 'HD Education, Remote',
-  },
-  {
     course: 'I&C SCI 6B - Boolean Algebra & Logic',
     role: 'Learning Assistant',
     term: 'Winter 2021',

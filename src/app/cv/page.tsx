@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { EmailLink } from '@/components/common'
-import { CVEducationList, CVHeader, CVInterests, CVPublicationList, CVSection, CVSkillGrid, CVTeachingList } from '@/components/CV'
+import { CVEducationList, CVHeader, CVSection } from '@/components/CV'
 import { EnjuConfig } from '@/enju.config'
 import { buildMetadata, personJsonLd } from '@/lib'
 import { MetaAuthorName } from '@/lib/configHelper'
@@ -46,13 +46,13 @@ export default function CVPage() {
 
       <CVEducationList />
 
-      <CVInterests />
+      {/* <CVInterests /> */}
 
-      <CVPublicationList />
+      {/* <CVPublicationList /> */}
 
-      <CVTeachingList />
+      {/* <CVTeachingList /> */}
 
-      <CVSkillGrid />
+      {/* <CVSkillGrid /> */}
     </div>
   )
 }
