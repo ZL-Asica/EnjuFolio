@@ -91,27 +91,31 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 
     // Text related
     p: ({ children }) => (
-      <p className="my-6 text-base leading-relaxed tracking-wide">
+      <p className="my-5 text-base leading-[1.9] tracking-normal text-foreground">
         {children}
       </p>
     ),
+
     em: ({ children }) => (
-      <em className="italic text-primary ml-0.5 mr-1">
+      <em className="italic text-primary-600 dark:text-primary-400">
         {children}
       </em>
     ),
+
     u: ({ children }) => (
-      <u className="mx-0.5 underline decoration-dotted underline-offset-4 decoration-accent-300">
+      <u className="underline underline-offset-[0.2em] decoration-dotted decoration-primary-400/80 dark:decoration-primary-300/80">
         {children}
       </u>
     ),
+
     strong: ({ children }) => (
-      <strong className="font-semibold text-[#2D3748] dark:text-[#E2E8F0] hover:shadow-sm transition-all mx-1">
+      <strong className="font-semibold text-primary-500 dark:text-primary-300">
         {children}
       </strong>
     ),
+
     del: ({ children }) => (
-      <del className="line-through text-gray-500 dark:text-gray-400 opacity-70">
+      <del className="line-through text-slate-500 dark:text-slate-500/80">
         {children}
       </del>
     ),
