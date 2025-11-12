@@ -1,92 +1,58 @@
+const ShimmerBar = ({ className = '' }: { className?: string }) => {
+  return (
+    <div
+      aria-hidden="true"
+      className={`
+        relative overflow-hidden rounded-md bg-muted/70
+        before:absolute before:inset-0
+        before:bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.25),transparent)]
+        before:animate-[shimmer_1.6s_ease-in-out_infinite]
+        ${className}
+      `}
+    />
+  )
+}
+
+const DocumentSkeleton = () => {
+  return (
+    <div className="h-[70vh] w-full rounded-lg bg-muted/40 sm:h-[80vh]">
+      <div className="mx-auto flex h-full max-w-sm flex-col justify-between py-6">
+        <div className="space-y-3">
+          <ShimmerBar className="h-4 w-28" />
+          <ShimmerBar className="h-3 w-full" />
+          <ShimmerBar className="h-3 w-5/6" />
+          <ShimmerBar className="h-3 w-4/6" />
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export default function CVPageSkeleton() {
   return (
-    <div className="max-w-3xl mx-auto py-12 px-4 animate-pulse">
-      {/* Header */}
-      <section className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-12">
+    <div
+      className="mx-auto w-full max-w-3xl px-4 py-8 sm:py-10 lg:py-12 space-y-4 overflow-x-hidden"
+      aria-busy="true"
+      aria-describedby="cv-page-loading"
+    >
+      <p id="cv-page-loading" className="sr-only">
+        Loading curriculum vitae page…
+      </p>
+
+      {/* Header skeleton */}
+      <header className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
         <div className="space-y-2">
-          <div className="h-8 w-2/5 bg-gray-200 dark:bg-gray-700 rounded" />
-          <div className="h-4 w-1/4 bg-gray-200 dark:bg-gray-700 rounded" />
+          <ShimmerBar className="h-8 w-40" />
+          <ShimmerBar className="h-4 w-28" />
         </div>
-        <div className="mt-4 sm:mt-0 h-6 w-28 bg-gray-200 dark:bg-gray-700 rounded" />
-      </section>
+        <ShimmerBar className="h-8 w-28 rounded-full sm:h-9 sm:w-32" />
+      </header>
 
-      {/* Contact Info */}
-      <section className="mb-8">
-        <div className="h-6 w-1/3 bg-gray-200 dark:bg-gray-700 rounded mb-4" />
-        <ul className="space-y-2">
-          <li className="h-4 w-3/4 bg-gray-200 dark:bg-gray-700 rounded" />
-          <li className="h-4 w-2/3 bg-gray-200 dark:bg-gray-700 rounded" />
-          <li className="h-4 w-1/2 bg-gray-200 dark:bg-gray-700 rounded" />
-        </ul>
-      </section>
-
-      {/* Education */}
-      <section className="mb-8">
-        <div className="h-6 w-1/4 bg-gray-200 dark:bg-gray-700 rounded mb-4" />
-        <ul className="space-y-4">
-          <li className="space-y-1">
-            <div className="h-4 w-1/2 bg-gray-200 dark:bg-gray-700 rounded" />
-            <div className="h-3 w-3/5 bg-gray-200 dark:bg-gray-700 rounded" />
-          </li>
-          <li className="space-y-1">
-            <div className="h-4 w-2/5 bg-gray-200 dark:bg-gray-700 rounded" />
-            <div className="h-3 w-1/2 bg-gray-200 dark:bg-gray-700 rounded" />
-          </li>
-        </ul>
-      </section>
-
-      {/* Interests */}
-      <section className="mb-8">
-        <div className="h-6 w-1/4 bg-gray-200 dark:bg-gray-700 rounded mb-4" />
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          {Array.from({ length: 6 }).map((_, i) => (
-            <div key={i} className="h-4 w-3/4 bg-gray-200 dark:bg-gray-700 rounded" />
-          ))}
+      {/* Viewer skeleton */}
+      <section className="rounded-xl bg-muted/30 p-2 sm:p-3 overflow-hidden">
+        <div className="overflow-hidden rounded-lg bg-background shadow-sm">
+          <DocumentSkeleton />
         </div>
-      </section>
-
-      {/* Publications */}
-      <section className="mb-8">
-        <div className="h-6 w-1/4 bg-gray-200 dark:bg-gray-700 rounded mb-4" />
-        <ul className="space-y-3">
-          {Array.from({ length: 3 }).map((_, i) => (
-            <li key={i} className="h-4 w-full bg-gray-200 dark:bg-gray-700 rounded" />
-          ))}
-        </ul>
-      </section>
-
-      {/* Teaching */}
-      <section className="mb-8">
-        <div className="h-6 w-1/4 bg-gray-200 dark:bg-gray-700 rounded mb-4" />
-        <ul className="space-y-4">
-          {Array.from({ length: 4 }).map((_, i) => (
-            <li key={i} className="space-y-2">
-              <div className="h-4 w-2/3 bg-gray-200 dark:bg-gray-700 rounded" />
-              <div className="h-3 w-3/5 bg-gray-200 dark:bg-gray-700 rounded" />
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      {/* Skills */}
-      <section className="mb-8">
-        <div className="h-6 w-1/4 bg-gray-200 dark:bg-gray-700 rounded mb-4" />
-        <dl className="space-y-6">
-          {Array.from({ length: 3 }).map((_, i) => (
-            <div key={i}>
-              <dt className="h-4 w-1/3 bg-gray-200 dark:bg-gray-700 rounded mb-2" />
-              <dd className="flex flex-wrap gap-2">
-                {Array.from({ length: 5 }).map((__, j) => (
-                  <span
-                    key={j}
-                    className="h-5 w-12 bg-gray-200 dark:bg-gray-700 rounded"
-                  >
-                  </span>
-                ))}
-              </dd>
-            </div>
-          ))}
-        </dl>
       </section>
     </div>
   )

@@ -3,7 +3,8 @@ export const EnjuConfig: EnjuFolioConfig = {
   subTitle: 'Elara\'s Portfolio',
   siteShortName: 'Elara',
   description: 'Zhuoran (Elara) Liu’s academic portfolio featuring research in HCI and Large Language Model, technical projects, and CV.',
-  url: 'https://elaraliu.com',
+  siteUrl: 'https://elaraliu.com',
+  cvFileLink: 'https://drive.google.com/file/d/1VKoOIOG33EzrZ1zqiE6a5SaIyphygqSa/preview',
   author: 'Elara Liu',
   otherNames: ['Zhuoran Liu'],
   homePage: {

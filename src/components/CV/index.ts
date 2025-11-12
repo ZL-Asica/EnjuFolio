@@ -1,7 +1,0 @@
-export { default as CVEducationList } from './CVEducationList'
-export { default as CVHeader } from './CVHeader'
-export { default as CVInterests } from './CVInterests'
-export { default as CVPublicationList } from './CVPublicationList'
-export { default as CVSection } from './CVSection'
-export { default as CVSkillGrid } from './CVSkillGrid'
-export { default as CVTeachingList } from './CVTeachingList'

@@ -1,58 +1,93 @@
 import type { Metadata } from 'next'
-import { EmailLink } from '@/components/common'
-import { CVEducationList, CVHeader, CVSection } from '@/components/CV'
+import { CVViewer } from '@/components/CV/CVViewer'
 import { EnjuConfig } from '@/enju.config'
 import { buildMetadata, personJsonLd } from '@/lib'
 import { MetaAuthorName } from '@/lib/configHelper'
-import { validString } from '@/utils'
+import { getCVUrls } from '@/lib/get-cv-urls'
 
 export const metadata: Metadata = buildMetadata({
   title: `Curriculum Vitae | ${EnjuConfig.subTitle}`,
   description: `View the academic CV of ${MetaAuthorName}, including education, research interests, teaching, and skills.`,
-  keywords: ['cv'],
+  keywords: [
+    'cv',
+    'curriculum vitae',
+    'resume',
+    'academic cv',
+    'education',
+    'research',
+    'teaching',
+    'skills',
+  ],
   urlPath: '/cv',
   ogType: 'website',
 })
 
 export default function CVPage() {
+  const { previewUrl, viewHref, isDrive } = getCVUrls()
+
+  const hasCV = Boolean(previewUrl !== null && viewHref !== null)
+
+  const openLabel = isDrive
+    ? 'Open CV PDF in Google Drive (opens in a new tab)'
+    : 'Open CV PDF in a new tab'
+
   return (
-    <div className="max-w-3xl mx-auto py-12 px-4">
+    <div className="mx-auto w-full max-w-4xl px-4 py-8 sm:py-10 lg:py-12 space-y-4 overflow-x-hidden">
+      {/* structured data */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
       />
-      <CVHeader />
 
-      <CVSection id="contact" title="Contact Information">
-        <ul className="list-none space-y-1">
-          {validString(EnjuConfig.socialLinks.email) && (
-            <li>
-              Email:
-              <EmailLink emailAddress={EnjuConfig.socialLinks.email ?? ''} />
-            </li>
+      {/* Header */}
+      <header className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <h1
+            id="cv-heading"
+            className="text-3xl font-semibold tracking-tight"
+          >
+            Curriculum Vitae
+          </h1>
+          <p className="mt-1 text-sm text-muted-foreground">
+            {MetaAuthorName}
+          </p>
+        </div>
+
+        {hasCV && (
+          <a
+            href={viewHref!}
+            target="_blank"
+            rel="noreferrer noopener"
+            className="inline-flex items-center justify-center rounded-full border bg-background px-4 py-1.5 text-xs font-medium text-foreground shadow-sm transition hover:bg-accent hover:text-gray-800 sm:text-sm"
+            aria-label={openLabel}
+          >
+            Open PDF
+          </a>
+        )}
+      </header>
+
+      {hasCV
+        ? (
+            <>
+              <CVViewer previewUrl={previewUrl!} />
+
+              <p id="cv-viewer-description" className="sr-only">
+                Embedded PDF preview of the curriculum vitae. Use the viewer controls
+                to zoom or download, or open the same PDF in a new tab with the “Open
+                PDF” button.
+              </p>
+            </>
+          )
+        : (
+            <p className="text-sm text-muted-foreground">
+              CV is not configured yet. Please add a
+              {' '}
+              <code>cvFileLink</code>
+              {' '}
+              in your
+              theme configuration.
+            </p>
           )}
-          <li>
-            Website:
-            <a
-              href={EnjuConfig.url}
-              className="ml-1 underline-interactive text-hover-primary"
-            >
-              {EnjuConfig.url}
-            </a>
-          </li>
-          <li>Location: Evanston, Illinois, USA</li>
-        </ul>
-      </CVSection>
-
-      <CVEducationList />
-
-      {/* <CVInterests /> */}
-
-      {/* <CVPublicationList /> */}
-
-      {/* <CVTeachingList /> */}
-
-      {/* <CVSkillGrid /> */}
     </div>
   )
 }

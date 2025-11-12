@@ -51,7 +51,38 @@ interface EnjuFolioConfig {
    * https://enju.zla.app
    * ```
    */
-  url: string
+  siteUrl: string
+
+  /**
+   * Public URL to your CV document (Google Drive is recommended).
+   *
+   * This value is used on the `/cv` page for both the embedded preview and
+   * the “Open PDF” button.
+   *
+   * Supported formats:
+   * - A public Google Drive file link:
+   *   - `https://drive.google.com/file/d/<FILE_ID>/view`
+   *   - `https://drive.google.com/file/d/<FILE_ID>/preview`
+   *   - `https://drive.google.com/open?id=<FILE_ID>`
+   *   - `https://drive.google.com/uc?id=<FILE_ID>&export=download`
+   *   The theme will normalize these to use a `/preview` URL for the iframe
+   *   and a `/view` URL for the external link.
+   *
+   * - A direct HTTPS link to a PDF:
+   *   - e.g. `https://example.com/path/to/cv.pdf`
+   *
+   * - A relative path to a file in your `public/` folder:
+   *   - e.g. `/cv/elara-liu-cv.pdf`
+   *
+   * @example
+   * // Recommended: Google Drive “file” URL (view or preview)
+   * "https://drive.google.com/file/d/your_cv_file_id/view?usp=sharing"
+   *
+   * @example
+   * // Local file in the Next.js `public/` directory
+   * "/cv/elara-liu-cv.pdf"
+   */
+  cvFileLink: string
 
   /**
    * The author of your site or portfolio.
