@@ -89,6 +89,7 @@ const withMDX = createMDX({
     ],
     rehypePlugins: [
       ['rehype-katex', { strict: true, throwOnError: true }],
+      'rehype-unwrap-images',
     ],
   },
 })
