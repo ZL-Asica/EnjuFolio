@@ -1,3 +1,4 @@
+import { isBlank } from '@zl-asica/react/utils'
 import Image from 'next/image'
 import { Suspense } from 'react'
 import { Hobbies, News } from '@/components/Home'
@@ -6,7 +7,6 @@ import About from '@/contents/About.mdx'
 import { EnjuConfig } from '@/enju.config'
 import { buildWebsiteJsonLd } from '@/lib'
 import { authorPictureBase } from '@/lib/configHelper'
-import { validString } from '@/utils'
 
 const AboutStrong = ({ children }: { children: React.ReactNode }) => (
   <strong className="font-semibold text-primary-500 dark:text-primary-300 underline underline-offset-2 decoration-primary-400/50">
@@ -46,19 +46,19 @@ export default function HomePage() {
               {name}
             </h1>
 
-            {validString(position) && (
+            {!isBlank(position) && (
               <p className="text-base sm:text-lg text-foreground">
                 {position}
               </p>
             )}
 
-            {validString(otherInfo) && (
+            {!isBlank(otherInfo) && (
               <p className="text-sm text-muted-foreground">
                 {otherInfo}
               </p>
             )}
 
-            {validString(pronounce) && (
+            {!isBlank(pronounce) && (
               <p
                 className="text-xs text-muted-foreground"
                 aria-label="Pronouns"

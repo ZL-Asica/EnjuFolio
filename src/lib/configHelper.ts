@@ -1,8 +1,8 @@
 import { uniqueArray } from '@zl-asica/react/utils'
 import { EnjuConfig } from '@/enju.config'
-import { generateImageUrl, removeUrlTrailingSlash } from '@/utils'
+import { generateImageUrl } from '@/utils'
 
-export const siteBaseUrl = removeUrlTrailingSlash(EnjuConfig.siteUrl)
+export const siteBaseUrl = EnjuConfig.siteUrl.replace(/\/$/, '')
 
 export const authorPictureBase = generateImageUrl(siteBaseUrl, EnjuConfig.homePage.picture ?? '/images/profile.webp') as string
 
