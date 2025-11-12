@@ -63,7 +63,7 @@ const CardContent = ({ meta, pageType }: CardContentProps) => {
             {title}
           </h3>
 
-          <CardMeta pageType={pageType} meta={meta} />
+          <CardMeta meta={meta} />
 
           {abstract && (
             <p className="mt-2 text-[14px] sm:text-sm leading-relaxed sm:leading-snug text-foreground line-clamp-3">

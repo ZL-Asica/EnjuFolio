@@ -1,14 +1,12 @@
-import { formatDate, isBlank } from '@zl-asica/react/utils'
+import { isBlank } from '@zl-asica/react/utils'
 import { FormatedAuthors } from '@/components/common'
 
 interface CardMetaProps {
-  pageType: PageType
   meta: FileMeta
 }
 
-const CardMeta = ({ pageType, meta }: CardMetaProps) => {
-  const { authors, venue, date, advisors, status, role } = meta
-  const year = date ? formatDate(date, 'YYYY') : undefined
+const CardMeta = ({ meta }: CardMetaProps) => {
+  const { authors, venue, advisors, status, role } = meta
 
   return (
     <div className="mt-1 space-y-1 text-xs sm:text-[13px] font-medium text-secondary-600 dark:text-secondary-300">
@@ -22,13 +20,6 @@ const CardMeta = ({ pageType, meta }: CardMetaProps) => {
           <>
             <span aria-hidden>·</span>
             <span className="italic">{venue}</span>
-          </>
-        )}
-
-        {pageType === 'research' && !isBlank(year) && (
-          <>
-            <span aria-hidden>·</span>
-            <time dateTime={date}>{year}</time>
           </>
         )}
       </p>
