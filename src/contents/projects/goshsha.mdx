@@ -1,8 +1,35 @@
 ---
 title: Goshsha
-abstract: Built a cross-platform AR app with React Expo, improving shopping experiences and raising user satisfaction.
-img: assets/img/projects/thumbnails/goshsha.jpg
 date: 2024-06
+abstract: >
+  I led a team to redesign and rebuild Goshsha, an AR retail app that lets shoppers scan products to see creator content, reviews, and virtual try-ons; we overhauled the UX for Gen Z shoppers, added community and onboarding flows, and implemented faster scanning and data retrieval in a React Native (Expo) + Firebase codebase.
+authors:
+  - Elara Liu
+  - Tongze Mao
+  - Tayven Taylor
+  - Jason Bhatnagar
+  - Jianwen Qi
+img: /images/projects/thumbnails/goshsha.jpg
 category: Mobile
-redirect: https://sites.google.com/uci.edu/inf191-ws24/goshsha
+advisors:
+  - Prof. Matthew J. Bietz
+role: Team Lead, UX Designer, React Native Developer
+keywords:
+  - Augmented reality shopping
+  - UX design for Gen Z
+  - Onboarding & walkthrough design
+  - Community-based engagement
+  - React Native / Expo
 ---
+
+## Overview
+
+Goshsha began as an existing AR prototype that could overlay digital content on physical products, but the experience felt closer to a tech demo than something real shoppers—especially Gen Z—would actually use in stores. In a 20-week Informatics capstone with Prof. Matthew J. Bietz and our industry partner, I led a five-person team in treating this as an HCI problem: **how do we turn an AR capability into a retail experience that people can understand, enter, and stay with?** We met weekly with the partner and bi-weekly with our advisor, using those sessions to keep aligning the product vision with what felt realistic for first-time users navigating a busy store.
+
+In the fall quarter we effectively **restarted the UX from scratch**. I coordinated our mapping of the old flows, a short competitive scan of AR shopping and social shopping apps, and a series of Figma explorations aimed at Gen Z: a community feed where people can browse and share “Goshshas,” product pages that surface reviews, virtual try-ons, and creator videos, and a simplified sign-up/sign-in flow that leads into an optional walkthrough instead of dropping users cold into the scanner. Throughout this phase, we used feedback from our partner and professor as our primary evaluation loop, iterating whenever testers got stuck—especially on first-time navigation and understanding what “scanning a product” would do.
+
+Once the flows were stable, we shifted to the **technical implementation** on top of the existing codebase, using React Native with Expo, TypeScript, and Firebase. I focused on translating the redesigned navigation and community features into the app and on helping rework parts of the scanning and data-retrieval pipeline so scans felt responsive instead of laggy. We kept our process ticket-based in Jira, which made it easier to decompose design decisions into incremental changes—adjusting the onboarding copy, tweaking the walkthrough steps, or refining how quickly content loads after a successful scan. By the end of the course we had shipped a cohesive prototype with over forty Figma screens, a working cross-platform app, and a clearer pattern for **combining AR scanning with social, community-driven engagement** rather than treating AR as a one-off trick.
+
+## Selected visuals
+
+[Demo video 1](https://youtu.be/muTHa8mqn1U) · [Demo video 2](https://youtu.be/gbJFdoUQjsE)

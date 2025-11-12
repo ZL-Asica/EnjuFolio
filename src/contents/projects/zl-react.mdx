@@ -1,85 +1,33 @@
 ---
 title: '@zl-asica/react'
-abstract: '@zl-asica/react is a small, TypeScript-first library of hooks and utilities designed for production React apps that need predictable behavior across server and client. The project separates SSR-safe utilities from browser-bound hooks, ships API docs generated from types, and distributes signed builds with a 100% JSR score and multi-runtime compatibility (Cloudflare Workers, Node, Bun, browsers). Versioned releases are archived for citation.'
-img:
 date: 2024-11
+abstract: >
+  I created and maintain a small TypeScript-first library of React hooks and utilities that cleanly separates server-safe utilities from browser-only hooks, generates docs directly from types, and ships signed multi-runtime builds via JSR so teams get predictable behavior and clear server–client mental models.
 category: Library
+role: Independent Designer & Developer
 github: https://github.com/ZL-Asica/React
 url: https://react.zla.app/
 doi: '10.5281/zenodo.15475245'
 keywords:
-  - server safety
+  - developer experience
+  - server–client mental models
   - typed ergonomics
-  - config-free adoption
-  - signed builds
-  - API documentation
-  - portability
+  - documentation-as-interface
+  - multi-runtime React apps
 ---
 
-![Hero: library homepage screenshot with tagline “Performance-Driven; TypeScript-First”](/images/projects/zl-react/hero.png)
+## Overview
 
-## Abstract
+I built **@zl-asica/react** after running into the same friction points across several React projects: hooks that quietly break on the server, ambiguous APIs that invite subtle bugs, and documentation that drifts from the code it’s supposed to describe. I framed the library as a developer-facing HCI problem—how to give React teams **clear affordances** around server vs. client behavior, and how to make everyday tasks like event handling, viewport checks, and storage state feel predictable instead of fragile. The result is a small set of hooks and utilities where the **API surface is the interface**, and types are used to shape developers’ mental models rather than just to satisfy a linter.
 
-`@zl-asica/react` is a small, TypeScript-first library of hooks and utilities designed for production React apps that need predictable behavior across server and client. The project separates **SSR-safe utilities** from browser-bound hooks, ships **API docs generated from types**, and distributes **signed builds** with a 100% JSR score and multi-runtime compatibility (Cloudflare Workers, Node, Bun, browsers). Versioned releases are archived for citation.
+Design-wise, the library codifies the **server–client boundary** up front: DOM-dependent hooks live in the main entry, while SSR-safe utilities are exported from a separate `@zl-asica/react/utils` module that never touches `window` or `document`. This makes server-safe usage a first-class path instead of an afterthought of `typeof window !== 'undefined'` checks scattered in app code. Functions like `useEventListener` expose strongly-typed event maps so developers can only subscribe to valid events on valid targets, turning what is usually a runtime error into compile-time feedback. All public APIs are documented via TypeDoc-generated pages that show full signatures and source locations (“Defined in …/useArray.ts”), so behavior is inspectable and reviewable in the same way you’d inspect a UI.
 
-## Design Rationale
+On the engineering side, I built and released the library with **TypeScript, GitHub Actions, and JSR**. CI pipelines build and sign artifacts, run tests, and publish to JSR (with npm-compatible installs), keeping the package at a 100% JSR quality score and explicitly marking compatibility across Cloudflare Workers, Node, Bun, and browsers. Tagged releases are mirrored on Zenodo for stable academic citation, and the docs site is version-aware so people can see which API surface belongs to which release. Taken together, @zl-asica/react is less a grab-bag of hooks and more a **small, opinionated toolkit** for React apps that need server awareness, typed ergonomics, and documentation that behaves like a trustworthy interface for developers.
 
-- **Ergonomics via types.** API surfaces encode intent (e.g., typed event maps in `useEventListener`), reducing foot-guns and cutting boilerplate in everyday tasks like input handling, viewport checks, and storage state.
-- **Clarity over cleverness.** Each hook or helper does one thing (e.g., `useArray`, `useDebouncedCallback`, `useIntersectionObserver`), with names aligned to mental models you already use in UI work.
-- **Provenance.** Publicly hosted API references are generated from source and show file origins (e.g., “Defined in: …/useArray.ts”), making behavior auditable—useful for teaching, code reviews, and replication.
+## Selected visuals
 
-## System Overview
+![CI automation on GitHub Actions for building, testing, signing, and publishing releases](/images/projects/zl-react/ci-automation.png)
 
-**Server–Client boundary.** The library codifies SSR constraints up front. Hooks that rely on the DOM live on the client; **SSR-safe utilities** (no `window`/`document`, no DOM-lifecycle coupling) are exported under `@zl-asica/react/utils`. This avoids runtime checks scattered through app code and clarifies what can execute on the server.
+![JSR package page showing 100% score and multi-runtime support badges](/images/projects/zl-react/jsr-badges.png)
 
-**Typed surface area.** API pages show generics and precise parameter types (e.g., `useEventListener<KW,KH,KM,T>`), encouraging compile-time correctness for event names/targets/options.
-
-**Distribution & portability.** Releases are **built and signed on GitHub Actions**, published to **JSR** (npm-compatible install), and score **100%** on JSR’s quality checks. Runtime badges indicate compatibility across **Cloudflare Workers, Node, Bun, and browsers**.
-
-**Archival.** Tagged versions are mirrored on **Zenodo** for stable academic citations.
-
-## API Surface at a Glance
-
-- **Async:** `useAsync`, `useFetch`, `usePolling`
-- **DOM / viewport:** `useEventListener`, `useInViewport`, `useIntersectionObserver`, `useHideOnScrollDown`, `useKeyPress`, `useWindowSize`, `useScrollPosition`
-- **State / UX:** `useArray`, `useBoolean`, `useCounter`, `useDebounce`, `useDebouncedCallback`, `useLocalStorage`, `useSessionStorage`, `useThrottle`, `useTimeout`, `useToggle`, `useTheme`
-- **Utilities (SSR-safe module available):** arrays/objects/dates/strings/math/DOM helpers (e.g., `assignUUID`, `mapRange`, `mergeObjects`, `truncateToNearestWord`, `getRelativeDay`).
-
-> Current docs and site list **v0.7.4** at the top of the navigation.
-
-## Engineering Choices
-
-![Figure 1: GitHub Actions](/images/projects/zl-react/ci-automation.png)
-![Figure 2: JSR Score 100% badges](/images/projects/zl-react/jsr-badges.png)
-
-- **TypeDoc-generated API**: Reference pages are compiled from the TypeScript source, preserving signatures and source locations (“Defined in …”). This supports code review, onboarding, and reproducible usage examples.
-- **Performance discipline**: The project markets a “Performance-Driven” stance—keep bundles small, avoid bloat—appropriate for design-heavy sites where reader experience matters.
-- **Portability by default**: JSR distribution provides a clean path to multi-runtime installs (npm compatibility layer), and the package page explicitly flags supported environments.
-- **Ecosystem visibility**: The package is available under your npm scope as well, which eases discovery for teams standardizing on npm registries.
-
-## Example of Typed Ergonomics
-
-![Figure 4: useEventListener type signature with generics and event maps](/images/projects/zl-react/useeventlistener.png)
-
-Typed parameters constrain the event name to known keys (`WindowEventMap` / `HTMLElement` events) and the target to specific refs. This is a small but impactful HCI choice: **the UI affordance (add a listener) matches the API affordance (pick a valid event/target)**, with compile-time feedback instead of runtime surprises.
-
-## Positioning in the Hooks Landscape
-
-Many hook libraries focus on breadth of utilities. `@zl-asica/react` emphasizes **server awareness**, **typed surfaces**, and **auditable docs**—a useful stance for research and production websites alike. (For context, other libraries now also advertise “server-safe hooks,” suggesting a converging best practice.)
-
-## Citation
-
-If you use this software in your research or projects, please cite it as follows:
-
-```bibtex
-@software{liu_2025_15558372,
-  author       = {Liu, Zhuoran},
-  title        = {@zl-asica/react},
-  year         = 2025,
-  publisher    = {Zenodo},
-  doi          = {10.5281/zenodo.15475245},
-  url          = {https://doi.org/10.5281/zenodo.15475245},
-}
-```
-
-Add `version = {<specific version>}` field for the specific version you want to exactly cited to.
+![Typed useEventListener signature illustrating constrained event maps and targets](/images/projects/zl-react/useeventlistener.png)

@@ -1,0 +1,27 @@
+---
+title: Airtable TS
+date: 2025-11
+abstract: >
+  I built Airtable TS as a tiny, fetch-based JS/TS client to replace Airtable’s unmaintained, Node-only SDK (which still relies on deprecated APIs like url.parse). It adds a type-safe façade, optional caching, and well-tested, signed releases so Airtable-backed research and data workflows are easier to write, safer to deploy, and reproducible over time.
+category: Library
+role: Independent Designer & Developer
+github: https://github.com/ZL-Asica/TS-Airtable
+url: https://airtable.zla.app
+keywords:
+  - research data tooling
+  - type-safe data access
+  - caching for analysis
+  - developer experience
+  - reproducible releases
+  - Airtable Web API
+---
+
+![Airtable TS docs landing page — tiny, fetch-based Airtable client](/images/projects/airtable-ts/hero.jpeg)
+
+## Overview
+
+Airtable TS started from a pattern I kept seeing in my own projects and in friends’ research setups: Airtable bases were doing real analytical work—organizing studies, logging experiments, tracking deployment metadata—but the surrounding code was brittle. The **official Airtable JS SDK** had been effectively frozen for years, still relied on deprecated Node-only APIs such as `url.parse`, and carried design assumptions from an older callback-driven ecosystem. That made it awkward to use in modern, isomorphic apps running across Node, browsers, Workers, and test environments—exactly the kinds of contexts I care about for research tools.
+
+I treated this as a developer-facing HCI problem: how do we make Airtable-backed analyses **feel predictable and reviewable**, instead of a tangle of ad-hoc HTTP calls and subtle runtime failures? Airtable TS wraps the Web API in a **TypeScript-first façade** that mirrors the familiar `Airtable.configure(...); Airtable.base(...)` style, so existing mental models still apply, but the surface is strongly typed and fully promise-based. Base and table helpers are parameterized by field schemas, so editors can show completions and catch mismatches before a script ever runs. Underneath that façade is a small `AirtableClient` that exposes records, metadata, and webhooks directly; this lets more advanced users treat the client like infrastructure while still benefiting from the same typed contracts and retry logic. The docs site is generated from TypeScript sources, so signatures and “Defined in …/file.ts” links act as **documentation-as-interface**—you can see exactly what the library believes the API to be.
+
+For data-heavy work, I added an **optional record-caching layer** to reduce redundant reads when you’re iterating on analyses or dashboards. A pluggable `AirtableCacheStore` interface supports custom backends (e.g., KV stores), and the built-in in-memory implementation uses LRU + TTL with automatic invalidation when mutations occur. Configuration is consistent: caching can be enabled globally via `Airtable.configure`, per-base when you call `Airtable.base`, or directly on `new AirtableClient`, so the same code can scale from quick scripts to longer-running services. The library is built and bundled with tsdown, tested with Vitest against a V8-style environment, and released via npm with coverage sitting around 99%, which makes it feasible to **treat releases as research artifacts**—tagged versions are signed, documented, and safe to pin in pipelines. Overall, Airtable TS is meant to be boring glue: a small, opinionated toolkit that replaces an aging SDK with a modern, type-safe layer tuned for Airtable-based research and production work.

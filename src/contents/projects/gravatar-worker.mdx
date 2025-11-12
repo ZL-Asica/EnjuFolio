@@ -1,0 +1,24 @@
+---
+title: Gravatar Worker
+date: 2025-05
+abstract: >
+  I built Gravatar Worker as a fast, cache-friendly Gravatar proxy on Cloudflare Workers to replace the official service’s slow origins, PNG-only avatars, hash-only API, and blocking in regions like mainland China. It lets developers self-host a gravatar-compatible endpoint that accepts raw emails, serves modern formats like AVIF/WebP, and uses edge caching to keep profile images responsive and under their control.
+category: Infrastructure
+role: Independent Designer & Developer
+github: https://github.com/ZL-Asica/Gravatar-Worker
+url: https://gravatar.zla.app
+keywords:
+  - avatar infrastructure
+  - latency & reliability
+  - privacy-preserving email hashing
+  - image format negotiation
+  - edge caching (Cloudflare Workers)
+---
+
+## Overview
+
+Gravatar Worker started as a very practical annoyance: profile images on sites I cared about depended on a remote Gravatar origin that was often slow, served only PNGs, required precomputed hashes instead of emails, and in regions like mainland China could be completely unreachable or flaky across different CDNs. At the same time, many developers I know wanted to run their own gravatar-like endpoint—close to their users, with modern image formats and predictable caching—without rebuilding the whole protocol. I treated this as an infrastructure HCI problem: how do you make **“just show me an avatar for this email”** into a simple, reliable, and self-hostable affordance for developers and their users?
+
+I implemented Gravatar Worker as a **Cloudflare Workers + Hono** service that exposes a small, gravatar-compatible API surface. It supports MD5 and SHA-256 hashes for drop-in compatibility, but also adds a `GET /avatar?email=<email>` endpoint where the email is safely lowercased, trimmed, and hashed server-side instead of asking every caller to do that work. The worker runs format negotiation based on the browser’s `Accept` header, using a WebAssembly encoder to serve **AVIF when possible, WebP as a fallback, and the original JPEG as a last resort**, so avatars stay crisp and light on modern networks. To avoid hammering upstream origins and to make things feel instant in real deployments, I designed a layered **edge + browser caching strategy** with tuned TTLs and `stale-while-revalidate` for hits, shorter lifetimes for 404s, and explicit `Vary: Accept` and `ETag` headers so different formats can be cached correctly without surprising clients.
+
+From a developer’s point of view, the goal is to make spinning up your own gravatar-style CDN as low-friction as possible: configure a Worker, point your app’s avatar URLs at `/avatar/:hash` or `/avatar?email=…`, and let the proxy handle hashing, origin fetching, format conversion, and caching. Because it runs on the edge, teams can deploy their own instances closer to users in regions where `gravatar.com` is slow or blocked, instead of relying on a single global CDN. In practice, Gravatar Worker ends up being a small but important piece of **profile infrastructure**: it turns a historically fragile external dependency into something developers can reason about, tune, and move with them as their applications and audiences grow.

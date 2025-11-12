@@ -1,119 +1,36 @@
 ---
 title: LifeTune
 date: 2023-09
-abstract: Developed a comprehensive iOS health assessment and tracking app with SwiftUI and Swift.
+abstract: >
+  I led a small team to design and implement LifeTune, an iOS health app that turns fragmented fitness, nutrition, sleep, and mood data into a single “health score” with small, actionable suggestions, grounded in competitive analysis, interviews with four user groups, and iterative SwiftUI prototyping focused on simplification, routine fit, and motivation.
 img: /images/projects/thumbnails/LifeTune.png
 category: Mobile
+authors:
+  - Elara Liu
+  - Tongze Mao
+  - Jianwen Qi
+role: Team Lead, Designer & iOS Developer
+keywords:
+  - Personal informatics
+  - Mobile health (mHealth)
+  - Data simplification and feedback
+  - Health behavior change
+  - Motivation and engagement
 ---
 
-## Problem Statement
+## Overview
 
-“How might we develop a solution that minimizes data overwhelming for health-conscious users, providing motivational insights and personalized recommendations, such as indicating a current health score and suggesting small, actionable steps to seamlessly access real-time, precise, and user-friendly health status?”
+LifeTune started from a simple tension I kept hearing in conversations with health-conscious friends: they were willing to track, but most apps buried them in numbers and charts. As team lead, I framed the design problem as **how to reduce data overload while still giving people enough signal to act**, and our team treated it as both an HCI and systems question. After a quick competitive analysis of existing assessment and tracking tools, we ran interviews with four groups—health enthusiasts, experienced app users, developers of health tech, and self-identified “tech-haters”—to understand not just what they logged, but where current tools broke down in their everyday routines.
 
-## Competitive Analysis
+Across these interviews, a few patterns kept resurfacing: people wanted someone to “just tell me what to eat” instead of counting every calorie; sleep tools that could explain patterns without demanding new rituals; feedback that celebrated progress instead of nagging; and mental-health support that translated mood logs into concrete suggestions. I synthesized these into a set of design commitments: **simplify** complex data into a single health score with clear levers, **fit into existing routines** rather than invent new ones, and **motivate through visible progress** while still acknowledging emotional state.
 
-![Competitive Analysis](/images/projects/lifetune/Competitive-Analysis.jpg)
+On the technical side, I translated these commitments into an end-to-end **SwiftUI app**. LifeTune aggregates inputs on activity, nutrition, sleep, and mood into a composite score that updates as users log small actions—a short walk, a better meal choice—so the interface can show how each decision moves the needle. The UI uses a compact, card-based layout and gentle visual cues instead of dense dashboards, and the recommendation layer surfaces a small set of next steps rather than long to-do lists. I iterated from mid-fidelity flows to high-fidelity prototypes and finally a working iOS implementation, revising interactions whenever testers reported confusion or found themselves ignoring features. The result is less a numbers app and more a **health companion** that tries to make “what should I do next?” legible for people at very different levels of comfort with health tech.
 
-One of the most important steps in creating a solution is competitive analysis. It entails assessing the products, attributes, and shortcomings of current rivals in the industry to find openings and vulnerabilities. Findings from a competitive analysis may require more investigation through interviews. Following the identification of rivals, a number of factors are taken into consideration while evaluating their offerings, including user interface design, customization features, data integration, actionable insights, and user engagement tactics. This review aids in understanding the aspects of these items that consumers find appealing or unappealing. Recognize users' pain spots, experiences with current solutions, and desired features in a health management platform.
+## Selected visuals
 
-## User Research Plan Summary
+![Competitive analysis snapshots used to scope gaps in existing health apps](/images/projects/lifetune/Competitive-Analysis.jpg)
 
-### Participants
-
-Our user research focuses on four key groups:
-
-- **Health-conscious individuals** who engage in activities like exercise, dieting, and monitoring physical conditions. We consider their age, gender, and lifestyle to understand diverse health needs.
-- **Users of health assessment tools**, providing insights based on their experiences with existing apps, highlighting the need for improvements.
-- **Technology developers** with experience in health apps, offering perspectives on feature importance and technological feasibility.
-- **Techno-haters**, those skeptical of health technology, to understand their concerns and develop more user-friendly solutions.
-
-### Interview Focus Areas
-
-The interviews aim to explore:
-
-- **Awareness and Usage**: Familiarity with and usage of health-tracking apps.
-- **Discovery and Attraction**: How users discover apps and what features attract them.
-- **Impact and Routine**: The effect of apps on health habits and integration into daily routines.
-- **Tools and Effectiveness**: Tools for monitoring health objectives and their effectiveness.
-- **Challenges and Obstacles**: Challenges in managing health and fitness.
-- **Privacy and Security**: Importance of data privacy and experiences with data security in health apps.
-- **Success Stories and Ideal Features**: Experiences with health apps and desired features for an ideal health assessment tool.
-- **Feedback and Motivation**: Types of feedback and features that motivate and inform users.
-
-### From Research to Insights
-
-The research aims to gather user insights on health assessment needs and experiences. Analyzing and synthesizing this data will inform the design of solutions that better meet user needs, through creating personas, storyboards, and other tools. The ultimate goal is to refine our approach to align closely with user behaviors and motivations.
-
-## Insights Statements
-
-### Key Insights
-
-1. **Need for Simplification**
-
-   - Users like Annie find nutrition management complex and overwhelming.
-   - **Annie's Quote**: "I just want to know what to eat without counting every calorie."
-
-2. **Integration into Daily Life**
-
-   - Jamie looks for a sleep tracker that integrates easily into his daily routine without added effort.
-   - **Jamie's Quote**: "I need to understand my sleep patterns without disrupting my sleep."
-
-3. **Motivation Through Achievement**
-
-   - Kevin seeks an exercise tracker that emphasizes his progress and celebrates his achievements.
-   - **Kevin's Quote**: "Seeing my progress after each workout motivates me to keep going."
-
-4. **Emotional Well-being**
-
-   - Bryant desires mental health tracking that offers practical advice tailored to his emotional state.
-   - **Bryant's Quote**: "I need more than tracking; I want tips on handling stress based on my mood swings."
-
-### Design Considerations
-
-- **Simplification**: Design interfaces and experiences that simplify complex health data, making it easy for users to make informed decisions without feeling overwhelmed.
-- **Seamless Integration**: Develop tools that fit effortlessly into users' daily routines, providing valuable insights without requiring extra steps or disruption.
-- **Motivation Enhancement**: Incorporate features that track progress and celebrate achievements, fostering a sense of accomplishment and encouraging continued engagement.
-- **Emotional Support**: Ensure mental health tools offer actionable insights and support, adapting to users' emotional needs to promote overall well-being.
-
-## Storyboard
-
-![Storyboard](/images/projects/lifetune/Storyboard.jpg)
-
-The user's initial dissatisfaction, the quest for a solution, their interaction with the app's feature, and the successful conclusion are all captured in the storyboard. It is based on information from Annie's interviews on the need for automation and simplicity while tracking dietary habits. The story is motivated by the widespread user desire for a simple, user-friendly method of managing nutritional objectives, which directly relates to the opinions expressed by every respondent regarding the significance of interaction and customization in health-tracking applications.
-
-## Design Process
-
-### Mid Fidelity Prototype
-
-![Mid Fidelity Prototype](/images/projects/lifetune/Mid-Fidelity-Prototype.jpg)
-
-### High Fidelity Prototype
-
-![High Fidelity Prototype](/images/projects/lifetune/High-Fidelity-Prototype.jpg)
-
-### Details
-
-#### Empowering Simplicity in Health Management
-
-The LifeTune app simplifies health monitoring, eliminating the complexity and data overload often associated with health apps. At the core of LifeTune's innovation is a unique Health Score system. This feature gamifies health management by showing how incremental changes, like a brief walk, can positively impact overall well-being.
-
-#### User-Centric Design Philosophy
-
-LifeTune is sculpted by the voices of its users. Throughout our development journey, we actively engaged with our community, gathering insights on their health aspirations and everyday hurdles. This collaborative approach has been pivotal in shaping an app that offers not just information but clarity and direction for healthier living.
-
-#### Intelligent Features, Intuitive Interface
-
-Marrying cutting-edge health tech with user-centered design principles, LifeTune stands out as a robust yet effortlessly navigable tool for comprehensive health management. It distills complex data into clear, actionable insights, reinforcing our dedication to user empowerment.
-
-#### Motivation Through Technology
-
-Central to LifeTune's design is the drive to motivate. Every element, from the Health Score to visual progress indicators, is crafted to encourage users toward sustainable health habits. It's not just an app but a personal wellness companion, inspiring a proactive stance on health.
-
-#### For Everyone Invested in Better Health
-
-Whether you're taking your first steps toward a healthier lifestyle or looking to fine-tune your regimen, LifeTune caters to all. Our goal is universal: to facilitate informed, proactive health management for everyone. With LifeTune, take control of your health journey with confidence and ease.
-
-## Final Prototype with Swift in iOS
+![Mid- and high-fidelity LifeTune prototypes informing the final SwiftUI implementation](/images/projects/lifetune/Mid-Fidelity-Prototype.jpg)
 
 <video
   src="https://cdn.jsdelivr.net/gh/ZL-Asica/web-cdn@master/video/lifetune-demo.mp4"
