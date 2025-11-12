@@ -19,8 +19,8 @@
     "url": "https://github.com/ZL-Asica/EnjuFolio/issues"
   },
   "scripts": {
-    "dev": "next dev --webpack",
-    "build": "pnpm run lint:fix && next build --webpack",
+    "dev": "next dev",
+    "build": "pnpm run lint:fix && next build",
     "start": "next start",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
