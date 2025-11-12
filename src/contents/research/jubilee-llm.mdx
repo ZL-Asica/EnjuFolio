@@ -1,0 +1,27 @@
+---
+title: 'Coach-Style LLM Assistant for Safe Lab Automation on the Jubilee Platform'
+authors:
+  - Zhuoran Liu
+  - Danli Luo
+advisors:
+  - Dr. Nadya Peek (University of Washington)
+date: 2025-05
+venue: 'CSCW 2027'
+status: 'In preparation'
+role: 'Co-lead author'
+abstract: >
+  I am developing a coach-style LLM assistant that turns wet-lab researchers’ plain-English goals into safe Jubilee automation code by reading documentation, compiling to verified APIs with dry-run simulations and safety checks, and supporting mixed-initiative editing that we evaluate through task success, safety violations, and time.
+keywords:
+  - Lab automation
+  - Large language models
+  - Mixed-initiative interfaces
+  - Documentation-grounded code generation
+  - Safety and reliability
+  - Human–AI collaboration
+---
+
+## Overview
+
+In Dr. Nadya Peek’s group, I am working on how an **LLM can coach, rather than replace, non-programmer scientists** who need to run experiments on Jubilee, an open-source multi-tool lab automation platform. Many users understand their biology deeply but struggle with the Science Jubilee Python library; my first step was to frame this not as a “natural language to code” problem, but as a **mixed-initiative coaching task** where the assistant translates plain-English goals into machine steps while preserving user control. I built an assistant that ingests device manuals, library documentation, calibration notes, and example scripts, then compiles goals into code that only touches verified APIs, automatically inserting dry-run simulations and safety checks before any real motion can happen.
+
+A lot of the work has gone into **iterating on failure cases**: whenever simulations revealed unsafe trajectories, invalid parameter combinations, or ambiguous device states, I treated them as design problems rather than just prompt bugs—tightening how we represent constraints, adjusting how the assistant explains options and trade-offs, and making it easier for users to edit or reroute plans mid-conversation. The interface adapts its coaching style and granularity to the scientist’s background, logs every assumption and decision for audit and replay, and exposes generated code in a way that invites inspection instead of hiding it. Building on pilot deployments that reduced invalid and unsafe steps, I am now helping design a user study that measures task success, violations, time, and user feedback, using those metrics to refine both the assistant and a broader recipe for **dependable, documentation-grounded automation tools** for scientific work.

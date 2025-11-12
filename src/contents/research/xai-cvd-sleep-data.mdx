@@ -1,72 +1,20 @@
 ---
-title: Explainable AI–Driven Integration of Health and Sleep Metrics for Enhanced Cardiovascular Risk Prediction
-abstract: Cardiovascular disease remains the world’s leading cause of death, yet routine risk assessments typically emphasize cholesterol and blood pressure while overlooking sleep. We present an explainable machine‑learning framework that jointly evaluates traditional health metrics and sleep characteristics—quality, duration and efficiency—using rigorous feature‑selection to surface their relative importance. By exposing model decisions in human‑readable form, clinicians can see how sleep parameters influence predicted CVD risk. In our experiments, adding sleep data boosted the model’s ability to identify high‑risk cases, suggesting that standard screening should expand to include sleep evaluation. This transparent AI approach not only improves predictive accuracy but also builds clinical trust, laying the groundwork for earlier interventions that could materially reduce cardiovascular mortality.
+title: 'Explainable AI–Driven Integration of Health and Sleep Metrics for Enhanced Cardiovascular Risk Prediction'
+abstract: >
+  I led an honors thesis that builds an interpretable ML model combining standard cardiovascular risk factors with sleep quality, duration, and efficiency, using regularized logistic regression and SHAP explanations to show how sleep shapes predicted risk and improves identification of high-risk individuals.
 authors:
   - Zhuoran Liu
 advisors:
-  - Dr. Mohammad Moshirpour
+  - Dr. Mohammad Moshirpour (University of California, Irvine)
 date: 2023-12
 venue: ICS Honor Program (UCI)
+status: 'Completed'
+role: 'Individual undergraduate researcher'
 keywords:
   - Explainable AI
   - Cardiovascular Disease
   - Sleep
+  - Health Informatics
 ---
 
-## Introduction
-
-Cardiovascular disease (CVD) is the leading global cause of death, claiming nearly 18 million lives each year. Traditional risk assessments focus on hypertension, diabetes, obesity and smoking, but often omit sleep—which emerging evidence links to metabolic dysregulation, inflammation and elevated blood pressure. Our study bridges this gap by integrating sleep quality, duration and efficiency into an explainable machine‑learning framework for CVD risk prediction.
-
-## Dataset
-
-**Wisconsin Sleep Cohort (WSC)**  
-– 2,570 participants  
-– 230 variables covering demographics, clinical measures and polysomnography‑derived sleep metrics  
-– Key fields: age, sex, BMI, LDL cholesterol, total sleep time, sleep efficiency, onset latency
-
-## Methods
-
-1. **Preprocessing & Cleaning**  
-   - Removed sparse (> 99 % unique or > 90 % single‑value) and highly missing (> 70 %) columns  
-   - Aggregated redundant lifestyle variables  
-   - Imputed continuous values using the median; one‑hot encoded categorical fields
-
-2. **Feature Selection**  
-   - Statistical significance (p \< 0.05)  
-   - Collinearity (r \< 0.75)  
-   - Random Forest feature‑importance ranking
-
-3. **Modeling**  
-   - **Algorithm**: Logistic regression  
-   - **Optimization**: Grid search over regularization strength and penalty  
-   - **Validation**: Stratified cross‑validation to ensure generalizability
-
-4. **Explainability**  
-   - SHAP (SHapley Additive exPlanations) to quantify each feature’s impact on predicted risk
-
-## Results
-
-- **Overall performance**  
-  – Accuracy: 88.9 %  
-  – Precision: 85.8 %  
-  – Recall: 88.9 %  
-  – F1 score: 86.9 %  
-
-- **Top predictors**  
-  1. LDL cholesterol  
-  2. Age  
-  3. Total non‑REM sleep time  
-  4. Sleep efficiency  
-  5. Sleep onset latency  
-
-Including sleep metrics improved high‑risk detection and offered actionable insights through transparent model explanations.
-
-## Conclusion
-
-By combining traditional cardiovascular factors with sleep characteristics in an interpretable AI model, we demonstrate:
-
-- **Enhanced accuracy** in identifying individuals at high CVD risk  
-- **Clinical transparency**, fostering practitioner trust  
-- **A paradigm shift** advocating routine inclusion of sleep assessment in CVD screening  
-
-**Future directions**: incorporate wearable‑based sleep monitoring, expand to diverse cohorts and explore deep‑learning approaches for richer pattern discovery.  
+As part of the UCI ICS Honors Program, I designed and implemented an end-to-end pipeline on the Wisconsin Sleep Cohort, starting from cleaning and reshaping 230+ clinical and polysomnography variables and converging on a compact, stable set of predictors. I iteratively refined the feature set, regularization strategy, and evaluation protocol whenever models overfit or produced confusing explanations, discussing edge cases with my advisor until we could surface sleep-related metrics as clear, defensible signals rather than opaque covariates. The final framework lets clinicians see how changes in sleep efficiency, non-REM duration, and onset latency shift cardiovascular risk estimates, and it motivated follow-up conversations about extending the approach to wearable-derived sleep data and broader, more diverse cohorts.

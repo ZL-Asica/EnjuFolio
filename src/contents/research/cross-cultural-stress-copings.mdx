@@ -1,108 +1,33 @@
 ---
 title: 'Cultural Underpinnings of Stress Relief: Exploring Cross-Cultural Coping Strategies'
+abstract: >
+  I co-led a mixed-methods study of culturally diverse college students that links how they cope with stress to cultural upbringing and personality, combining surveys and text analysis to show when “Eastern vs. Western” narratives hold and when convenience and hybrid practices better explain real-world coping.
 authors:
   - Zhuoran Liu
   - Siren Wang
   - Talia Ben-Naim
   - Yilin Zhang
 advisors:
-  - Dr. Nabil I Alshurafa
-abstract: >
-  Stress management varies with culture. While most research examines individual or social coping, few compare methods—exercise, meditation, rituals, leisure—across groups. We surveyed diverse college students on stressors, coping preferences, perceived effectiveness, cultural upbringing and personality. Results will inform culturally adaptive, personalized mental‑health interventions tailored to different cultural contexts.
+  - Dr. Nabil I Alshurafa (Northwestern University)
 date: 2025-03
+role: 'Team Lead'
 url: https://nu-mhealth.zla.app/
+keywords:
+  - Stress coping
+  - Cross-cultural differences
+  - Mixed-methods study
+  - College students
+  - Mental health interventions
 ---
 
-## Introduction
+## Overview
 
-### Significance
+Within my advisor, I co-designed and implemented a **mixed-methods study** that starts from a deceptively simple question—how do students from different cultural backgrounds actually relieve stress in their day-to-day lives—and pushes past stereotypes using both survey data and open-ended narratives. I helped **build and iterate the survey instrument**, piloting it with early participants and refining wording and scales whenever items produced ambiguous or contradictory patterns in ANOVA and regression models, working with co-authors and my advisor until we could **separate culture, gender, and convenience effects** in a defensible way.
 
-College students face high academic, social, and personal stress, impacting both mental and physical health. Although coping mechanisms (e.g. exercise, meditation, religious rituals, leisure) are well studied individually, little is known about how cultural background shapes these preferences. Understanding cross‑cultural variation is key to designing personalized, effective mental‑health interventions.
+On the qualitative side, I developed a **lightweight analysis pipeline** that combines hand coding with _LDA-style topic modeling_ and _SBERT-based similarity analysis_, treating disagreements between algorithms and human readings as signals to revisit our categories rather than letting any single method act as ground truth. The final picture shows that while students raised in East Asian contexts do lean more toward structured introspection and those from Western backgrounds report more social and leisure activities, many **weave together cross-cultural practices** whenever schedules, spaces, or peers make them viable—an insight that now shapes how I think about designing stress interventions that respect cultural histories without freezing people inside them.
 
-### Objective
+## Selected visuals
 
-This study examines how cultural upbringing influences stress‑relief strategy preferences among diverse college students, and whether personality traits or openness to cross‑cultural methods further affect coping behaviors. Our goal is to inform culturally adaptive mental‑health programs.
+![Coping preferences across cultural backgrounds](/images/research/ctross-culture/survey-data-1.png)
 
-## Related Work
-
-### Cultural Variations in Coping
-
-- **Collectivist vs. Individualist**: Collectivist cultures favor communal support and shared coping, while individualist cultures emphasize self‑reliance [Aldwin 2024; Luwatomisin 2023].
-- **Health‑Promoting Profiles**: Japanese students prioritize nutrition and responsibility; American students focus on spiritual growth and exercise [Hawks 2002].
-- **Religious Coping**: Islamic practices mediate stress among Nigerian women [Ibrahim 2024]; Latino students benefit from family‑centered psychoeducation [Terrazas‑Carrillo 2022].
-
-### Cross‑Cultural Methods
-
-- **Mindfulness & Exercise**: Universally beneficial but require cultural adaptation in practice [Acharyya 2024; Zieff 2022].
-- **Traditional Institutions**: In India, local institutions play a vital role in mental well‑being [Dar 2017].
-
-### Social Support
-
-- **Cultural Nuance**: Interdependent cultures value closeness; Hispanic students face unique bi‑cultural stressors like discrimination [Pourmad 2022; Schwartz 2022].
-
-## Methodology
-
-### Design
-
-A **mixed‑methods** approach combines:
-
-1. **Quantitative Survey** (N ≥ 50):
-   - Demographics, stress sources, coping methods (Likert scale), cultural influence, openness to cross‑cultural techniques
-   - Analysis: ANOVA, chi‑square, regression, clustering
-2. **Qualitative Interviews** (n ≈ 10):
-   - Semi‑structured 15‑minute sessions exploring personal narratives, cultural attitudes, barriers to new methods
-   - Thematic analysis with rapid coding, TF‑IDF term extraction, topic clustering
-
-### Sampling & Ethics
-
-- **Participants**: Age 18–30, diverse cultural backgrounds, convenience + stratified sampling
-- **Consent & Confidentiality**: Voluntary, anonymized data, opt‑out at any stage
-
-## Results & Discussion
-
-### Cultural Influence on Coping
-
-- **Eastern vs. Western**:
-  - Eastern students prefer structured introspection (meditation)
-  - Western students lean toward social/leisure activities
-- **Practical Overrides**: Convenience often trumps cultural norms
-
-![Survey Preferences](/images/research/ctross-culture/survey-data-1.png)  
-![Cultural Openness](/images/research/ctross-culture/survey-data-2.png)
-
-### Strategy Effectiveness
-
-- **ANOVA**: Significant gender and cultural differences in perceived effectiveness (p \< 0.05).
-  - Top methods: exercise (M=3.44), leisure (M=3.72)
-  - Meditation rated lowest (M=2.65)
-
-![ANOVA Results](/images/research/ctross-culture/annova-results.png)
-
-### Thematic Insights
-
-- **LDA Topics**:
-  1. **Cultural Adaptation**: Experimenting with new practices
-  2. **Traditionalism**: Adherence to ingrained norms
-  3. **Context‑Driven**: Convenience and habit dominate
-
-![LDA Themes](/images/research/ctross-culture/lda.png)  
-![SBERT Similarity](/images/research/ctross-culture/sbert.png)
-
-### Openness to Cross‑Cultural Methods
-
-- 81 % open to trying new strategies, suggesting room for hybrid interventions in multicultural settings.
-
-## Conclusion
-
-Cultural background strongly shapes stress‑relief preferences: Eastern students favor introspective techniques, Western students prefer social and physical activities. Most students remain open to cross‑cultural methods, highlighting an opportunity for culturally hybrid interventions in universities.
-
-### Implications
-
-- Design mental‑health programs that blend familiar and novel strategies
-- Incorporate wearable biofeedback devices with culturally informed recommendations
-
-### Limitations & Future Work
-
-- **Generalizability**: Limited to East Asian and Western participants at one institution
-- **Self‑Report Bias**: Future studies should integrate physiological measures (e.g., HRV)
-- **Broader Samples**: Expand to South Asian, Middle Eastern and other backgrounds, and include longitudinal designs
+![Openness to cross-cultural strategies](/images/research/ctross-culture/survey-data-2.png)

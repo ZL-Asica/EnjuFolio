@@ -1,17 +1,31 @@
 ---
-title: 'Large Language Model Assisted Human Activity Recognition'
+title: 'Smartwatch IMU foundation model for human activity recognition'
 authors:
+  - Aidan Bradshaw
   - Zhuoran Liu
+  - Riku Arakawa
+  - Arnav Choudhry
+  - Xin Liu
+  - Karan Ahuja
 advisors:
-  - Dr. Karan Ahuja
+  - Dr. Karan Ahuja (Northwestern University)
 date: 2025-05
+venue: 'ICML 2026'
+status: 'In preparation'
+role: 'Co-author'
 abstract: >
-  Recognizing human activities from IMU sensor data underpins health monitoring, smart environments and HCI. Conventional HAR methods hinge on complex feature engineering or deep learning, demanding extensive labels and compute. We investigate repurposing LLMs for IMU‑based HAR by encoding statistical and spectral features into text prompts, enabling zero‑ and few‑shot classification. We also explore hybrid models where LLMs enrich classical classifiers with metadata and high‑level semantics. Preliminary experiments show LLMs rival traditional methods in interpretability and adaptability—especially in low‑data or personalized scenarios—paving the way for more transparent, generalizable and interactive HAR systems.
+  I am co-developing a smartwatch IMU foundation model that aggregates and harmonizes multiple datasets, then pretrains self-supervised sequence models and tests them under leave-one-dataset and unseen-device protocols, aiming for a generalizable, well-documented model and recipe that transfers across devices, populations, and everyday conditions.
 keywords:
-  - Large Language Model
-  - Human Activity Recognition
-  - Ubiquitous Computation
-  - Human Computer Interaction
+  - Smartwatch IMU
+  - Human activity recognition
+  - Time-series foundation models
+  - Self-supervised learning
+  - Domain generalization
+  - Wearable sensing
 ---
 
-> Research in progress
+## Overview
+
+In Prof. Ahuja’s lab, I am tackling a persistent gap in human activity recognition: models trained on a single IMU dataset often look impressive on their home benchmark yet fall apart when the watch, sampling rate, or population changes. To push against that brittleness, I started by **aggregating and harmonizing multiple public smartwatch datasets**, aligning device frames, reconciling sampling rates, and negotiating a shared label ontology that can express each dataset’s idiosyncratic activity set without collapsing everything into vague catch-alls. A lot of the early work was spent iterating on these choices—discovering where alignment conventions disagreed, where resampling quietly distorted motion patterns, and where label merges hid important distinctions—until simple baselines could at least behave sensibly across held-out datasets.
+
+On top of this common substrate, I am **pretraining large sequence models**—transformer-style architectures and time-series variants of vision models—using self-supervised objectives such as masked modeling and contrastive invariance. The evaluation pipeline is explicitly designed to stress generalization: leave-one-dataset-out and unseen-device protocols, plus planned ablations that vary window length, sampling rate, augmentation, and sensor stacks to isolate which design decisions actually move the needle. When early results exposed failure modes on particular datasets, I treated them as prompts to revisit both the harmonization and the objectives rather than just tuning hyperparameters, aiming for a training recipe that is robust, reproducible, and well-documented. The long-term goal is a **portable IMU foundation model** that researchers and practitioners can fine-tune across devices and populations, with clear guidelines for adapting it to wellness and community settings instead of yet another leaderboard-only model.

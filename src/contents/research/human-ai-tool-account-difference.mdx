@@ -1,124 +1,39 @@
 ---
-title: 'Human-AI Tools for Contextualizing Differences: Bridging Data-Driven Insights with Real-World Interpretability'
+title: 'Not All Places Are The Same: Computationally Surfacing Regional Experience Differences from Online Reviews'
 authors:
   - Zhuoran Liu
   - Medini Chopra
+  - Haoqi Zhang
 advisors:
-  - Dr. Haoqi Zhang
+  - Dr. Haoqi Zhang (Northwestern University)
 date: 2025-04
+status: 'Under review'
+role: 'Lead author'
 abstract: >
-  Comparing human experiences across locations is a core challenge in computational social science, HCI, and information retrieval. Although Yelp reviews provide abundant data, TF‑IDF’s document‑length bias, coarse category granularity, and ranking inconsistencies impede reliable cross‑location insights. We introduce a human–AI system that applies BM25 scoring with a threshold‑based relevance model to adjust term weights and surface conceptual shifts. Interactive visualizations make results accessible to both technical and non‑technical audiences. Evaluated on cross‑location review datasets, our approach delivers robust rankings and accurate detection of contextual differences, advancing human‑centered AI, scalable comparative analytics, and interpretability in information retrieval.
-pdf: 'https://drive.google.com/file/d/138tm0K-vmgOntLNjpWXhTzH3G2HSA0oJ/view?usp=sharing'
+  I led an HCI/NLP project that uses Yelp reviews and guidebook priors to model how the same place categories afford different experiences across U.S. regions, surfacing regional experiential signatures—like king cake, picon punch, or tax-free outlet shopping—that current category-only recommenders flatten.
 url: 'https://dtr.northwestern.edu/projects/rec05fdcuNNGNmM8x'
 keywords:
-  - BM25
-  - Natural Language Processing
-  - Human Computer Interaction
-  - Information Retrieval
+  - Experiential computing
+  - Place-aware recommender systems
+  - Online reviews
+  - Geographic variation
+  - Location-based services
+  - Natural language processing
+  - Human–computer interaction
 ---
 
-## Introduction
+## Overview
 
-Understanding how user experiences vary by region is key to delivering personalized, context‑aware insights. For example, a coffee shop ideal for working in one city may serve primarily as a social hub elsewhere. Existing recommendation and retrieval systems typically treat user behavior as uniform, overlooking how local customs, climate and social norms shape activities, emotions and expectations.
+Working with my advisor Haoqi, I co-developed a project that treats location-based recommendation as a question about how **place imprints experience**, not just where venues are. Starting from travel guidebooks and HCI work on space versus place, I helped turn narrative difference claims—such as king cake being routine at bakeries in Louisiana but rare and “imported” in Pennsylvania, or tax-free shopping being a defining feature of Delaware outlets—into a concrete hypothesis set: for each experience phrase, compare how often and how concretely it appears in reviews for the _same_ Yelp category across states. That framing forced us to hold categories constant long enough to see meaning shift with geography, and to adopt a compact vocabulary of **environmental, cultural, social, and institutional drivers** to read whatever the text surfaced instead of treating it as anonymous signal.
 
-We address this gap by building a human–AI system that:
+To make this framing testable, I built an **end-to-end text pipeline** over the Yelp Open Dataset for thirteen U.S. states, cleaning millions of reviews, extracting short activity phrases as n-grams, and computing TF–IDF salience for each state–category document before using a stabilized log-ratio to quantify when a phrase is substantially more present in one region than another. Whenever the system returned brand chatter, implausible phrases, or weak contrasts, I iterated on thresholds, blacklist rules, and phrase definitions, pairing every numerical contrast with ranked review snippets so that both our team and future readers could audit whether “king cake,” “picon punch,” or “no sales tax” really reflected what people do in that place. The resulting case portfolio shows that everyday review language reliably encodes **regional experiential signatures**, but also exposes where affective claims like a beach feeling “personal” fail to appear at all—limits that shaped our design implications for future systems: interfaces that expose experiential facets alongside ratings, adjust defaults by region and season, and keep textual evidence visible rather than hiding behind opaque scores.
 
-1. **Analyzes** millions of user reviews (Yelp Open Dataset: 6.9 M reviews, 150 K businesses across 11 metro areas) using BM25 scoring to control for document length and term frequency.
-2. **Surfaces** location‑specific patterns—e.g. comparing “sunbathing” at beaches in Florida vs. Pennsylvania.
-3. **Visualizes** results with interactive bar and line charts, plus adaptive relevance thresholds, so both technical and non‑technical users can grasp regional differences at a glance.
+## Selected visuals
 
-Our contributions:
+| Category           | Region    | Surfaced phrase (experience)             | Dominant driver          |
+| ------------------ | --------- | ---------------------------------------- | ------------------------ |
+| Bakeries           | Louisiana | **king cake** around Mardi Gras season   | Cultural / temporal      |
+| Outlet malls       | Delaware  | **no sales tax** / cross-border shopping | Institutional / economic |
+| Basque restaurants | Nevada    | **picon punch** as a pre-dinner ritual   | Social / cultural        |
 
-- **System:** A pipeline that combines BM25, dynamic thresholds and accessible visualizations to highlight geographic, cultural and social conceptual shifts.
-- **Technical:** A scalable backend (Python, PostgreSQL) that precomputes BM25 scores and thresholds for rapid querying.
-- **Conceptual:** A framework showing how place‑based habits emerge from local context—and how to integrate that into IR and recommendation models.
-
-## Related Work
-
-### Context‑Aware Recommendations
-
-- Environmental factors (location, time) influence preferences and mood [Suhaim 2021].
-- Cultural and socio‑economic dynamics shape e‑commerce recommendations but are rarely modeled in real time [Yohe 2023].
-- Graph‑based methods for location‑based social networks improve over popularity or CF by integrating user, place and context [Khazaei 2019].
-
-### Bias in AI
-
-- Large language models reflect and amplify biases present in training data—gender, race, cultural stereotypes—which hinder fair contextual reasoning [Mehrabi 2021; Gallegos 2024].
-- Cultural nuance remains difficult to encode; purely LLM‑based approaches require extensive fine‑tuning and still miss localized meanings [Li 2024].
-
-### Information Retrieval & BM25
-
-- BM25 outperforms TF‑IDF on variable‐length documents by applying non‑linear term weighting and document‑length normalization [Lv 2024].
-- Widely used in search engines, digital libraries and retrieval‑augmented generation, BM25 offers a robust basis for our region‑comparison use case.
-
-## Design Space
-
-### Design Problem
-
-Users without technical expertise struggle to interpret raw frequency or similarity scores when exploring unfamiliar locales. LLMs can assist but often inject bias and lack transparency. We need a system that:
-
-- Adapts to geographic, cultural and social diversity.
-- Balances accuracy, speed and interpretability.
-- Presents findings in an intuitive, accessible format.
-
-### Design Goals
-
-1. **Inclusivity:** Avoid AI‑driven inference biases by using purely statistical retrieval (BM25).
-2. **Interpretability:** Translate scores into categories—“not relevant,” “marginal,” “relevant”—using location‑specific thresholds.
-3. **Usability:** Deliver results in seconds via clear visualizations rather than cryptic numbers or complex narratives.
-
-## System Description
-
-### User Interface & Workflow
-
-1. **Select source/target locations** (state or city).
-2. **Choose an activity** (single‑word query).
-3. **View** side‑by‑side bar charts (top categories) and line charts (score distributions with “no engagement,” “significant,” and “relevance” thresholds).
-
-![User Workflow](/images/research/account-difference-user-workflow.jpg)
-
-### Technical Pipeline
-
-#### Data Processing & Storage
-
-- Raw JSON → Parquet → PostgreSQL (12 tables).
-- Text cleaning: regex, lemmatization (NLTK), spell‑correction (SymSpell), stopword removal.
-- Parallel batch processing in Python for scalability.
-
-#### Contextual Difference Computation
-
-- **TF‑IDF vs. BM25:** BM25’s $$k_1$$ and $$b$$ hyperparameters normalize term frequency against document length, yielding stable, meaningful rankings across locations.
-- **Conceptual shift**: $$\Delta = |BM25_{\text{source}} - BM25_{\text{target}}|$$
-
-#### Threshold‑Based Interpretation
-
-- **No Engagement**: 5th percentile of scores
-- **Significant Shift**: 15 % of (max – min)
-- **Relevance**: 60 % of (max – min)
-- Converts raw BM25 into “not relevant,” “marginal,” “relevant,” or “not found.”
-
-#### Implementation Stack
-
-- **Backend:** Python, Numba/NumPy for BM25, PostgreSQL
-- **Frontend:** Next.js + MUI, TypeScript, Recharts, TanStack React Query, Prisma ORM
-- **Visualization:** Accessible color palette (WCAG 2 compliant) for bar/line charts
-
-## Discussion
-
-### Key Insights
-
-- **Adaptive thresholds** ensure meaningful comparisons across diverse contexts.
-- **Graphical summaries** (bar/line charts) democratize access for non‑technical users.
-- The pipeline balances **speed**, **accuracy** and **interpretability**.
-
-### Challenges
-
-- BM25 lacks semantic nuance (polysemy, idioms).
-- Yelp data may be unevenly distributed, requiring multi‑source integration to mitigate sampling bias.
-
-### Limitations & Future Work
-
-- Integrate BERT‑based re‑ranking for semantic refinement.
-- Expand beyond Yelp (Google Reviews, social media) for richer context.
-- Support real‑time indexing and updates.
-- Conduct user studies to validate interpretability and decision support.
+Each row shows how, once we hold the Yelp category fixed and contrast review phrases across states, we recover distinct _regional experiential signatures_ that we then interpret through our four-driver vocabulary (environmental, cultural, social, institutional).
