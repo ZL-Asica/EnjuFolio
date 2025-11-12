@@ -9,11 +9,15 @@ interface NewsItem {
   content: React.ReactNode
 }
 
+type PageType = 'research' | 'projects'
+
 interface FileMeta {
   title: string
   authors: string[]
   advisors?: string[]
   venue?: string
+  status?: string
+  role?: string
   year: string
   date: string
   abstract: string

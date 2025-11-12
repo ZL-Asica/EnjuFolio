@@ -48,6 +48,8 @@ export const readAllFileMeta = async (
         authors: md.authors ?? ['Zhuoran Liu'],
         advisors: md.advisors,
         venue: md.venue,
+        status: md.status,
+        role: md.role,
         year: String(md.year ?? new Date().getFullYear()),
         date: md.date ?? new Date().toISOString(),
         abstract: md.abstract,

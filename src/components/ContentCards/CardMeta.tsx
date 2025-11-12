@@ -5,10 +5,11 @@ interface CardMetaProps {
 }
 
 const CardMeta = ({ meta }: CardMetaProps) => {
-  const { authors, venue, date, advisors } = meta
+  const { authors, venue, date, advisors, status, role } = meta
+
   return (
-    <>
-      <p className="text-xs sm:text-sm text-secondary-400 mb-1">
+    <div className="text-xs font-medium sm:text-[14px] gap-0 text-secondary-500 sm:gap-1 flex flex-col">
+      <p className="mb-0.5">
         {formatAuthors(authors)}
         {venue !== undefined && (
           <>
@@ -17,20 +18,38 @@ const CardMeta = ({ meta }: CardMetaProps) => {
           </>
         )}
         {' '}
-        <time dateTime={date} aria-label={`Published on ${formatDateMonth(date)}`}>
+        <time dateTime={date}>
           (
           {formatDateMonth(date, true)}
           )
         </time>
       </p>
-      {advisors !== undefined && advisors?.length > 0 && (
-        <p className="text-xs sm:text-sm text-secondary-400 mb-1">
+
+      {(status !== undefined || role !== undefined) && (
+        <p>
+          {status !== undefined && (
+            <>
+              <span className="italic mr-1">Status:</span>
+              {status}
+            </>
+          )}
+          {status !== undefined && role !== undefined && <span className="mx-2">•</span>}
+          {role !== undefined && (
+            <>
+              <span className="italic mr-1">Role:</span>
+              {role}
+            </>
+          )}
+        </p>
+      )}
+
+      {advisors && advisors.length > 0 && (
+        <p className="-mb-0.5">
           <span className="italic mr-0.5">Advised by:</span>
-          {' '}
           {advisors.join(', ')}
         </p>
       )}
-    </>
+    </div>
   )
 }
 
