@@ -31,9 +31,9 @@ const ContentCards = async ({ PageType }: ContentCardsProps) => {
             <Fragment key={item.slug}>
               {showYearHeader && (
                 <li className="mt-10 mb-2">
-                  <span className="text-base font-semibold tracking-[0.2em] uppercase text-secondary-500">
+                  <h2 className="text-base font-semibold tracking-[0.2em] uppercase text-secondary-500">
                     {thisYear}
-                  </span>
+                  </h2>
                 </li>
               )}
               <li>
