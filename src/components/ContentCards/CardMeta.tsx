@@ -14,7 +14,7 @@ const CardMeta = ({ pageType, meta }: CardMetaProps) => {
     <div className="mt-1 space-y-1 text-xs sm:text-[13px] font-medium text-secondary-600 dark:text-secondary-300">
       {/* Authors / venue / year */}
       <p className="flex flex-wrap items-baseline gap-x-1.5 gap-y-0.5">
-        <span className="inline-flex items-baseline">
+        <span className="max-w-prose wrap-break-word items-baseline">
           <FormatedAuthors authors={authors} />
         </span>
 

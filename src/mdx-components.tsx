@@ -91,7 +91,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 
     // Text related
     p: ({ children }) => (
-      <p className="my-5 text-base leading-[1.9] tracking-normal text-foreground">
+      <p className="my-5 text-base leading-[1.9] tracking-normal text-foreground wrap-break-word">
         {children}
       </p>
     ),
@@ -304,8 +304,8 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 
     // Table related
     table: ({ children }) => (
-      <div className="my-6 w-full rounded-lg border border-gray-300 shadow-md overflow-hidden">
-        <table className="w-full rounded-lg border text-left overflow-hidden">
+      <div className="my-6 w-full rounded-lg border border-gray-300 shadow-md overflow-y-auto">
+        <table className="w-full rounded-lg border text-left overflow-y-auto">
           {children}
         </table>
       </div>
@@ -318,7 +318,6 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         {children}
       </th>
     ),
-
     td: ({ children, className }) => (
       <td
         className={`border border-gray-300 bg-gray-light px-4 py-3 font-medium ${className}`}
