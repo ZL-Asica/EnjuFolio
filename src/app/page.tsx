@@ -32,7 +32,7 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonld) }}
       />
 
-      <main className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8 py-10 sm:py-16 lg:py-20">
+      <main className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8 py-6 sm:py-10 lg:py-12">
         {/* Top: name + profile picture */}
         <section
           className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between"
