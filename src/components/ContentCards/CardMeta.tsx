@@ -1,4 +1,5 @@
-import { formatAuthors, formatDateMonth } from '@/utils'
+import { formatDate } from '@zl-asica/react/utils'
+import { FormatedAuthors } from '@/components/common'
 
 interface CardMetaProps {
   pageType: PageType
@@ -11,7 +12,7 @@ const CardMeta = ({ pageType, meta }: CardMetaProps) => {
   return (
     <div className="text-xs font-medium sm:text-[14px] gap-0 text-secondary-500 sm:gap-1 flex flex-col">
       <p className="mb-0.5">
-        {formatAuthors(authors)}
+        <FormatedAuthors authors={authors} />
         {venue !== undefined && (
           <>
             {' — '}
@@ -23,7 +24,7 @@ const CardMeta = ({ pageType, meta }: CardMetaProps) => {
             {' '}
             <time dateTime={date}>
               (
-              {formatDateMonth(date, true)}
+              {formatDate(date, 'YYYY')}
               )
             </time>
           </>

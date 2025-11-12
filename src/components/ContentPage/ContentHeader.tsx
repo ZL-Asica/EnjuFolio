@@ -1,7 +1,7 @@
+import { formatDate } from '@zl-asica/react/utils'
 import { LayoutList } from 'lucide-react'
 import { LuBookOpen, LuFile } from 'react-icons/lu'
-import { IconLinks } from '@/components/common'
-import { formatAuthors, formatDateMonth } from '@/utils'
+import { FormatedAuthors, IconLinks } from '@/components/common'
 import ContentTags from './ContentTags'
 
 interface ContentHeaderProps {
@@ -14,18 +14,25 @@ const ContentHeader = ({ frontmatter }: ContentHeaderProps) => {
       <h1 id="page-title" className="text-4xl font-serif font-bold leading-tight">
         {frontmatter.title}
       </h1>
-      {frontmatter.authors?.length > 0 && (
-        <p className="mt-2 text-secondary-600 dark:text-secondary-400 flex items-center justify-center" aria-label="Authors">
-          {formatAuthors(frontmatter.authors)}
+      {(frontmatter.authors?.length ?? 0) > 0 && (
+        <p
+          className="mt-2 mx-auto max-w-prose text-center text-secondary-600 dark:text-secondary-400 wrap-break-word"
+          aria-label="Authors"
+        >
+          <FormatedAuthors authors={frontmatter.authors} />
         </p>
       )}
-      {frontmatter.advisors !== undefined && frontmatter.advisors?.length > 0 && (
-        <p className="mt-2 text-secondary-600 dark:text-secondary-400 flex items-center justify-center" aria-label="Advisors">
-          <span className="italic mr-1">Advised by:</span>
-          {frontmatter.advisors.join(', ')}
+
+      {(frontmatter.advisors?.length ?? 0) > 0 && (
+        <p
+          className="mt-1 mx-auto max-w-prose text-center text-secondary-600 dark:text-secondary-400 wrap-break-word"
+          aria-label="Advisors"
+        >
+          <span className="italic mr-1 whitespace-nowrap">Advised by:</span>
+          {frontmatter.advisors!.join(', ')}
         </p>
       )}
-      <p className="mt-3 text-accent-600 dark:text-accent-400 flex items-center justify-center space-x-2">
+      <p className="mt-3 text-accent-600 dark:text-accent-400 flex items-center justify-center flex-col sm:flex-row space-x-2">
         {frontmatter.venue !== undefined && (
           <span className="flex items-center" aria-label="Venue">
             <LuFile className="w-5 h-5 mr-1" />
@@ -34,7 +41,7 @@ const ContentHeader = ({ frontmatter }: ContentHeaderProps) => {
         )}
         <span className="flex items-center" aria-label="Date with year and month">
           <LuBookOpen className="w-5 h-5 mr-1" />
-          <time dateTime={frontmatter.date}>{formatDateMonth(frontmatter.date)}</time>
+          <time dateTime={frontmatter.date}>{formatDate(frontmatter.date, 'MMM, YYYY')}</time>
         </span>
       </p>
       <IconLinks meta={frontmatter} classNames="mt-4 justify-center text-secondary-600 dark:text-secondary-400" />
