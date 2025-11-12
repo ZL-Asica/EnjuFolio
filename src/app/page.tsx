@@ -68,7 +68,7 @@ export default function HomePage() {
             )}
           </div>
 
-          <div className="flex justify-start md:justify-end">
+          <div className="flex justify-start md:justify-end md:mr-10 lg:mr-20">
             <Image
               src={authorPictureBase}
               alt={`${name}'s avatar`}

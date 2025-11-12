@@ -207,16 +207,30 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     },
 
     // Image related
-    img: props => (
-      <Image
-        sizes="100vw"
-        style={{ width: '100%', height: 'auto' }}
-        width={1000}
-        height={1000}
-        priority={false}
-        {...(props as ImageProps)}
-      />
-    ),
+    img: (props) => {
+      const { alt, ...rest } = props as ImageProps
+
+      return (
+        <figure className="my-8">
+          <Image
+            sizes="100vw"
+            style={{ width: '100%', height: 'auto' }}
+            width={1000}
+            height={1000}
+            priority={false}
+            alt={alt ?? ''}
+            className="w-full h-auto max-h-[800px] md:max-h-[1000px] object-contain"
+            {...(rest as Omit<ImageProps, 'alt'>)}
+          />
+          {alt && (
+            <figcaption className="mt-2 text-base text-secondary-500 dark:text-secondary-400 text-center italic">
+              {alt}
+            </figcaption>
+          )}
+        </figure>
+      )
+    },
+
     video: (props: React.VideoHTMLAttributes<HTMLVideoElement> & { src: string }) => (
       <video
         className="rounded-lg shadow-md max-h-80"
