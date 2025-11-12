@@ -1,4 +1,4 @@
-import { formatDate } from '@zl-asica/react/utils'
+import { formatDate, isBlank } from '@zl-asica/react/utils'
 import { FormatedAuthors } from '@/components/common'
 
 interface CardMetaProps {
@@ -8,50 +8,57 @@ interface CardMetaProps {
 
 const CardMeta = ({ pageType, meta }: CardMetaProps) => {
   const { authors, venue, date, advisors, status, role } = meta
+  const year = date ? formatDate(date, 'YYYY') : undefined
 
   return (
-    <div className="text-xs font-medium sm:text-[14px] gap-0 text-secondary-500 sm:gap-1 flex flex-col">
-      <p className="mb-0.5">
-        <FormatedAuthors authors={authors} />
-        {venue !== undefined && (
+    <div className="mt-1 space-y-1 text-xs sm:text-[13px] font-medium text-secondary-600 dark:text-secondary-300">
+      {/* Authors / venue / year */}
+      <p className="flex flex-wrap items-baseline gap-x-1.5 gap-y-0.5">
+        <span className="inline-flex items-baseline">
+          <FormatedAuthors authors={authors} />
+        </span>
+
+        {!isBlank(venue) && (
           <>
-            {' — '}
+            <span aria-hidden>·</span>
             <span className="italic">{venue}</span>
           </>
         )}
-        {pageType === 'research' && (
+
+        {pageType === 'research' && !isBlank(year) && (
           <>
-            {' '}
-            <time dateTime={date}>
-              (
-              {formatDate(date, 'YYYY')}
-              )
-            </time>
+            <span aria-hidden>·</span>
+            <time dateTime={date}>{year}</time>
           </>
         )}
       </p>
 
-      {(status !== undefined || role !== undefined) && (
-        <p>
-          {status !== undefined && (
-            <>
-              <span className="italic mr-1">Status:</span>
-              {status}
-            </>
+      {/* Status / role */}
+      {(!isBlank(status) || !isBlank(role)) && (
+        <p className="flex flex-wrap items-center gap-x-2 gap-y-0.5 text-[11px] sm:text-xs text-secondary-500">
+          {!isBlank(status) && (
+            <span>
+              <span className="italic">Status:</span>
+              {' '}
+              <span className="not-italic">{status}</span>
+            </span>
           )}
-          {status !== undefined && role !== undefined && <span className="mx-2">•</span>}
-          {role !== undefined && (
-            <>
-              <span className="italic mr-1">Role:</span>
-              {role}
-            </>
+          {!isBlank(status) && !isBlank(role) && <span aria-hidden>•</span>}
+          {!isBlank(role) && (
+            <span>
+              <span className="italic">Role:</span>
+              {' '}
+              <span className="not-italic">{role}</span>
+            </span>
           )}
         </p>
       )}
 
+      {/* Advisors */}
       {advisors && advisors.length > 0 && (
-        <p className="-mb-0.5">
-          <span className="italic mr-0.5">Advised by:</span>
+        <p className="text-[11px] sm:text-xs text-secondary-500">
+          <span className="italic">Advised by:</span>
+          {' '}
           {advisors.join(', ')}
         </p>
       )}

@@ -44,7 +44,7 @@ const ContentHeader = ({ frontmatter }: ContentHeaderProps) => {
           <time dateTime={frontmatter.date}>{formatDate(frontmatter.date, 'MMM, YYYY')}</time>
         </span>
       </p>
-      <IconLinks meta={frontmatter} classNames="mt-4 justify-center text-secondary-600 dark:text-secondary-400" />
+      <IconLinks meta={frontmatter} className="mt-4 justify-center" />
       {frontmatter.category !== undefined && (
         <p className="flex items-center justify-center space-x-2 mt-2 text-secondary-600 dark:text-secondary-400" aria-label="Category">
           <LayoutList className="w-5 h-5 mr-1" />
