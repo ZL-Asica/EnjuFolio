@@ -22,7 +22,7 @@ export const CVViewer = ({ previewUrl }: CVViewerProps) => {
         {!isLoaded && (
           <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center gap-2 bg-background/80 backdrop-blur-sm">
             <div
-              className="h-6 w-6 animate-spin rounded-full border border-border border-t-transparent"
+              className="h-6 w-6 sm:h-10 sm:w-10 md:h-14 md:w-14 lg:h-20 lg:w-20 animate-spin rounded-full border-2 sm:border-4 border-border border-t-transparent"
               aria-hidden="true"
             />
             <span
