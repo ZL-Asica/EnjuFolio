@@ -7,7 +7,7 @@ import { buildWebsiteJsonLd } from '@/lib'
 import { authorPictureBase } from '@/lib/configHelper'
 
 const AboutStrong = ({ children }: { children: React.ReactNode }) => (
-  <strong className="font-semibold text-primary-500 dark:text-primary-300 underline underline-offset-2 decoration-primary-400/50">
+  <strong className="font-semibold text-primary-500 dark:text-primary-300 decoration-primary-400/50">
     {children}
   </strong>
 )
