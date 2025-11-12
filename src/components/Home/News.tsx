@@ -20,12 +20,10 @@ const News = async () => {
 
   const allItems = await Promise.all(
     sortedMeta.map(async (meta) => {
-      // eslint-disable-next-line ts/no-unsafe-assignment
       const { Content, frontmatter } = await getMDXContent('news', meta.slug)
       return {
         key: meta.slug,
         date: frontmatter.date,
-        // eslint-disable-next-line ts/no-unsafe-assignment
         Content,
       }
     }),

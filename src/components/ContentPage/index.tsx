@@ -14,7 +14,6 @@ interface ContentPageProps {
 }
 
 const ContentPage = async ({ page, slug }: ContentPageProps) => {
-  // eslint-disable-next-line ts/no-unsafe-assignment
   const { Content, frontmatter } = await getMDXContent(page, slug)
 
   if (frontmatter.redirect !== undefined && frontmatter.redirect !== '') {

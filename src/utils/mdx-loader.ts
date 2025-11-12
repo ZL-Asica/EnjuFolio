@@ -1,15 +1,21 @@
-import type { Element } from 'mdx/types'
+import type { MDXProps } from 'mdx/types'
+import type { ComponentType } from 'react'
 
-export const getMDXContent = async (page: string, slug: string): Promise<{
-  Content: Element
+type MDXComponent = ComponentType<MDXProps>
+
+interface MDXModule {
+  default: MDXComponent
   frontmatter: FileMeta
-}> => {
-  // eslint-disable-next-line ts/no-unsafe-assignment
-  const { default: Content, frontmatter } = (await import(`@/contents/${page}/${slug}.mdx`)) as {
-    default: Element
-    frontmatter: FileMeta
-  }
+}
 
-  // eslint-disable-next-line ts/no-unsafe-assignment
+export async function getMDXContent(
+  page: string,
+  slug?: string,
+): Promise<{ Content: MDXComponent, frontmatter: FileMeta }> {
+  const {
+    default: Content,
+    frontmatter,
+  } = (await import(`@/contents/${page}${slug !== undefined ? `/${slug}.mdx` : ''}`)) as MDXModule
+
   return { Content, frontmatter }
 }
