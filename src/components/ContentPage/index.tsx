@@ -37,7 +37,7 @@ const ContentPage = async ({ page, slug }: ContentPageProps) => {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <main className="max-w-3xl mx-auto py-12 px-4 motion-safe:animate-blur-in-glow">
+      <main className="max-w-3xl mx-auto py-12 px-4 motion-safe:animate-fade-in-soft">
         <ContentHeader frontmatter={frontmatter} />
         {frontmatter.abstract && (
           <section aria-labelledby="abstract-heading" className="mb-12">

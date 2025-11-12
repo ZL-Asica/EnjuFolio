@@ -51,6 +51,8 @@
   /* Mask reveal animation */
   --animate-mask-reveal: mask-reveal 1s ease-out forwards;
 
+  --animate-fade-in-soft: fade-in-soft 0.28s ease-out both;
+
   @keyframes fade-in-down {
     0% {
       opacity: 0;
@@ -98,6 +100,17 @@
     100% {
       mask: linear-gradient(90deg, #000 25%, #000000e6 50%, #00000000) 0 / 400% no-repeat;
       opacity: 1;
+    }
+  }
+
+  @keyframes fade-in-soft {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
 }

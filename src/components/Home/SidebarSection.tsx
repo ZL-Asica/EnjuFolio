@@ -19,7 +19,7 @@ const SidebarSection = ({
   return (
     <section
       aria-labelledby={id}
-      className={clsx('space-y-3', className)}
+      className={clsx('space-y-3', className, 'motion-safe:animate-blur-in-glow')}
     >
       <div className="flex items-baseline gap-3">
         <h2
