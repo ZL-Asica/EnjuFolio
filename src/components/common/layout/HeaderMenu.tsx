@@ -21,7 +21,7 @@ interface HeaderMenuProps {
 
 const HeaderMenu = ({ isMobile, ulClassName, onClickHandler }: HeaderMenuProps) => {
   const currentPath = usePathname()
-  const { isDarkTheme, toggleTheme } = useTheme('elara-theme-color', 7)
+  const { isDarkTheme, toggleTheme } = useTheme('enju-theme-color', 7)
 
   const menuItems: MenuItem[] = [
     { href: '/', label: 'Home', icon: <House /> },
