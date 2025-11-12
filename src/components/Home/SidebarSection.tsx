@@ -5,6 +5,7 @@ interface SidebarSectionProps {
   id: string
   title: string
   eyebrow?: string
+  index?: number
   children: React.ReactNode
   className?: string
 }
@@ -13,13 +14,23 @@ const SidebarSection = ({
   id,
   title,
   eyebrow,
+  index,
   children,
   className,
 }: SidebarSectionProps) => {
   return (
     <section
       aria-labelledby={id}
-      className={clsx('space-y-3', className, 'motion-safe:animate-blur-in-glow')}
+      className={clsx(
+        'space-y-3',
+        index !== undefined
+        && `motion-safe:opacity-0 motion-safe:animate-fade-up
+        motion-reduce:opacity-100 motion-reduce:animate-none`,
+        className,
+      )}
+      style={{
+        animationDelay: index !== undefined ? `${Math.min(index, 8) * 120}ms` : undefined,
+      }}
     >
       <div className="flex items-baseline gap-3">
         <h2

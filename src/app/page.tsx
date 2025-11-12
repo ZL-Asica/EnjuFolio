@@ -1,8 +1,6 @@
 import { isBlank } from '@zl-asica/react/utils'
 import Image from 'next/image'
-import { Suspense } from 'react'
 import { Hobbies, News } from '@/components/Home'
-import { NewsLoading } from '@/components/Loadings'
 import About from '@/contents/About.mdx'
 import { EnjuConfig } from '@/enju.config'
 import { buildWebsiteJsonLd } from '@/lib'
@@ -89,7 +87,7 @@ export default function HomePage() {
           aria-label="About and recent updates"
         >
           {/* Left Column: Main Narrative */}
-          <div className="motion-safe:animate-blur-in-glow">
+          <div className="motion-safe:animate-fade-up">
             <div className="max-w-[68ch] space-y-4 text-left text-foreground">
               <About components={{ strong: AboutStrong }} />
             </div>
@@ -106,9 +104,7 @@ export default function HomePage() {
             "
             aria-label="Recent updates and personal interests"
           >
-            <Suspense fallback={<NewsLoading />}>
-              <News />
-            </Suspense>
+            <News />
 
             {hobbies && hobbies.length > 0 && (
               <Hobbies hobbies={hobbies} />
