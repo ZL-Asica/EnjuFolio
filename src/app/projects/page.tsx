@@ -26,7 +26,7 @@ export default async function ProjectPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonld) }}
       />
-      <ContentCards page="projects" />
+      <ContentCards PageType="projects" />
     </>
   )
 }

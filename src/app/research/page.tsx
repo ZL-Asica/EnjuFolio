@@ -26,7 +26,7 @@ export default async function ResearchPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonld) }}
       />
-      <ContentCards page="research" />
+      <ContentCards PageType="research" />
     </>
   )
 }

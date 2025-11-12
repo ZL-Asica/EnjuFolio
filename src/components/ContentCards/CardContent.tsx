@@ -4,12 +4,12 @@ import CardMeta from './CardMeta'
 
 interface CardContentProps {
   meta: FileMeta
-  page: PageType
+  pageType: PageType
 }
 
-const CardContent = ({ meta, page }: CardContentProps) => {
+const CardContent = ({ meta, pageType }: CardContentProps) => {
   const { title, slug, redirect } = meta
-  const link = redirect !== undefined && redirect !== '' ? redirect : `/${page}/${slug}`
+  const link = redirect !== undefined && redirect !== '' ? redirect : `/${pageType}/${slug}`
   const isExternal = link.startsWith('http')
 
   return (
@@ -25,7 +25,7 @@ const CardContent = ({ meta, page }: CardContentProps) => {
           {title}
         </Link>
       </h3>
-      <CardMeta meta={meta} />
+      <CardMeta pageType={pageType} meta={meta} />
       <p className="text-[14px] sm:text-sm leading-relaxed sm:leading-snug text-foreground">
         {meta.abstract}
       </p>

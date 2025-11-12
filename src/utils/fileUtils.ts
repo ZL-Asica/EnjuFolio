@@ -3,6 +3,7 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import process from 'node:process'
+import { EnjuConfig } from '@/enju.config'
 import { getMDXContent } from './mdx-loader'
 
 const baseDir = path.join(process.cwd(), 'src', 'contents')
@@ -45,11 +46,12 @@ export const readAllFileMeta = async (
 
       return {
         title: md.title,
-        authors: md.authors ?? ['Zhuoran Liu'],
+        authors: md.authors ?? [EnjuConfig.author],
         advisors: md.advisors,
         venue: md.venue,
         status: md.status,
         role: md.role,
+        category: md.category,
         year: String(md.year ?? new Date().getFullYear()),
         date: md.date ?? new Date().toISOString(),
         abstract: md.abstract,

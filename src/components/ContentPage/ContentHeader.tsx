@@ -1,3 +1,4 @@
+import { LayoutList } from 'lucide-react'
 import { LuBookOpen, LuFile } from 'react-icons/lu'
 import { IconLinks } from '@/components/common'
 import { formatAuthors, formatDateMonth } from '@/utils'
@@ -37,6 +38,14 @@ const ContentHeader = ({ frontmatter }: ContentHeaderProps) => {
         </span>
       </p>
       <IconLinks meta={frontmatter} classNames="mt-4 justify-center text-secondary-600 dark:text-secondary-400" />
+      {frontmatter.category !== undefined && (
+        <p className="flex items-center justify-center space-x-2 mt-2 text-secondary-600 dark:text-secondary-400" aria-label="Category">
+          <LayoutList className="w-5 h-5 mr-1" />
+          Category:
+          {' '}
+          {frontmatter.category}
+        </p>
+      )}
       <ContentTags keywords={frontmatter.keywords} />
     </section>
   )

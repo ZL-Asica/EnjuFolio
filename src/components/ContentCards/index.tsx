@@ -3,19 +3,19 @@ import { readAllFileMeta } from '@/utils'
 import CardContent from './CardContent'
 
 interface ContentCardsProps {
-  page: PageType
+  PageType: PageType
 }
 
-const ContentCards = async ({ page }: ContentCardsProps) => {
-  const summaries = await readAllFileMeta(page)
+const ContentCards = async ({ PageType }: ContentCardsProps) => {
+  const summaries = await readAllFileMeta(PageType)
 
   return (
     <main className="max-w-4xl mx-auto px-4 py-12">
       <h1 className="text-3xl font-serif font-bold mb-2">
-        {page.charAt(0).toUpperCase() + page.slice(1)}
+        {PageType.charAt(0).toUpperCase() + PageType.slice(1)}
       </h1>
       <p className="text-base font-medium text-secondary-500">
-        {page === 'research'
+        {PageType === 'research'
           ? `Selected research projects and works-in-progress, ordered by year.`
           : 'Selected technical projects and works-in-progress, ordered by year.'}
       </p>
@@ -37,7 +37,7 @@ const ContentCards = async ({ page }: ContentCardsProps) => {
                 </li>
               )}
               <li>
-                <CardContent meta={item} page={page} />
+                <CardContent meta={item} pageType={PageType} />
               </li>
             </Fragment>
           )

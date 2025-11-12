@@ -1,10 +1,11 @@
 import { formatAuthors, formatDateMonth } from '@/utils'
 
 interface CardMetaProps {
+  pageType: PageType
   meta: FileMeta
 }
 
-const CardMeta = ({ meta }: CardMetaProps) => {
+const CardMeta = ({ pageType, meta }: CardMetaProps) => {
   const { authors, venue, date, advisors, status, role } = meta
 
   return (
@@ -17,12 +18,16 @@ const CardMeta = ({ meta }: CardMetaProps) => {
             <span className="italic">{venue}</span>
           </>
         )}
-        {' '}
-        <time dateTime={date}>
-          (
-          {formatDateMonth(date, true)}
-          )
-        </time>
+        {pageType === 'research' && (
+          <>
+            {' '}
+            <time dateTime={date}>
+              (
+              {formatDateMonth(date, true)}
+              )
+            </time>
+          </>
+        )}
       </p>
 
       {(status !== undefined || role !== undefined) && (

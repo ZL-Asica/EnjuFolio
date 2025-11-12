@@ -26,6 +26,7 @@ interface FileMeta {
   doi?: string
   url?: string
   pdf?: string
+  category?: string
   keywords?: string[]
   github?: string
   thumbnail?: string
