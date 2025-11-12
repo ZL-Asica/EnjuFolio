@@ -1,8 +1,7 @@
 import Image from 'next/image'
 import { Suspense } from 'react'
-import Hobbies from '@/components/Hobbies'
+import { Hobbies, News } from '@/components/Home'
 import { NewsLoading } from '@/components/Loadings'
-import News from '@/components/News'
 import About from '@/contents/About.mdx'
 import { EnjuConfig } from '@/enju.config'
 import { buildWebsiteJsonLd } from '@/lib'
@@ -10,7 +9,7 @@ import { authorPictureBase } from '@/lib/configHelper'
 import { validString } from '@/utils'
 
 const AboutStrong = ({ children }: { children: React.ReactNode }) => (
-  <strong className="font-semibold text-primary-400 dark:text-primary-300 hover:shadow-sm transition-all mx-1">
+  <strong className="font-semibold text-primary-500 dark:text-primary-300 underline underline-offset-2 decoration-primary-400/50">
     {children}
   </strong>
 )
@@ -23,64 +22,100 @@ export default function HomePage() {
     image: authorPictureBase,
   })
 
+  const { name, otherInfo, pronounce, position, hobbies } = EnjuConfig.homePage
+
   return (
     <>
+      {/* structured data */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonld) }}
       />
-      <section
-        className="max-w-5xl mx-auto text-center py-8"
-        aria-labelledby="heading-name"
-      >
-        <Image
-          src={authorPictureBase}
-          alt={`${EnjuConfig.homePage.name}'s avatar`}
-          width={280}
-          height={280}
-          priority
-          loading="eager"
-          className="rounded-full mx-auto mb-6 shadow-md"
-        />
-        <h1
-          id="heading-name"
-          className="text-3xl sm:text-4xl font-serif font-semibold mb-2"
+
+      <main className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8 py-10 sm:py-16 lg:py-20">
+        {/* Top: name + profile picture */}
+        <section
+          className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between"
+          aria-labelledby="heading-name"
         >
-          {EnjuConfig.homePage.name}
-        </h1>
-        {validString(EnjuConfig.homePage.otherInfo) && (
-          <p className="text-base text-gray-dark mb-2">
-            {EnjuConfig.homePage.otherInfo}
-          </p>
-        )}
-        {validString(EnjuConfig.homePage.pronounce) && (
-          <p className="text-sm text-gray-dark mb-1" aria-label="Pronouns">
-            {EnjuConfig.homePage.pronounce}
-          </p>
-        )}
-        {validString(EnjuConfig.homePage.position) && (
-          <p className="text-lg text-gray-dark max-w-md mx-auto">
-            {EnjuConfig.homePage.position}
-          </p>
-        )}
-      </section>
+          <div className="space-y-2 text-left">
+            <h1
+              id="heading-name"
+              className="text-3xl sm:text-4xl font-serif font-semibold tracking-tight text-foreground"
+            >
+              {name}
+            </h1>
 
-      <section className="max-w-3xl mx-auto py-6 text-left motion-safe:animate-blur-in-glow">
-        <About components={{ strong: AboutStrong }} />
-      </section>
+            {validString(position) && (
+              <p className="text-base sm:text-lg text-foreground">
+                {position}
+              </p>
+            )}
 
-      {EnjuConfig.homePage.hobbies && (
-        <Hobbies hobbies={EnjuConfig.homePage.hobbies} />
-      )}
+            {validString(otherInfo) && (
+              <p className="text-sm text-muted-foreground">
+                {otherInfo}
+              </p>
+            )}
 
-      <section
-        className="max-w-3xl mx-auto py-6 text-left motion-safe:animate-blur-in-glow"
-        aria-labelledby="heading-news"
-      >
-        <Suspense fallback={<NewsLoading />}>
-          <News />
-        </Suspense>
-      </section>
+            {validString(pronounce) && (
+              <p
+                className="text-xs text-muted-foreground"
+                aria-label="Pronouns"
+              >
+                {pronounce}
+              </p>
+            )}
+          </div>
+
+          <div className="flex justify-start md:justify-end">
+            <Image
+              src={authorPictureBase}
+              alt={`${name}'s avatar`}
+              width={240}
+              height={240}
+              priority
+              className="
+                h-32 w-32 sm:h-40 sm:w-40 rounded-full object-cover
+                shadow-md ring-2 ring-primary-400/70 dark:ring-primary-300/80
+              "
+            />
+          </div>
+        </section>
+
+        {/* Below: Left About, Right Sidebar News + Hobbies */}
+        <section
+          className="mt-12 grid gap-10 lg:grid-cols-[minmax(0,2.2fr)_minmax(0,1.3fr)] items-start"
+          aria-label="About and recent updates"
+        >
+          {/* Left Column: Main Narrative */}
+          <div className="motion-safe:animate-blur-in-glow">
+            <div className="max-w-[68ch] space-y-4 text-left text-foreground">
+              <About components={{ strong: AboutStrong }} />
+            </div>
+          </div>
+
+          {/* Right Column: Sidebar Information, Overall Weakened */}
+          <aside
+            className="
+              space-y-8
+              lg:relative lg:pl-6
+              lg:before:absolute lg:before:inset-y-1 lg:before:left-0
+              lg:before:border-l lg:before:border-dashed lg:before:border-border
+              lg:before:opacity-40 lg:before:content-['']
+            "
+            aria-label="Recent updates and personal interests"
+          >
+            <Suspense fallback={<NewsLoading />}>
+              <News />
+            </Suspense>
+
+            {hobbies && hobbies.length > 0 && (
+              <Hobbies hobbies={hobbies} />
+            )}
+          </aside>
+        </section>
+      </main>
     </>
   )
 }

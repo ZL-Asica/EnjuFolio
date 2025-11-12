@@ -1,6 +1,10 @@
 interface Hobby {
   /**
    * An optional emoji representing your hobby or interest.
+   * You can use any emoji character.
+   *
+   * If you don't want to use an emoji, you can leave this blank.
+   *
    * @example
    * ```ts
    * 🏞️
@@ -10,22 +14,13 @@ interface Hobby {
 
   /**
    * The name of your hobby or interest.
+   *
    * @example
    * ```ts
    * Hiking
    * ```
    */
   name: string
-
-  /**
-   * The description of your hobby or interest.
-   * @example
-   * ```ts
-   * Exploring nature trails and mountains.
-   * ```
-   */
-  name: string
-  description: string
 }
 
 interface EnjuFolioHomePageConfig {
@@ -89,10 +84,13 @@ interface EnjuFolioHomePageConfig {
 
   /**
    * Your hobbies or interests.
+   *
+   * Will be displayed as a list of items with emojis on the home page.
+   *
    * @example
    * ```ts
-   * { emoji: '🏞️', name: 'Hiking', description: 'Exploring nature trails and mountains.' },
-   * { emoji: '📸', name: 'Photography', description: 'Capturing moments through the lens.' },
+   * { emoji: '🏞️', name: 'Hiking' },
+   * { emoji: '📸', name: 'Photography' },
    * ```
    */
   hobbies?: Hobby[]
