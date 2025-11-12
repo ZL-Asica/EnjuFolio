@@ -42,9 +42,13 @@ next-env.d.ts
 
 # Chore
 .DS_Store
-/public/feed.xml
 
 # Cloudflare
 .open-next
 .wrangler
 .dev.vars
+
+# EnjuFolio generated files
+/public/feed.xml
+/public/llms.txt
+/public/llms-full.txt

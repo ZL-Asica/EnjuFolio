@@ -128,4 +128,14 @@ interface EnjuFolioConfig {
    * This will be the social links of your site or portfolio.
    */
   socialLinks: EnjuFolioSocialLinksConfig
+
+  /**
+   * This is for disabling llms.txt generation feature in research/projects.
+   *
+   * If you do not want any LLMs to scrape your research/projects content, set this to true.
+   *
+   * @link https://llmstxt.org/
+   * @default true
+   */
+  disableLlmstxt?: boolean
 }

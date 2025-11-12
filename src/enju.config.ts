@@ -47,4 +47,5 @@ export const EnjuConfig: EnjuFolioConfig = {
       projects: true,
     },
   },
+  disableLlmstxt: false,
 }

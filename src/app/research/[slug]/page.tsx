@@ -2,7 +2,7 @@ import ContentPage from '@/components/ContentPage'
 import { EnjuConfig } from '@/enju.config'
 import { buildMetadata } from '@/lib'
 import { showRss } from '@/lib/configHelper'
-import { generateRssFeed } from '@/utils'
+import { generateLLMsTxt, generateRssFeed } from '@/utils'
 import { readFilesPaths } from '@/utils/fileUtils'
 
 export async function generateMetadata({
@@ -41,6 +41,9 @@ export default async function ResearchContentPage({
 export async function generateStaticParams() {
   if (showRss) {
     await generateRssFeed()
+  }
+  if (!EnjuConfig.disableLlmstxt) {
+    await generateLLMsTxt()
   }
   const paths = await readFilesPaths('research')
   return paths.map(slug => ({ slug }))

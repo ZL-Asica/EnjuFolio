@@ -1,7 +1,8 @@
 {
   "editor.wordWrap": "on",
   "cSpell.words": [
-    "enju"
+    "enju",
+    "Llmstxt"
   ],
 
   // Disable the default formatter, use eslint instead
