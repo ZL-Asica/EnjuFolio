@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { CVViewer } from '@/components/CV/CVViewer'
 import { EnjuConfig } from '@/enju.config'
 import { buildMetadata, personJsonLd } from '@/lib'
-import { MetaAuthorName } from '@/lib/configHelper'
+import { authorPictureBase, MetaAuthorName } from '@/lib/configHelper'
 import { getCVUrls } from '@/lib/get-cv-urls'
 
 export const metadata: Metadata = buildMetadata({
@@ -20,6 +20,7 @@ export const metadata: Metadata = buildMetadata({
   ],
   urlPath: '/cv',
   ogType: 'website',
+  image: authorPictureBase,
 })
 
 export default function CVPage() {
