@@ -50,9 +50,9 @@ export default function RootLayout({
         <ScrollPositionBar />
         <BackToTop />
         <Header />
-        <main className="grow mt-20 px-4 sm:px-6 motion-safe:animate-mask-reveal">
+        <div className="grow mt-20 px-4 sm:px-6 motion-safe:animate-mask-reveal">
           {children}
-        </main>
+        </div>
         <Footer />
         <Analytics mode="production" />
       </body>

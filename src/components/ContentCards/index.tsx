@@ -10,7 +10,7 @@ const ContentCards = async ({ page }: ContentCardsProps) => {
   const summaries = await readAllFileMeta(page)
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-12">
+    <main className="max-w-4xl mx-auto px-4 py-12">
       <h1 className="text-3xl font-serif font-bold mb-8">
         {page.charAt(0).toUpperCase() + page.slice(1)}
       </h1>
@@ -38,7 +38,7 @@ const ContentCards = async ({ page }: ContentCardsProps) => {
           )
         })}
       </ul>
-    </div>
+    </main>
   )
 }
 
