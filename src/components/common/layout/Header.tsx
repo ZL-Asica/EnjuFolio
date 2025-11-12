@@ -3,7 +3,7 @@
 import { useClickOutside, useHideOnScrollDown, useToggle } from '@zl-asica/react'
 import Link from 'next/link'
 import { useEffect, useRef } from 'react'
-import { LuMenu } from 'react-icons/lu'
+import { LuMenu, LuX } from 'react-icons/lu'
 import { EnjuConfig } from '@/enju.config'
 import HeaderMenu from './HeaderMenu'
 
@@ -11,6 +11,7 @@ const Header = () => {
   const [isOpen, toggleOpen] = useToggle()
   const menuReference = useRef<HTMLDivElement>(null)
   const headerRef = useRef<HTMLElement>(null)
+  const buttonRef = useRef<HTMLButtonElement>(null)
   const isHeaderVisible = useHideOnScrollDown(headerRef)
 
   useClickOutside(menuReference, () => {
@@ -18,6 +19,25 @@ const Header = () => {
       toggleOpen()
     }
   })
+
+  useEffect(() => {
+    if (!isOpen) {
+      return
+    }
+
+    const firstLink = menuReference.current?.querySelector<HTMLAnchorElement>('a')
+    firstLink?.focus()
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        toggleOpen()
+        buttonRef.current?.focus()
+      }
+    }
+
+    window.addEventListener('keydown', onKeyDown)
+    return () => window.removeEventListener('keydown', onKeyDown)
+  }, [isOpen, toggleOpen])
 
   // Avoid scrolling when the menu is open (mobile)
   useEffect(() => {
@@ -40,39 +60,44 @@ const Header = () => {
       `}
     >
       {/* Navigation Menu */}
-      <nav className="relative mx-auto flex max-w-7xl items-center justify-between px-4 py-4 bg-background">
-        {/* Logo */}
+      <nav
+        className="relative mx-auto flex max-w-7xl items-center justify-between px-4 py-4 bg-background"
+        aria-label="Main navigation"
+      >
+        {/* Short Name */}
         <Link
           href="/"
-          aria-label="Navigate to Home Page"
           className="transition-all-300 text-hover-primary text-2xl font-bold text-foreground no-underline"
         >
-          <p>{EnjuConfig.siteShortName}</p>
+          {EnjuConfig.siteShortName}
         </Link>
 
         {/* Mobile Menu Button */}
         <button
           type="button"
-          className="transition-transform-300 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-foretext-foreground text-2xl bg-foreground text-background shadow-md hover:scale-110 md:hidden"
+          ref={buttonRef}
+          className="transition-transform-300 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-foreground text-2xl text-background shadow-md hover:scale-110 md:hidden"
           onClick={toggleOpen}
-          aria-label="Toggle menu"
-          aria-expanded={isOpen ? 'true' : 'false'}
+          aria-label={isOpen ? 'Close navigation menu' : 'Open navigation menu'}
+          aria-expanded={isOpen}
           aria-controls="mobile-menu"
+          aria-pressed={isOpen}
         >
-          {!isOpen && <LuMenu strokeWidth={2.5} />}
+          {isOpen ? <LuX strokeWidth={2.5} /> : <LuMenu strokeWidth={2.5} />}
         </button>
 
         {/* Mobile Menu */}
         <div
           id="mobile-menu"
           ref={menuReference}
-          className={`transition-all-300 fixed right-0 top-0 z-50 h-screen w-1/2 min-w-52 max-w-64 backdrop-blur-xl bg-background/70 shadow-2xl md:hidden
-            ${isOpen ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'}
+          aria-hidden={!isOpen}
+          className={`transition-all-300 fixed right-0 top-0 z-50 h-screen w-1/2 min-w-52 max-w-64 backdrop-blur-xl bg-background/95 shadow-2xl md:hidden
+            ${isOpen ? 'translate-x-0 opacity-100' : 'pointer-events-none translate-x-full opacity-0'}
           `}
         >
           <HeaderMenu
             isMobile
-            ulClassName="flex flex-col items-start gap-4 p-6"
+            className="flex flex-col items-start gap-4 p-6"
             onClickHandler={toggleOpen}
           />
         </div>
@@ -81,19 +106,15 @@ const Header = () => {
         {isOpen && (
           <div
             className="fixed inset-0 z-40 h-screen w-screen bg-black/70 transition-opacity-300 md:hidden"
-            onClick={(event_) => {
-              event_.preventDefault()
-              event_.stopPropagation()
-              toggleOpen()
-            }}
-            aria-hidden
+            onClick={toggleOpen}
+            aria-hidden="true"
           />
         )}
 
         {/* Desktop Menu */}
         <HeaderMenu
           isMobile={false}
-          ulClassName="hidden md:flex md:gap-6"
+          className="hidden md:flex md:gap-6"
         />
       </nav>
     </header>
