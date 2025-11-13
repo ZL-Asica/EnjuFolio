@@ -59,7 +59,7 @@ const buildSectionForType = async (
       = meta.venue != null && meta.venue !== ''
         ? ` — ${meta.venue}`
         : ''
-    const date = meta.date ?? meta.year ?? ''
+    const date = meta.date ?? ''
 
     mdLines.push(
       `- [${meta.title}](${url}): ${abstract} (${date}${venue && `,${venue}`})`,
