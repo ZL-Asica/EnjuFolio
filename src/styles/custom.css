@@ -1,0 +1,54 @@
+@theme static {
+  /* Primary Colors */
+  --color-primary-50: #fff1f3;
+  --color-primary-100: #ffe3e7;
+  --color-primary-200: #ffccd6;
+  --color-primary-300: #ff9fb2; /* Primary - Carnation Pink (Sakura) */
+  --color-primary-400: #fe6e8e;
+  --color-primary-500: #f83b69;
+  --color-primary-600: #e51955;
+  --color-primary-700: #c20e47;
+  --color-primary-800: #a20f43;
+  --color-primary-900: #8b103f;
+  --color-primary-950: #4e031e;
+
+  /* Secondary Colors */
+  --color-secondary-50: #f3f8fc;
+  --color-secondary-100: #e6f1f8;
+  --color-secondary-200: #c8e2ef;
+  --color-secondary-300: #91c7e0; /* Secondary - Spray (Sora) */
+  --color-secondary-400: #60afd0;
+  --color-secondary-500: #3b95bc;
+  --color-secondary-600: #2b789e;
+  --color-secondary-700: #246080;
+  --color-secondary-800: #21516b;
+  --color-secondary-900: #20455a;
+  --color-secondary-950: #152c3c;
+
+  /* Accent Colors */
+  --color-accent-50: #f1fcfa;
+  --color-accent-100: #cff8f0;
+  --color-accent-200: #9ff0e2;
+  --color-accent-300: #81e6d9; /* Accent - Turquoise Blue (Midori) */
+  --color-accent-400: #38c9bb;
+  --color-accent-500: #1fada2;
+  --color-accent-600: #168b84;
+  --color-accent-700: #166f6b;
+  --color-accent-800: #165957;
+  --color-accent-900: #174a48;
+  --color-accent-950: #072c2c;
+
+  /* Animation for news, hobbies, research, project cards fade up */
+  --animate-fade-up: fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+
+  @keyframes fade-up {
+    0% {
+      opacity: 0;
+      transform: translateY(8px) scale(0.98);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+}
