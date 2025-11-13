@@ -169,4 +169,39 @@ interface EnjuFolioHomePageConfig {
    * ```
    */
   newsDateFormat?: string
+
+  /**
+   * The number of years to look back for news items on the home page.
+   *
+   * News items older than this number of years will be hidden from the
+   * home page view, but still accessible on the full News page.
+   *
+   * This helps keep your home page fresh and focused on recent updates.
+   *
+   * Recommended values are between `1` and `5`.
+   *
+   * @default
+   * ```ts
+   * 2
+   * ```
+   */
+  newsCutoffYears?: number
+
+  /**
+   * The maximum number of news items to show on the home page.
+   *
+   * If you have more news items than this limit, only the most recent
+   * ones (up to this number) will be displayed on the home page.
+   *
+   * This keeps your home page concise and prevents it from being
+   * overwhelmed by too many updates.
+   *
+   * Recommended values are between `4` and `10`.
+   *
+   * @default
+   * ```ts
+   * 5
+   * ```
+   */
+  maximumNewsItemsOnHome?: number
 }

@@ -3,9 +3,6 @@ import { EnjuConfig } from '@/enju.config'
 import { getMDXContent, readAllFileMeta } from '@/utils'
 import SidebarSection from './SidebarSection'
 
-const MAX_NEWS_ON_HOME = 6
-const RECENT_YEARS = 2
-
 const NewsParagraph = ({ children }: { children: React.ReactNode }) => (
   <p className="text-sm leading-relaxed tracking-wide text-foreground">
     {children}
@@ -32,10 +29,10 @@ const News = async () => {
 
   const now = new Date()
   const cutoff = new Date(now)
-  cutoff.setFullYear(now.getFullYear() - RECENT_YEARS)
+  cutoff.setFullYear(now.getFullYear() - (EnjuConfig.homePage.newsCutoffYears ?? 2))
 
   const recentItems = allItems
-    .slice(0, MAX_NEWS_ON_HOME)
+    .slice(0, EnjuConfig.homePage.maximumNewsItemsOnHome ?? 5)
     .filter(({ date }) => new Date(date) >= cutoff)
 
   const recentKeys = new Set(recentItems.map(item => item.key))

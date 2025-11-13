@@ -21,6 +21,8 @@ export const EnjuConfig: EnjuFolioConfig = {
       { emoji: '✈️', name: 'Travel' },
     ],
     newsDateFormat: 'MMM, YYYY',
+    newsCutoffYears: 2,
+    maximumNewsItemsOnHome: 5,
   },
   metaInfo: {
     affiliation: 'Northwestern University',
