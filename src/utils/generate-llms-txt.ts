@@ -175,7 +175,7 @@ const generateEnjuLLMsTXTs = async (): Promise<void> => {
     '',
     description,
     '',
-    `This is the academic portfolio of **${author}**${homePage.pronounce !== undefined && ` (${homePage.pronounce})`}, currently ${homePage.position}${affiliationName && ` at ${affiliationName}`}.`,
+    `This is the academic portfolio of **${author}**${homePage.pronouns !== undefined && ` (${homePage.pronouns})`}, currently ${homePage.position}${affiliationName && ` at ${affiliationName}`}.`,
     '',
     'The site is built with EnjuFolio (Next.js-based) developed by [ZL Asica](https://github.com/ZL-Asica).',
     'It organizes work into research projects, technical systems, and a CV.',

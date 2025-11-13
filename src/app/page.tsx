@@ -20,7 +20,7 @@ export default function HomePage() {
     image: authorPictureBase,
   })
 
-  const { name, otherInfo, pronounce, position, hobbies } = EnjuConfig.homePage
+  const { name, otherInfo, pronouns, position, hobbies } = EnjuConfig.homePage
 
   return (
     <>
@@ -56,12 +56,12 @@ export default function HomePage() {
               </p>
             )}
 
-            {!isBlank(pronounce) && (
+            {!isBlank(pronouns) && (
               <p
                 className="text-xs text-muted-foreground"
                 aria-label="Pronouns"
               >
-                {pronounce}
+                {pronouns}
               </p>
             )}
           </div>

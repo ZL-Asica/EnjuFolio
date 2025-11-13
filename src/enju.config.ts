@@ -11,7 +11,7 @@ export const EnjuConfig: EnjuFolioConfig = {
     name: 'Zhuoran (Elara) Liu',
     picture: '/images/profile.webp',
     otherInfo: '刘 卓然',
-    pronounce: '(She / Her)',
+    pronouns: '(She / Her)',
     position: 'Master of Science in Computer Science @ Northwestern University',
     hobbies: [
       { emoji: '☕', name: 'Pour-over coffee' },

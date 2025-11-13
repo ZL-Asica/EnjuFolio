@@ -32,7 +32,7 @@ const socialData: SocialData = {
     label: 'Instagram',
   },
   orcid: {
-    url: EnjuConfig.socialLinks.orcid,
+    url: `https://orcid.org/${EnjuConfig.socialLinks.orcid}`,
     Icon: FaOrcid,
     label: 'ORCID',
   },
