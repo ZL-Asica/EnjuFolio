@@ -1,0 +1,5 @@
+# Ensure consistent line endings across OS
+* text=auto
+
+# Ignore any binaries
+*.lock binary

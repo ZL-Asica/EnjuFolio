@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import { EnjuConfig } from '@/enju.config'
 import SocialMediaLinks from './SocialMediaLinks'
 
@@ -14,25 +13,25 @@ const Footer = () => {
           {/* Please leave this theme credit intact. Really appreciate it! */}
           Themed by
           {' '}
-          <Link
-            href="https://github.com/ZL-Asica/EnjuFolio"
+          <a
+            href="https://enju.zla.app/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-hover-primary underline-interactive"
           >
             EnjuFolio
-          </Link>
+          </a>
           {' '}
           · Crafted by
           {' '}
-          <Link
-            href="https://zla.app/"
+          <a
+            href="https://elaraliu.com/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-hover-primary underline-interactive"
           >
-            ZL Asica (Elara Liu)
-          </Link>
+            Elara Liu
+          </a>
         </p>
       </div>
     </footer>

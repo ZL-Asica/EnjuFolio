@@ -1,0 +1,32 @@
+changelog:
+  exclude:
+    labels: [ignore-for-release, wip, dependencies]
+    authors: ['dependabot[bot]', renovate-bot]
+
+  categories:
+    - title: 🚀 Features
+      labels: [feature, enhancement]
+
+    - title: 🐛 Bug Fixes
+      labels: [bug, fix]
+
+    - title: 🛠️ Improvements
+      labels: [refactor, optimization, performance]
+
+    - title: 📦 Dependencies
+      labels: [dependencies]
+
+    - title: 📖 Documentation
+      labels: [docs]
+
+    - title: 🧰 Internal
+      labels: [internal, ci, workflow, build]
+
+    - title: 💥 Breaking Changes
+      labels: [breaking-change, Semver-Major]
+
+    - title: 🎨 UI UX & Styling
+      labels: [ui, ux, design]
+
+    - title: 🔄 Miscellaneous
+      labels: ['*']

@@ -65,7 +65,7 @@ jobs:
           name: ${{ env.TAG_NAME }} # Release Name
           body: |
             📢 **EnjuFolio new version released!** 🚀
-            新版本发布！请查看自动生成的 Release Notes 🔽
+            Release Notes 🔽
 
             ## Full Changelog
             [View Full Changelog](https://github.com/ZL-Asica/EnjuFolio/blob/main/CHANGELOG.md)
