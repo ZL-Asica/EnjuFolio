@@ -18,7 +18,6 @@ interface FileMeta {
   venue?: string
   status?: string
   role?: string
-  year: string
   date: string
   abstract: string
   slug: string

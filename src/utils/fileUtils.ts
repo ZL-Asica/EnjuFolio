@@ -52,7 +52,6 @@ export const readAllFileMeta = async (
         status: md.status,
         role: md.role,
         category: md.category,
-        year: String(md.year ?? new Date().getFullYear()),
         date: md.date ?? new Date().toISOString(),
         abstract: md.abstract,
         redirect: md.redirect,
