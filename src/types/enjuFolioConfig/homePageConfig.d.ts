@@ -100,8 +100,9 @@ interface EnjuFolioHomePageConfig {
   /**
    * Your pronouns, if you’d like to show them on the home page.
    *
-   * Note: the field name is `pronounce` for historical reasons, but this
-   * is really for pronouns like “she/her”, “he/him”, “they/them”, etc.
+   * Note: the field is for your personal pronouns like “she/her”,
+   * “he/him”, “they/them”, etc. It’s not for honorifics or titles.
+   *
    *
    * This will appear next to or under your name as a gentle cue to visitors.
    * If you’d rather not display pronouns, you can leave this empty.

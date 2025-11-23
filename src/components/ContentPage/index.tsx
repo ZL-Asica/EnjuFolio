@@ -4,29 +4,32 @@ import { EnjuConfig } from '@/enju.config'
 import { buildArticleJsonLd } from '@/lib'
 import { generateTOC } from '@/utils'
 import { getMDXContent } from '@/utils/mdx-loader'
+import { SingleResearchProjectPageDescription } from '@/utils/pages-description'
 import ContentHeader from './ContentHeader'
 
 const TOC = dynamic(async () => import('@/components/common/TOC'))
 
 interface ContentPageProps {
-  page: string
+  pageType: PageType
   slug: string
 }
 
-const ContentPage = async ({ page, slug }: ContentPageProps) => {
-  const { Content, frontmatter } = await getMDXContent(page, slug)
+const ContentPage = async ({ pageType, slug }: ContentPageProps) => {
+  const { Content, frontmatter } = await getMDXContent(pageType, slug)
 
   if (frontmatter.redirect !== undefined && frontmatter.redirect !== '') {
     redirect(frontmatter.redirect)
   }
 
-  const toc = await generateTOC(page, slug)
+  const toc = await generateTOC(pageType, slug)
+
+  const pageTitle = frontmatter.title || 'Untitled'
 
   const jsonLd = buildArticleJsonLd({
-    title: `${frontmatter.title} | ${EnjuConfig.subTitle}`,
-    description: frontmatter.abstract,
+    title: `${pageTitle} | ${EnjuConfig.subTitle}`,
+    description: SingleResearchProjectPageDescription(pageTitle, pageType, frontmatter.abstract),
     keywords: frontmatter.keywords,
-    urlPath: `/${page}/${slug}`,
+    urlPath: `/${pageType}/${slug}`,
     image: frontmatter.thumbnail,
   })
 
