@@ -25,17 +25,18 @@ const SidebarSection = ({
         'space-y-3',
         index !== undefined
         && `motion-safe:opacity-0 motion-safe:animate-fade-up
-        motion-reduce:opacity-100 motion-reduce:animate-none`,
+           motion-reduce:opacity-100 motion-reduce:animate-none`,
         className,
       )}
       style={{
-        animationDelay: index !== undefined ? `${Math.min(index, 8) * 120}ms` : undefined,
+        animationDelay:
+          index !== undefined ? `${Math.min(index, 8) * 120}ms` : undefined,
       }}
     >
-      <div className="flex items-baseline gap-3">
+      <div className="flex items-baseline gap-2">
         <h2
           id={id}
-          className="text-sm font-semibold uppercase tracking-[0.18em] text-foreground"
+          className="text-xs font-semibold uppercase tracking-[0.18em] text-foreground"
         >
           {title}
         </h2>
