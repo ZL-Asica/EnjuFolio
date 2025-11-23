@@ -30,10 +30,10 @@ export const slugPrefix = (slug: string, level: number): string => {
 }
 
 export const generateTOC = async (
-  page: string,
+  pageType: PageType,
   slug: string,
 ): Promise<TocItems[]> => {
-  const content = await readFileContent(page, slug)
+  const content = await readFileContent(slug, pageType)
 
   const headingRegex = /^(#{2,6})\s+(\S.*)$/gm
   const toc: TocItems[] = []

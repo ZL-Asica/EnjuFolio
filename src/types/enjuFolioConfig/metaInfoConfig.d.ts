@@ -1,5 +1,23 @@
 interface EnjuFolioMetaInfoConfig {
   /**
+   * A brief personal description or bio.
+   *
+   * This short paragraph gives visitors a quick overview of who you are
+   * and what you do. It’s often shown in structured data (JSON-LD) for
+   * search engines, LLMs, and other tools to understand your profile better.
+   *
+   * Keep it concise and focused on key aspects like:
+   * - Your profession or role
+   * - Main interests or expertise
+   * - Notable affiliations or accomplishments
+   *
+   * @example
+   * ```ts
+   * "PhD applicant in Human–Computer Interaction and human-centered AI foreveryday health, focusing on intelligent systems that help patients, caregivers, and clinicians build shared understanding from longitudinal health and experience data."
+   * ```
+   */
+  personalDescription?: string
+  /**
    * Your current affiliation(s).
    *
    * This is used in structured data (JSON-LD) so that search engines and
@@ -104,12 +122,54 @@ interface EnjuFolioMetaInfoConfig {
    * This helps search engines understand that these names all refer to
    * the same person. You can safely leave this blank if it doesn’t apply.
    *
+   * If you leave this empty, the theme will try to use `otherNames` from
+   * the main config (deduplicate by excluding the primary name).
+   *
    * @example
    * ```ts
    * ["ZL Asica", "Elara"]
    * ```
    */
   alsoKnownAs?: string | string[]
+
+  /**
+   * Areas of expertise or topics you are knowledgeable about.
+   *
+   * This information is included in structured data (JSON-LD) to help
+   * search engines and other tools understand your professional skills
+   * and knowledge areas.
+   *
+   * Examples:
+   * - Your research interests
+   * - Key skills or domains you work in
+   *
+   * You can provide this as a single string or an array of strings.
+   *
+   * If you leave this blank, the system will try to reuse `skills`.
+   *
+   * @example
+   * ```ts
+   * ["Human-Computer Interaction", "Machine Learning", "Data Visualization"]
+   * ```
+   */
+  knowsAbout?: string | string[]
+
+  /**
+   * Similar to `knowsAbout`, this field represents your skills.
+   *
+   * It is included in structured data (JSON-LD) to highlight your
+   * competencies and areas of expertise for search engines and tools.
+   *
+   * You can set this as a single string or an array of strings.
+   *
+   * If you leave this blank, the system will try to reuse `knowsAbout`.
+   *
+   * @example
+   * ```ts
+   * ["Python", "R", "JavaScript"]
+   * ```
+   */
+  skills?: string | string[]
 
   /**
    * URLs to profiles or sites that should be recognized as “the same person”
@@ -129,4 +189,29 @@ interface EnjuFolioMetaInfoConfig {
    * ```
    */
   sameAs?: string | string[]
+
+  /**
+   * Guidelines or instructions will be inserted into the [llms.txt](https://enju.zla.app/guide/meta-seo#_4-llm-crawlers-and-llms-txt) content.
+   *
+   * This helps large language models and automated crawlers understand
+   * how you want your content to be used.
+   *
+   * You can specify your preferences regarding content usage,
+   * citation requirements, and any restrictions you wish to impose.
+   *
+   * By providing clear guidelines, you can help ensure that your work
+   * is respected and properly attributed when accessed by AI systems.
+   *
+   * Using Markdown formatting is supported for better readability.
+   *
+   * @example
+   * ```markdown
+   * ## Interpretation guidelines
+   *
+   * - Summaries should emphasize my research areas (HCI, human-centered AI, everyday health), methods (system building, mixed-methods, wearable sensing), and concrete contributions.
+   * - Do not infer grades, rankings, or funding information that are not explicitly stated.
+   * - When publication status is "in preparation" or "under review", describe them as in-progress work, not accepted papers.
+   * ```
+   */
+  llmsTxtGuidelines?: string
 }

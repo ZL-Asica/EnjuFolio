@@ -4,6 +4,7 @@ import { buildMetadata } from '@/lib'
 import { showRss } from '@/lib/configHelper'
 import { generateLLMsTxt, generateRssFeed } from '@/utils'
 import { readFilesPaths } from '@/utils/fileUtils'
+import { SingleResearchProjectPageDescription } from '@/utils/pages-description'
 
 export async function generateMetadata({
   params,
@@ -16,9 +17,11 @@ export async function generateMetadata({
     `@/contents/research/${slug}.mdx`,
   )) as { frontmatter: FileMeta }
 
+  const pageTitle = frontmatter.title
+
   return buildMetadata({
-    title: `${frontmatter.title} | ${EnjuConfig.subTitle}`,
-    description: frontmatter.abstract,
+    title: `${pageTitle} | ${EnjuConfig.subTitle}`,
+    description: SingleResearchProjectPageDescription(pageTitle, 'research', frontmatter.abstract),
     keywords: ['research', ...(frontmatter.keywords || [])],
     urlPath: `/research/${slug}`,
     ogType: 'article',
@@ -34,7 +37,7 @@ export default async function ResearchContentPage({
   const { slug } = await params
 
   return (
-    <ContentPage page="research" slug={slug} />
+    <ContentPage pageType="research" slug={slug} />
   )
 }
 

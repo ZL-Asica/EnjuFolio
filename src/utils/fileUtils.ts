@@ -70,10 +70,12 @@ export const readAllFileMeta = async (
 }
 
 export const readFileContent = async (
-  fileDir: string,
   slug: string,
+  pageType?: PageType,
 ): Promise<string> => {
-  const actualPath = path.join(baseDir, fileDir, `${slug}.mdx`)
+  const fileRelativePath = pageType ? path.join(pageType, `${slug}.mdx`) : `${slug}.mdx`
+
+  const actualPath = path.join(baseDir, fileRelativePath)
 
   let content = ''
   try {

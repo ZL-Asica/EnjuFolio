@@ -24,24 +24,26 @@ export const buildMetadata = ({
   const fullUrl = `${siteBaseUrl}${urlPath}`
   const imageUrl = generateImageUrl(siteBaseUrl, image)
 
+  const generalKeywords = [
+    MetaAuthorName,
+    EnjuConfig.author.split(' ')[0],
+    'Portfolio',
+    'Academic',
+    ...keywords, // Unpack keywords
+  ]
+
   const basicMetadata: Metadata = {
     title,
     description,
     applicationName: 'Enju Folio',
-    generator: 'Next.js with Enju Folio',
-    keywords: [
-      MetaAuthorName,
-      EnjuConfig.author.split(' ')[0],
-      'Portfolio',
-      'Academic',
-      ...keywords, // Unpack keywords
-    ],
+    generator: 'Next.js with Enju Folio (https://github.com/ZL-Asica/EnjuFolio)',
+    keywords: generalKeywords,
     openGraph: {
       type: ogType,
       title,
       description,
       url: fullUrl,
-      tags: ['Portfolio', 'Academic', ...keywords],
+      tags: generalKeywords,
       siteName: EnjuConfig.title,
       locale: 'en_US',
     },

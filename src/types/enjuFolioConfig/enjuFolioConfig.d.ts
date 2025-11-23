@@ -69,12 +69,15 @@ interface EnjuFolioConfig {
    * Write this as if you’re introducing your work to a kind, curious stranger.
    * What should they know at a glance about you and this website?
    *
+   * Leave it blank to use the default general description which will also working
+   * pretty well for most research portfolios.
+   *
    * @example
    * ```ts
    * "A portfolio for my academic work at the intersection of HCI, systems, and health."
    * ```
    */
-  description: string
+  description?: string
 
   /**
    * The full public URL of your site or portfolio.
@@ -188,6 +191,13 @@ interface EnjuFolioConfig {
    *
    * If the homepage is your “front door”, `metaInfo` is how your site
    * introduces itself to the wider web.
+   *
+   * These information is extremely important for search engines, LLMs,
+   * and other external services to correctly identify and represent you.
+   *
+   * If any companies, institutions, or people intersects your work and
+   * search you through search engines or AI tools, this is how you can
+   * optimize the results as you expect.
    */
   metaInfo: EnjuFolioMetaInfoConfig
 

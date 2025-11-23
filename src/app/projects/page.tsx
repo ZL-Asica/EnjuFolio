@@ -2,11 +2,11 @@ import type { Metadata } from 'next'
 import ContentCards from '@/components/ContentCards'
 import { EnjuConfig } from '@/enju.config'
 import { buildMetadata, buildWebsiteJsonLd } from '@/lib'
-import { MetaAuthorName } from '@/lib/configHelper'
+import { ProjectsPageDescription } from '@/utils/pages-description'
 
 export const metadata: Metadata = buildMetadata({
   title: `Projects | ${EnjuConfig.subTitle}`,
-  description: `Discover ${MetaAuthorName}’s personal technical projects, design systems, and experiments.`,
+  description: ProjectsPageDescription,
   keywords: ['project'],
   urlPath: '/projects',
   ogType: 'website',
@@ -15,7 +15,7 @@ export const metadata: Metadata = buildMetadata({
 export default async function ProjectPage() {
   const jsonld = buildWebsiteJsonLd({
     title: `Projects | ${EnjuConfig.subTitle}`,
-    description: `Collection of personal and open-source projects by ${MetaAuthorName}.`,
+    description: ProjectsPageDescription,
     keywords: ['project'],
     urlPath: '/projects',
   })

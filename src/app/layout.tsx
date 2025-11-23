@@ -3,9 +3,9 @@ import { Analytics } from '@vercel/analytics/next'
 import { IBM_Plex_Serif, Inter, JetBrains_Mono } from 'next/font/google'
 import { BackToTop, Footer, Header, ScrollPositionBar } from '@/components/common/layout'
 import { EnjuConfig } from '@/enju.config'
-
 import { buildMetadata } from '@/lib'
 import { authorPictureBase, showRss } from '@/lib/configHelper'
+import { HomePageDescription } from '@/utils/pages-description'
 import './globals.css'
 
 const inter = Inter({
@@ -30,7 +30,7 @@ const jetBrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = buildMetadata({
   title: EnjuConfig.title,
-  description: EnjuConfig.description,
+  description: HomePageDescription,
   urlPath: '/',
   ogType: 'website',
   image: authorPictureBase,
