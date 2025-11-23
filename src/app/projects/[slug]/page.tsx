@@ -2,6 +2,7 @@ import ContentPage from '@/components/ContentPage'
 import { EnjuConfig } from '@/enju.config'
 import { buildMetadata } from '@/lib'
 import { readFilesPaths } from '@/utils/fileUtils'
+import { SingleResearchProjectPageDescription } from '@/utils/pages-description'
 
 export async function generateMetadata({
   params,
@@ -14,9 +15,11 @@ export async function generateMetadata({
     `@/contents/projects/${slug}.mdx`,
   )) as { frontmatter: FileMeta }
 
+  const pageTitle = frontmatter.title
+
   return buildMetadata({
-    title: `${frontmatter.title} | ${EnjuConfig.subTitle}`,
-    description: frontmatter.abstract,
+    title: `${pageTitle} | ${EnjuConfig.subTitle}`,
+    description: SingleResearchProjectPageDescription(pageTitle, 'projects', frontmatter.abstract),
     keywords: ['project', ...(frontmatter.keywords || [])],
     urlPath: `/projects/${slug}`,
     ogType: 'article',
@@ -32,7 +35,7 @@ export default async function ProjectContentPage({
   const { slug } = await params
 
   return (
-    <ContentPage page="projects" slug={slug} />
+    <ContentPage pageType="projects" slug={slug} />
   )
 }
 

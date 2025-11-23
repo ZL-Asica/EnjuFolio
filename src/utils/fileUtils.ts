@@ -70,7 +70,7 @@ export const readAllFileMeta = async (
 }
 
 export const readFileContent = async (
-  fileDir: string,
+  fileDir: PageType,
   slug: string,
 ): Promise<string> => {
   const actualPath = path.join(baseDir, fileDir, `${slug}.mdx`)

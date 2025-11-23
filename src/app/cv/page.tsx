@@ -4,10 +4,11 @@ import { EnjuConfig } from '@/enju.config'
 import { buildMetadata, personJsonLd } from '@/lib'
 import { authorPictureBase, MetaAuthorName } from '@/lib/configHelper'
 import { getCVUrls } from '@/lib/get-cv-urls'
+import { CVPageDescription } from '@/utils/pages-description'
 
 export const metadata: Metadata = buildMetadata({
   title: `Curriculum Vitae | ${EnjuConfig.subTitle}`,
-  description: `View the academic CV of ${MetaAuthorName}, including education, research interests, teaching, and skills.`,
+  description: CVPageDescription,
   keywords: [
     'cv',
     'curriculum vitae',

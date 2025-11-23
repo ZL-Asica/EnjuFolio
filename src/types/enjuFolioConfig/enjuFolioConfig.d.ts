@@ -69,12 +69,15 @@ interface EnjuFolioConfig {
    * Write this as if you’re introducing your work to a kind, curious stranger.
    * What should they know at a glance about you and this website?
    *
+   * Leave it blank to use the default general description which will also working
+   * pretty well for most research portfolios.
+   *
    * @example
    * ```ts
    * "A portfolio for my academic work at the intersection of HCI, systems, and health."
    * ```
    */
-  description: string
+  description?: string
 
   /**
    * The full public URL of your site or portfolio.
