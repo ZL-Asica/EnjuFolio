@@ -39,11 +39,19 @@ const buildJsonLdBase = ({
 }: JsonLdBase) => {
   const fullUrl = `${siteBaseUrl}${urlPath}`
 
+  const generalKeywords = [
+    MetaAuthorName,
+    EnjuConfig.author.split(' ')[0],
+    'portfolio',
+    'academic',
+    ...keywords, // Unpack keywords
+  ]
+
   return {
     name: title,
     url: fullUrl,
     description,
-    keywords: ['portfolio', 'academic', ...keywords],
+    keywords: generalKeywords,
     editor: MetaAuthorName,
     publisher: MetaAuthorName,
     image: generateImageUrl(siteBaseUrl, image),
