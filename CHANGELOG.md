@@ -5,6 +5,27 @@ All notable changes to this project will be documented in this file.
 The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.0] - 2025-11-23
+
+### Added
+
+- `AILLMGuides` component to display the AILLM Guides section on the home page.
+  - As the prompt for AI/LLM-based systems to summarize and understand the author's work and website's content.
+  - Collapsible section design to avoid overwhelming the UI.
+  - Custom styling for lists within the guides for better readability.
+  - Content stored in `src/contents/AILLMGuides.mdx` for easy editing.
+
+### Changed
+
+- Improve SEO for meta and JSON-LD
+  - Extract description to one place in `src/utils/pages-descriptions.ts` for consistency and easier updates.
+  - Add multiple fileds in JSON-LD for better search engine understanding and LLM's consumption.
+  - Updated `enju.config.ts` to reflect these changes.
+
+- Improve `llms.txt` generation
+  - Some minor stylling issues fixed.
+  - Add slot to inject custom content at the top of the file.
+
 ## [0.1.0] - 2025-11-13
 
 ### Added
