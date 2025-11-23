@@ -1,7 +1,22 @@
 import type { CreativeWork, Person, WebSite, WithContext } from 'schema-dts'
+import process from 'node:process'
 import { EnjuConfig } from '@/enju.config'
 import { authorPicture, familyName, givenName, MetaAuthorName, siteBaseUrl } from '@/lib/configHelper'
 import { generateImageUrl } from '@/utils'
+
+const actualSiteBaseUrl = process.env.NODE_ENV === 'production'
+  ? EnjuConfig.siteUrl
+  : 'http://localhost:3000'
+
+const authorPersonalDescription = EnjuConfig.metaInfo.personalDescription
+
+const authorAdditionalNames = EnjuConfig.metaInfo.alsoKnownAs !== undefined
+  ? EnjuConfig.metaInfo.alsoKnownAs
+  : typeof EnjuConfig.otherNames === 'string'
+    ? EnjuConfig.otherNames
+    : EnjuConfig.otherNames !== undefined
+      ? EnjuConfig.otherNames.filter(name => name !== MetaAuthorName)
+      : undefined
 
 interface JsonLdBase {
   title: string
@@ -15,19 +30,19 @@ export const personJsonLd: WithContext<Person> = {
   '@context': 'https://schema.org',
   '@type': 'Person',
   'name': MetaAuthorName,
-  'additionalName': EnjuConfig.metaInfo.alsoKnownAs !== undefined
-    ? EnjuConfig.metaInfo.alsoKnownAs
-    : EnjuConfig.author !== MetaAuthorName
-      ? EnjuConfig.author
-      : undefined,
-  'description': EnjuConfig.description,
-  'affiliation': EnjuConfig.metaInfo.affiliation,
-  'alumniOf': EnjuConfig.metaInfo.alumniOf,
+  'alternateName': authorAdditionalNames,
+  'additionalName': authorAdditionalNames,
   'familyName': familyName,
   'givenName': givenName,
-  'image': authorPicture,
-  'sameAs': EnjuConfig.metaInfo.sameAs,
   'url': siteBaseUrl,
+  'image': authorPicture,
+  'affiliation': EnjuConfig.metaInfo.affiliation,
+  'alumniOf': EnjuConfig.metaInfo.alumniOf,
+  'jobTitle': EnjuConfig.homePage.position,
+  'description': authorPersonalDescription ?? undefined,
+  'knowsAbout': EnjuConfig.metaInfo.knowsAbout ?? EnjuConfig.metaInfo.skills,
+  'skills': EnjuConfig.metaInfo.skills ?? EnjuConfig.metaInfo.knowsAbout,
+  'sameAs': EnjuConfig.metaInfo.sameAs,
 }
 
 const buildJsonLdBase = ({
@@ -37,7 +52,7 @@ const buildJsonLdBase = ({
   urlPath = '/',
   image,
 }: JsonLdBase) => {
-  const fullUrl = `${siteBaseUrl}${urlPath}`
+  const fullUrl = `${actualSiteBaseUrl}${urlPath}`
 
   const generalKeywords = [
     MetaAuthorName,
@@ -54,7 +69,7 @@ const buildJsonLdBase = ({
     keywords: generalKeywords,
     editor: MetaAuthorName,
     publisher: MetaAuthorName,
-    image: generateImageUrl(siteBaseUrl, image),
+    image: generateImageUrl(actualSiteBaseUrl, image),
     author: personJsonLd,
   }
 }

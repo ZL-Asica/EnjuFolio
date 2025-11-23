@@ -191,6 +191,13 @@ interface EnjuFolioConfig {
    *
    * If the homepage is your “front door”, `metaInfo` is how your site
    * introduces itself to the wider web.
+   *
+   * These information is extremely important for search engines, LLMs,
+   * and other external services to correctly identify and represent you.
+   *
+   * If any companies, institutions, or people intersects your work and
+   * search you through search engines or AI tools, this is how you can
+   * optimize the results as you expect.
    */
   metaInfo: EnjuFolioMetaInfoConfig
 

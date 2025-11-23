@@ -5,6 +5,7 @@ import path from 'node:path'
 import process from 'node:process'
 import { EnjuConfig } from '@/enju.config'
 import { readAllFileMeta } from '@/utils'
+import { CVPageDescription, HomePageDescription, ProjectsPageDescription, ResearchPageDescription } from './pages-description'
 
 // ===== helpers =====
 const CONTENT_ROOT = path.join(process.cwd(), 'src', 'contents')
@@ -81,11 +82,11 @@ const buildSectionForType = async (
 
     if (content == null) {
       llmsBlocks.push(
-        `# ${meta.title}\n\nContent not available in source files; see ${url} for the rendered version.`,
+        `# ${meta.title}\n\nContent not available in source files; see ${url} for the rendered version.\n`,
       )
     }
     else {
-      llmsBlocks.push(`# ${meta.title}\n\n${content}`)
+      llmsBlocks.push(`# ${meta.title}\n\n${content}\n`)
     }
   }
 
@@ -102,10 +103,10 @@ const buildStaticSection = (siteUrl: string, subTitle: string): {
   const mdLines = [
     '## Static pages',
     '',
-    `- [Home](${siteUrl}/): Landing page with overview, highlight news, and navigation to research and projects.`,
-    `- [CV](${siteUrl}/cv): Full curriculum vitae for academic and industry review.`,
-    `- [Research](${siteUrl}/research): All research projects and papers.`,
-    `- [Projects](${siteUrl}/projects): Technical projects, systems, and tools.`,
+    `- [Home](${siteUrl}/): Landing page with overview, highlight news, and navigation to research and projects. High-level introduction and current status.`,
+    `- [Research](${siteUrl}/research): Selected research projects with methods, publications, roles, methods, and venues.`,
+    `- [Projects](${siteUrl}/projects): Technical and infrastructure projects relevant to ${EnjuConfig.author}'s research practice.`,
+    `- [CV](${siteUrl}/cv): Authoritative record of publications, positions, and timelines (via embedded PDF).`,
   ]
 
   const llmsBlocks: string[] = []
@@ -114,22 +115,22 @@ const buildStaticSection = (siteUrl: string, subTitle: string): {
     {
       path: `${siteUrl}/`,
       title: 'Home',
-      desc: 'Landing page with overview, highlight news, and navigation to research and projects.',
+      desc: HomePageDescription,
     },
     {
       path: `${siteUrl}/cv`,
       title: `CV | ${subTitle}`,
-      desc: 'Curriculum vitae describing education, research, teaching, and professional experience.',
+      desc: CVPageDescription,
     },
     {
       path: `${siteUrl}/research`,
       title: `Research | ${subTitle}`,
-      desc: 'Listing of research projects and papers with abstracts, venues, and advisors.',
+      desc: ResearchPageDescription,
     },
     {
       path: `${siteUrl}/projects`,
       title: `Projects | ${subTitle}`,
-      desc: 'Listing of technical projects, systems, and tools with short descriptions.',
+      desc: ProjectsPageDescription,
     },
   ]
 
@@ -168,22 +169,29 @@ const generateEnjuLLMsTXTs = async (): Promise<void> => {
       ? ''
       : typeof metaInfo.affiliation === 'string'
         ? metaInfo.affiliation
-        : metaInfo.affiliation[0]
+        : metaInfo.affiliation.join(', ')
+
+  const llmGuidelines = metaInfo.llmsTxtGuidelines !== undefined
+    ? `${metaInfo.llmsTxtGuidelines.trim()}`
+    : ''
 
   const headerMd = [
-    `# ${title}`,
+    `# ${title} (${siteUrl})`,
     '',
     description,
     '',
-    `This is the academic portfolio of **${author}**${homePage.pronouns !== undefined && ` (${homePage.pronouns})`}, currently ${homePage.position}${affiliationName && ` at ${affiliationName}`}.`,
+    `This is the academic portfolio of **${author}**${homePage.pronouns !== undefined && ` ${homePage.pronouns}`}, currently ${homePage.position}${affiliationName && ` at ${affiliationName}`}.`,
     '',
     'The site is built with EnjuFolio (Next.js-based) developed by [ZL Asica](https://github.com/ZL-Asica).',
     'It organizes work into research projects, technical systems, and a CV.',
     '',
+    llmGuidelines,
+    '',
   ].join('\n')
 
   let markdownContent = `${headerMd}\n`
-  const llmsParts: string[] = []
+
+  const llmsParts: string[] = [llmGuidelines]
 
   // Static pages
   const staticSection = buildStaticSection(siteUrl, subTitle)
