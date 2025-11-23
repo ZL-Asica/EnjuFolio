@@ -7,7 +7,7 @@ export const HomePageDescription
   = customDescription
     ?? `Landing page for ${EnjuConfig.subTitle} with overview, highlight news, and navigation to research and projects. High-level introduction and current status.`
 
-export const ResearchPageDescription = `${customDescriptionForSubPages}Selected research projects for ${EnjuConfig.author}, with methods, publications, roles, methods, and venues.`
+export const ResearchPageDescription = `${customDescriptionForSubPages}Selected research projects for ${EnjuConfig.author}, with methods, publications, roles, and venues.`
 
 export const ProjectsPageDescription = `${customDescriptionForSubPages}Technical and infrastructure projects relevant to ${EnjuConfig.author}'s research practice.`
 

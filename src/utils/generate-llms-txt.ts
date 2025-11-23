@@ -103,10 +103,10 @@ const buildStaticSection = (siteUrl: string, subTitle: string): {
   const mdLines = [
     '## Static pages',
     '',
-    `- [Home](${siteUrl}/): Landing page with overview, highlight news, and navigation to research and projects. High-level introduction and current status.`,
-    `- [Research](${siteUrl}/research): Selected research projects with methods, publications, roles, methods, and venues.`,
-    `- [Projects](${siteUrl}/projects): Technical and infrastructure projects relevant to ${EnjuConfig.author}'s research practice.`,
-    `- [CV](${siteUrl}/cv): Authoritative record of publications, positions, and timelines (via embedded PDF).`,
+    `- [Home](${siteUrl}/): ${HomePageDescription}`,
+    `- [Research](${siteUrl}/research): ${ResearchPageDescription}`,
+    `- [Projects](${siteUrl}/projects): ${ProjectsPageDescription}`,
+    `- [CV](${siteUrl}/cv): ${CVPageDescription}`,
   ]
 
   const llmsBlocks: string[] = []
@@ -180,7 +180,7 @@ const generateEnjuLLMsTXTs = async (): Promise<void> => {
     '',
     description,
     '',
-    `This is the academic portfolio of **${author}**${homePage.pronouns !== undefined && ` ${homePage.pronouns}`}, currently ${homePage.position}${affiliationName && ` at ${affiliationName}`}.`,
+    `This is the academic portfolio of **${author}**${homePage.pronouns !== undefined ? ` ${homePage.pronouns.trim()}` : ''}, currently ${homePage.position}${affiliationName && ` at ${affiliationName}`}.`,
     '',
     'The site is built with EnjuFolio (Next.js-based) developed by [ZL Asica](https://github.com/ZL-Asica).',
     'It organizes work into research projects, technical systems, and a CV.',
