@@ -11,7 +11,7 @@ venue: 'CHI 2027'
 status: 'In preparation'
 role: 'Co-author'
 abstract: >
-  I am conducting a codebook-based systematic review of health-related HCI that centers caregivers, mapping who is recruited, how caregiver–patient relationships are framed, and where clinical authority is reproduced or challenged, to guide future work toward methods that keep power and relational care visible.
+  HCI health research often focuses on the patient, treating caregivers as background infrastructure rather than active users. This systematic review analyzes how caregivers are recruited, represented, and designed for across the HCI corpus. By mapping patterns of power, clinical authority, and interdependence, we articulate how current methods obscure the relational nature of care and offer a framework for more equitable caregiver involvement.
 keywords:
   - Caregivers
   - Health-related HCI
@@ -22,8 +22,46 @@ keywords:
   - Stakeholder representation
 ---
 
-## Overview
+## The Challenge
 
-Working with Dr. Hee Rin Lee, I am using a **systematic, codebook-based review** to examine how caregivers appear in health-related HCI research—not just as an extra user group, but as actors embedded in relationships of care, dependence, and authority. Starting from a broad corpus of CHI and related venues, I developed an initial coding scheme that tracks who is recruited (caregivers, patients, both), how their roles are described, what kinds of contextual knowledge each is treated as bringing, and whether the relationship between them is treated as background or as something to be designed with. In dual-coder sessions, every ambiguous label—“family member,” “carer,” “informal supporter,” “primary user”—became a prompt to refine the codebook, so that we could systematically capture when studies treat care as a one-directional burden and when they acknowledge reciprocity, negotiation, and everyday family life.
+In health-related HCI, the "user" is often conceptualized as a solitary individual managing a condition. However, real-world care is relational: it happens between patients, families, and clinicians. When research methodologies treat caregivers merely as proxies for patient data or as "informal supporters," they risk reinforcing **clinical hierarchies** and obscuring the **invisible labor** required to make health technologies work in domestic settings.
 
-As the coding progressed, I began to **map patterns of involvement and power**: design methods where caregivers are consulted only as informants about patient needs versus those where caregivers and care recipients co-shape technologies; studies that quietly reproduce clinical hierarchies by privileging professional perspectives; and rare cases that surface conflict, tension, or mutual dependence between caregivers and patients rather than assuming aligned goals. I am synthesizing these findings into themes and tables that contrast representation, design roles, and power relations across studies, using them to articulate what is currently missing when HCI health work frames “the user” too narrowly. The goal is to provide concrete guidance for future caregiver-centered HCI—how to recruit and report on caregivers and patients as entangled actors, how to design methods that keep power visible, and how to avoid technologies that unintentionally reinforce simplified or one-directional views of care.
+## Methodology
+
+Working with [Dr. Hee Rin Lee](https://www.heerinlee.com/), I co-led a **codebook-based systematic review** with [Jun Zhu](https://jz-jun.github.io/) to examine the structural role of caregivers in HCI literature. We moved beyond simple keyword matching to perform a deep qualitative coding of study designs.
+
+Our process involved:
+
+- **Corpus Construction:** Aggregating a broad dataset of papers from CHI, CSCW, and related venues that involve care dyads or triads.
+- **Iterative Codebook Development:** In dual-coder sessions, we treated ambiguous labels—e.g., "family member," "carer," "primary user"—as analytical signals. We refined our codebook to capture _how_ these roles were defined by researchers versus how they functioned in practice.
+- **Dimensions of Analysis:** We specifically coded for recruitment strategies (dyadic vs. individual), the directionality of care (one-way burden vs. reciprocal exchange), and the attribution of expertise (lived experience vs. clinical authority).
+
+## Sample Codebook
+
+To operationalize "care" and "power," we developed a hierarchical coding scheme. Below is an excerpt of the dimensions used to map stakeholder relationships and epistemic authority across the corpus.
+
+| Dimension                        | Definition & Guiding Questions                                                                                                                                                                                                                    | Coding Values / Examples                                                                                                                                                                                  |
+| :------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Care Relationship**            | Describes the relational tie between the caregiver and the care receiver.                                                                                                                                                                         | Open Code<br />_(e.g., Parent, Spouse, Adult Child, Sibling, Professional/Paid)_                                                                                                                          |
+| **Stakeholder Priority**         | Classifies whose needs are central to the study's design goals versus who is treated as a secondary supporter.                                                                                                                                    | • Primary Stakeholder<br />• Secondary Stakeholder<br />_(Classified as Patient, Informal Caregiver, or Formal Caregiver)_                                                                                |
+| **Care Intensity**               | The type, frequency, and form of support provided by the caregiver.                                                                                                                                                                               | Open Code<br />_(e.g., Daily medical tasks, Intermittent monitoring, Emotional support only, Unspecified)_                                                                                                |
+| **Power & Epistemic Authority**  | Whose knowledge leads the design process? Which stakeholder's perspective is treated as valid "truth" in the results? <br />_(e.g., Is the caregiver treated merely as a recipient of medical instructions, or as a holder of expert knowledge?)_ | • Patient-Led<br />• Caregiver-Led<br />• Clinician/Professional-Led<br />• Mixed/Negotiated                                                                                                              |
+| **Methodological Configuration** | How stakeholders are engaged relative to one another. Captures whether the study design facilitates interaction or isolates perspectives.                                                                                                         | • **Separate:** (e.g., Interviews done separately)<br />• **Joint/Dyadic:** (e.g., Co-design workshops held together)<br />• **Parallel:** (e.g., Asking identical vs. different questions to each party) |
+| ...                              | ...                                                                                                                                                                                                                                               | ...                                                                                                                                                                                                       |
+
+## Emerging Themes
+
+We are currently synthesizing our findings into a taxonomy of caregiver involvement. Early analysis reveals three critical tensions in the field:
+
+1.  **Instrumental vs. Relational Roles**
+    Many studies consult caregivers only as "informants" to gather requirements for the patient, ignoring the caregiver's own needs and the mutual negotiation of care.
+
+2.  **Reproduction of Clinical Power**
+    We found that technologies often implicitly encode medical authority, prioritizing data compliance over the lived realities of the home, thereby turning caregivers into "enforcers" of clinical regimens.
+
+3.  **Conflict and Negotiation**
+    Few studies design for the inevitable conflicts between caregivers and recipients (e.g., privacy vs. safety). We are identifying best practices from papers that successfully surface and design for these tensions.
+
+## Impact
+
+This work aims to provide concrete guidance for future HCI health research. By making power relations visible, we offer a framework for recruiting and reporting on caregivers as **entangled actors**. Our goal is to shift the field toward methods that acknowledge care not as a one-directional service, but as a complex, interdependent relationship.

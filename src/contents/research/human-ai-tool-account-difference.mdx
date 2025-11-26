@@ -11,7 +11,7 @@ venue: 'ICWSM 2026'
 status: 'In preparation'
 role: 'Lead author'
 abstract: >
-  I led an HCI/NLP project that uses Yelp reviews and guidebook priors to model how the same place categories afford different experiences across U.S. regions, surfacing regional experiential signatures—like king cake, picon punch, or tax-free outlet shopping—that current category-only recommenders flatten.
+  I led an HCI/NLP project that uses Yelp reviews and guidebook priors to model how the same place categories afford different experiences across U.S. regions. The work surfaces "regional experiential signatures"—like king cake, picon punch, or tax-free outlet shopping—that current category-based recommenders flatten.
 url: 'https://dtr.northwestern.edu/projects/rec05fdcuNNGNmM8x'
 keywords:
   - Experiential computing
@@ -25,16 +25,18 @@ keywords:
 
 ## Overview
 
-Working with my advisor Haoqi, I co-developed a project that treats location-based recommendation as a question about how **place imprints experience**, not just where venues are. Starting from travel guidebooks and HCI work on space versus place, I helped turn narrative difference claims—such as king cake being routine at bakeries in Louisiana but rare and “imported” in Pennsylvania, or tax-free shopping being a defining feature of Delaware outlets—into a concrete hypothesis set: for each experience phrase, compare how often and how concretely it appears in reviews for the _same_ Yelp category across states. That framing forced us to hold categories constant long enough to see meaning shift with geography, and to adopt a compact vocabulary of **environmental, cultural, social, and institutional drivers** to read whatever the text surfaced instead of treating it as anonymous signal.
+Working with my advisor Haoqi, I led the development of a project that treats location-based recommendation as a question of **how place imprints experience**, not just where venues are located. Drawing on travel guidebooks and HCI theories of "space versus place," I operationalized narrative claims—such as King Cake being routine in Louisiana but "imported" in Pennsylvania—into a concrete hypothesis set. We compared how often and how concretely specific experience phrases appear in reviews for the _same_ Yelp category across different states. This framing allowed us to hold categories constant to reveal geographic meaning shifts, using a framework of **environmental, cultural, social, and institutional drivers** to interpret the results.
 
-To make this framing testable, I built an **end-to-end text pipeline** over the Yelp Open Dataset for thirteen U.S. states, cleaning millions of reviews, extracting short activity phrases as n-grams, and computing TF–IDF salience for each state–category document before using a stabilized log-ratio to quantify when a phrase is substantially more present in one region than another. Whenever the system returned brand chatter, implausible phrases, or weak contrasts, I iterated on thresholds, blacklist rules, and phrase definitions, pairing every numerical contrast with ranked review snippets so that both our team and future readers could audit whether “king cake,” “picon punch,” or “no sales tax” really reflected what people do in that place. The resulting case portfolio shows that everyday review language reliably encodes **regional experiential signatures**, but also exposes where affective claims like a beach feeling “personal” fail to appear at all—limits that shaped our design implications for future systems: interfaces that expose experiential facets alongside ratings, adjust defaults by region and season, and keep textual evidence visible rather than hiding behind opaque scores.
+To test this, I engineered an **end-to-end text pipeline** using the Yelp Open Dataset across thirteen U.S. states. I cleaned millions of reviews, extracted n-gram activity phrases, and computed TF–IDF salience before applying a stabilized log-ratio to quantify regional distinctiveness. To ensure data quality, I iteratively refined thresholds and blacklist rules to filter out brand chatter and implausible phrases. The system pairs every numerical contrast with ranked review snippets, allowing us to audit whether terms like "no sales tax" truly reflected local behavior.
+
+The resulting case portfolio demonstrates that review language reliably encodes **regional experiential signatures**. However, it also highlighted limitations where purely affective claims (e.g., a beach feeling "personal") were difficult to capture. These findings informed our design implications for future systems: interfaces that expose experiential facets alongside ratings, context-aware defaults, and transparent textual evidence.
 
 ## Selected visuals
 
-| Category           | Region    | Surfaced phrase (experience)             | Dominant driver          |
-| ------------------ | --------- | ---------------------------------------- | ------------------------ |
-| Bakeries           | Louisiana | **king cake** around Mardi Gras season   | Cultural / temporal      |
-| Outlet malls       | Delaware  | **no sales tax** / cross-border shopping | Institutional / economic |
-| Basque restaurants | Nevada    | **picon punch** as a pre-dinner ritual   | Social / cultural        |
+| Category           | Region    | Surfaced phrase (experience)             | Dominant driver |
+| ------------------ | --------- | ---------------------------------------- | --------------- |
+| Bakeries           | Louisiana | **king cake** around Mardi Gras season   | Cultural        |
+| Outlet malls       | Delaware  | **no sales tax** / cross-border shopping | Institutional   |
+| Basque restaurants | Nevada    | **picon punch** as a pre-dinner ritual   | Social          |
 
-Each row shows how, once we hold the Yelp category fixed and contrast review phrases across states, we recover distinct _regional experiential signatures_ that we then interpret through our four-driver vocabulary (environmental, cultural, social, institutional).
+Each row shows how, by holding the Yelp category fixed and contrasting review phrases across states, we recover distinct _regional experiential signatures_ interpreted through our four-driver vocabulary.
