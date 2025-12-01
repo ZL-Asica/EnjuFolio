@@ -50,7 +50,7 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "^6.2.0",
-    "@eslint-react/eslint-plugin": "^2.3.7",
+    "@eslint-react/eslint-plugin": "^2.3.9",
     "@next/eslint-plugin-next": "16.0.3",
     "@tailwindcss/postcss": "^4.1.17",
     "@types/mdx": "^2.0.13",
