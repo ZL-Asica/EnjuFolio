@@ -24,10 +24,10 @@ const HeaderMenu = ({ isMobile, className, onClickHandler }: HeaderMenuProps) =>
   const { isDarkTheme, toggleTheme } = useTheme('enju-theme-color', 7)
 
   const menuItems: MenuItem[] = [
-    { href: '/', label: 'Home', icon: <House /> },
-    { href: '/research', label: 'Research', icon: <Binoculars /> },
-    { href: '/projects', label: 'Projects', icon: <FolderKanban /> },
-    { href: '/cv', label: 'CV', icon: <FileUser /> },
+    { href: '/', label: 'Home', icon: <House aria-hidden="true" /> },
+    { href: '/research', label: 'Research', icon: <Binoculars aria-hidden="true" /> },
+    { href: '/projects', label: 'Projects', icon: <FolderKanban aria-hidden="true" /> },
+    { href: '/cv', label: 'CV', icon: <FileUser aria-hidden="true" /> },
   ]
 
   return (
@@ -55,7 +55,7 @@ const HeaderMenu = ({ isMobile, className, onClickHandler }: HeaderMenuProps) =>
                   className={`inline-block transition-transform duration-300 ease-in-out group-hover:scale-110 group-hover:text-primary
                   ${isActive ? 'text-primary' : 'text-foreground/90'}
                 `}
-                  aria-hidden
+                  aria-hidden="true"
                 >
                   {item.icon}
                 </span>
@@ -65,7 +65,7 @@ const HeaderMenu = ({ isMobile, className, onClickHandler }: HeaderMenuProps) =>
 
             {/* Mobile - Divider */}
             {isMobile && (
-              <li className="w-full" aria-hidden>
+              <li className="w-full" aria-hidden="true">
                 <div className="h-px w-full rounded-full bg-linear-to-r from-gray-light via-primary-300 to-gray-light" />
               </li>
             )}
@@ -86,7 +86,7 @@ const HeaderMenu = ({ isMobile, className, onClickHandler }: HeaderMenuProps) =>
           }}
         >
           <span className="flex h-6 w-6 items-center justify-center transition-all-300 group-hover:scale-110">
-            {isDarkTheme ? <Sun className="h-full w-full" /> : <Moon className="h-full w-full" />}
+            {isDarkTheme ? <Sun className="h-full w-full" aria-hidden="true" /> : <Moon className="h-full w-full" aria-hidden="true" />}
           </span>
         </button>
       </li>
