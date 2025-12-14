@@ -59,6 +59,25 @@ const Header = () => {
         ${isHeaderVisible ? 'translate-y-0' : '-translate-y-full'}
       `}
     >
+      <a
+        href="#main-content"
+        className="
+          sr-only focus:not-sr-only
+          focus:fixed focus:left-4 focus:top-4 focus:z-60
+          focus:rounded-md focus:bg-background focus:px-3 focus:py-2
+          focus:text-sm focus:font-semibold focus:text-foreground
+          focus:shadow-lg focus:ring-2 focus:ring-primary-300
+          focus:outline-none
+        "
+        onClick={(e) => {
+          e.preventDefault()
+          const el = document.getElementById('main-content')
+          el?.focus()
+        }}
+      >
+        Skip to main content
+      </a>
+
       {/* Navigation Menu */}
       <nav
         className="relative mx-auto flex max-w-7xl items-center justify-between px-4 py-4 bg-background"
@@ -83,7 +102,7 @@ const Header = () => {
           aria-controls="mobile-menu"
           aria-pressed={isOpen}
         >
-          {isOpen ? <LuX strokeWidth={2.5} /> : <LuMenu strokeWidth={2.5} />}
+          {isOpen ? <LuX strokeWidth={2.5} aria-hidden="true" /> : <LuMenu strokeWidth={2.5} aria-hidden="true" />}
         </button>
 
         {/* Mobile Menu */}
