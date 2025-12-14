@@ -1,6 +1,6 @@
 import { isBlank } from '@zl-asica/react/utils'
 import Image from 'next/image'
-import { AILLMGuides, Hobbies, News } from '@/components/Home'
+import { Hobbies, News } from '@/components/Home'
 import About from '@/contents/About.mdx'
 import { EnjuConfig } from '@/enju.config'
 import { buildWebsiteJsonLd } from '@/lib'
@@ -111,8 +111,6 @@ export default function HomePage() {
             )}
           </aside>
         </section>
-
-        <AILLMGuides />
       </main>
     </>
   )
