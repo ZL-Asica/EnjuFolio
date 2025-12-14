@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.1] - 2025-12-14
+
+### Fixed
+
+- Solve the critical security vulnerability bug [CVE-2025-55182](https://react.dev/blog/2025/12/03/critical-security-vulnerability-in-react-server-components).
+
+### Updated
+
+- Remove `AILLMGuides` component from the home page to reduce clutter.
+- Improved accessibility in header and menu components.
+  - Added `aria-hidden="true"` to decorative icons.
+  - Added skip to main content link for better keyboard navigation.
+- Update auto realse GitHub workflow.
+
 ## [0.2.0] - 2025-11-23
 
 ### Added
