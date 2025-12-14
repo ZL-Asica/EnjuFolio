@@ -67,22 +67,14 @@
     "eslint-plugin-react-refresh": "^0.4.25",
     "husky": "^9.1.7",
     "lint-staged": "^16.2.7",
-    "prettier": "^3.7.4",
     "rss": "^1.2.2",
     "tailwindcss": "^4.1.18",
     "typescript": "^5.9.3"
   },
   "lint-staged": {
-    "**/*.{js,jsx,ts,tsx,json,css,scss,less,styl,html,yml,mdx}": [
+    "**/*.{js,jsx,ts,tsx,json,css,scss,less,styl,html,yml,md,mdx}": [
       "eslint --fix"
-    ],
-    "**/*.{md,mdx}": [
-      "prettier --write"
     ]
-  },
-  "prettier": {
-    "semi": false,
-    "singleQuote": true
   },
   "browserslist": {
     "production": [
