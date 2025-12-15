@@ -1,5 +1,5 @@
 ---
-title: 'Not All Places Are The Same: Computationally Surfacing Regional Experience Differences from Online Reviews'
+title: 'Not All Places Are The Same: Computationally Surfacing Regional Experience Differences from Location-Based Services'
 authors:
   - Zhuoran Liu
   - Medini Chopra
@@ -11,7 +11,7 @@ venue: 'ICWSM 2026'
 status: 'In preparation'
 role: 'Lead author'
 abstract: >
-  I led an HCI/NLP project that uses Yelp reviews and guidebook priors to model how the same place categories afford different experiences across U.S. regions. The work surfaces "regional experiential signatures"—like king cake, picon punch, or tax-free outlet shopping—that current category-based recommenders flatten.
+  I led an HCI/NLP project that validates how the same place categories afford different experiences across U.S. regions using Yelp reviews and guidebook priors. The work demonstrates that "regional experiential signatures"—like king cake, picon punch, or tax-free shopping—are systematically encoded in user-generated text, revealing geographic meaning shifts that current category-based recommenders overlook.
 url: 'https://dtr.northwestern.edu/projects/rec05fdcuNNGNmM8x'
 keywords:
   - Experiential computing
@@ -25,18 +25,19 @@ keywords:
 
 ## Overview
 
-Working with my advisor Haoqi, I led the development of a project that treats location-based recommendation as a question of **how place imprints experience**, not just where venues are located. Drawing on travel guidebooks and HCI theories of "space versus place," I operationalized narrative claims—such as King Cake being routine in Louisiana but "imported" in Pennsylvania—into a concrete hypothesis set. We compared how often and how concretely specific experience phrases appear in reviews for the _same_ Yelp category across different states. This framing allowed us to hold categories constant to reveal geographic meaning shifts, using a framework of **environmental, cultural, social, and institutional drivers** to interpret the results.
+Working with my advisor Haoqi, I investigated how place imprints experience differently across regions. Drawing on travel guidebooks and HCI theories of "space versus place," I operationalized narrative claims, such as King Cake being routine in Louisiana but "imported" in Pennsylvania, into testable hypotheses. By comparing how concretely and frequently specific experience phrases appear in reviews for the _same_ Yelp category across states, I could hold categories constant to reveal geographic meaning shifts, interpreting results through a framework of **environmental, cultural, social, and institutional drivers**.
 
-To test this, I engineered an **end-to-end text pipeline** using the Yelp Open Dataset across thirteen U.S. states. I cleaned millions of reviews, extracted n-gram activity phrases, and computed TF–IDF salience before applying a stabilized log-ratio to quantify regional distinctiveness. To ensure data quality, I iteratively refined thresholds and blacklist rules to filter out brand chatter and implausible phrases. The system pairs every numerical contrast with ranked review snippets, allowing us to audit whether terms like "no sales tax" truly reflected local behavior.
+To validate this hypothesis, I conducted a **comparative analysis** using the Yelp Open Dataset across thirteen U.S. states. I aggregated reviews by (state, category) pairs, extracted n-gram phrases, and computed TF–IDF salience to quantify regional distinctiveness. I iteratively refined extraction thresholds to filter noise while preserving meaningful practice-related language. Crucially, I paired every statistical contrast with ranked review snippets to audit whether detected differences reflected intended experiences rather than incidental word usage.
 
-The resulting case portfolio demonstrates that review language reliably encodes **regional experiential signatures**. However, it also highlighted limitations where purely affective claims (e.g., a beach feeling "personal") were difficult to capture. These findings informed our design implications for future systems: interfaces that expose experiential facets alongside ratings, context-aware defaults, and transparent textual evidence.
+The analysis demonstrates that review language reliably encodes **regional experiential signatures**, validating that these differences are recoverable and interpretable from user-generated text. This finding opens pathways for future design: interfaces that expose experiential contrasts alongside ratings, context-aware defaults informed by regional context, and transparent evidence grounding recommendations in actual user descriptions.
 
 ## Selected visuals
 
-| Category           | Region    | Surfaced phrase (experience)             | Dominant driver |
-| ------------------ | --------- | ---------------------------------------- | --------------- |
-| Bakeries           | Louisiana | **king cake** around Mardi Gras season   | Cultural        |
-| Outlet malls       | Delaware  | **no sales tax** / cross-border shopping | Institutional   |
-| Basque restaurants | Nevada    | **picon punch** as a pre-dinner ritual   | Social          |
+| Category           | Region    | Surfaced phrase (experience)              | Dominant driver |
+| ------------------ | --------- | ----------------------------------------- | --------------- |
+| Farmers' Markets   | California | **local avocado** as signature product   | Environmental   |
+| Bakeries           | Louisiana  | **king cake** as a routine               | Cultural        |
+| Basque restaurants | Nevada     | **picon punch** as a pre-dinner ritual   | Social          |
+| Outlet malls       | Delaware   | **no sales tax** / cross-border shopping | Institutional   |
 
 Each row shows how, by holding the Yelp category fixed and contrasting review phrases across states, we recover distinct _regional experiential signatures_ interpreted through our four-driver vocabulary.
