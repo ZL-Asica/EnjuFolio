@@ -115,10 +115,10 @@ export const EnjuConfig: EnjuFolioConfig = {
   socialLinks: {
     github: 'https://github.com/ZL-Asica',
     linkedin: 'https://www.linkedin.com/in/elara-liu',
-    instagram: 'https://www.instagram.com/zl_asica',
+    // instagram: 'https://www.instagram.com/zl_asica',
     // orcid: 'https://orcid.org/0009-0008-7221-2324',
     // telegram: 'https://t.me/zl_asica',
-    bluesky: 'https://bsky.app/profile/zla.app',
+    // bluesky: 'https://bsky.app/profile/zla.app',
     email: 'elara.liu@u.northwestern.edu',
     rss: {
       research: true,
