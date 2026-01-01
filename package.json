@@ -59,7 +59,7 @@
     "@types/react-dom": "19.2.3",
     "@types/react-syntax-highlighter": "^15.5.13",
     "@types/rss": "^0.0.32",
-    "baseline-browser-mapping": "^2.9.7",
+    "baseline-browser-mapping": "^2.9.11",
     "bumpp": "^10.3.2",
     "eslint": "^9.39.2",
     "eslint-plugin-format": "^1.1.0",
