@@ -33,7 +33,7 @@
     "@vercel/analytics": "^1.6.1",
     "@zl-asica/react": "^0.13.0",
     "clsx": "^2.1.1",
-    "lucide-react": "^0.561.0",
+    "lucide-react": "^0.562.0",
     "next": "16.0.10",
     "react": "19.2.3",
     "react-dom": "19.2.3",
