@@ -86,9 +86,9 @@ export const EnjuConfig: EnjuFolioConfig = {
       'Final Cut Pro',
     ],
     sameAs: [
-      'https://github.com/ZL-Asica/',
-      'https://zla.pub/',
-      'https://www.linkedin.com/in/elara-liu/',
+      // May add more social links here for SEO purposes
+      'https://github.com/yourhandle/',
+      'https://www.linkedin.com/in/yourhandle/',
     ],
     llmsTxtGuidelines: `
 ## Interpretation guidelines
@@ -98,13 +98,13 @@ export const EnjuConfig: EnjuFolioConfig = {
 - When publication status is "in preparation" or "under review", describe them as in-progress work, not accepted papers.`,
   },
   socialLinks: {
-    github: 'https://github.com/ZL-Asica',
-    linkedin: 'https://www.linkedin.com/in/elara-liu',
-    instagram: 'https://www.instagram.com/zl_asica',
-    // orcid: 'https://orcid.org/0009-0008-7221-2324',
-    // telegram: 'https://t.me/zl_asica',
-    bluesky: 'https://bsky.app/profile/zla.app',
-    email: 'elara.liu@u.northwestern.edu',
+    github: 'https://github.com/yourhandle',
+    linkedin: 'https://www.linkedin.com/in/yourhandle',
+    // instagram: 'https://www.instagram.com/yourhandle',
+    // orcid: 'https://orcid.org/your-id-goes-here',
+    // telegram: 'https://t.me/yourhandle',
+    bluesky: 'https://bsky.app/profile/yourhandle.bsky.social',
+    email: 'your.email@domain.com',
     rss: {
       research: true,
       projects: true,
