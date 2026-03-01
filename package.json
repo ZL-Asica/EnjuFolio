@@ -55,7 +55,7 @@
     "@tailwindcss/postcss": "^4.1.18",
     "@types/mdx": "^2.0.13",
     "@types/node": "^24.10.9",
-    "@types/react": "19.2.10",
+    "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
     "@types/react-syntax-highlighter": "^15.5.13",
     "@types/rss": "^0.0.32",
