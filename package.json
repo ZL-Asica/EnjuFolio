@@ -54,7 +54,7 @@
     "@next/eslint-plugin-next": "16.1.6",
     "@tailwindcss/postcss": "^4.1.18",
     "@types/mdx": "^2.0.13",
-    "@types/node": "^24.10.9",
+    "@types/node": "^25.3.3",
     "@types/react": "19.2.10",
     "@types/react-dom": "19.2.3",
     "@types/react-syntax-highlighter": "^15.5.13",
