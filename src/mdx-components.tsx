@@ -7,6 +7,9 @@ import { CodeBlock, KEY_ICONS } from './components/parser'
 import DividerLine from './components/parser/DividerLine'
 import { generateHierarchicalSlug, slugPrefix } from './utils'
 
+const programminglanguagesRegex = /language-(\w+)/
+const kbdKeysRegex = /\s+/g
+
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   const headingLevels = {
     h2: 0,
@@ -198,7 +201,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
               ? undefined
               : `Open ${children?.toString() ?? 'link'} in a new tab`
           }
-          className="text-hover-primary underline-interactive mx-1 break-words font-semibold text-secondary decoration-[#5BCEFA] dark:decoration-[#81E6D9] hover:text-accent-700 dark:hover:text-accent-600"
+          className="text-hover-primary underline-interactive mx-1 wrap-break-word font-semibold text-secondary decoration-[#5BCEFA] dark:decoration-[#81E6D9] hover:text-accent-700 dark:hover:text-accent-600"
           {...(props as Record<string, unknown>)}
         >
           {children}
@@ -219,7 +222,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
             height={1000}
             priority={false}
             alt={alt ?? ''}
-            className="w-full h-auto max-h-[800px] md:max-h-[1000px] object-contain"
+            className="w-full h-auto max-h-200 md:max-h-250 object-contain"
             {...(rest as Omit<ImageProps, 'alt'>)}
           />
           {alt && (
@@ -247,7 +250,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 
     // Code related
     code: ({ className, children, ...props }) => {
-      const match = typeof className === 'string' ? /language-(\w+)/.exec(className) : null
+      const match = typeof className === 'string' ? programminglanguagesRegex.exec(className) : null
       return match
         ? (
             <CodeBlock match={match}>
@@ -292,7 +295,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     },
     kbd: ({ children }) => {
       const key = typeof children === 'string'
-        ? children.toLowerCase().replace(/\s+/g, '')
+        ? children.toLowerCase().replace(kbdKeysRegex, '')
         : ''
 
       return (
