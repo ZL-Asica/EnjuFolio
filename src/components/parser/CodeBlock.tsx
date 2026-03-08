@@ -10,9 +10,11 @@ interface CodeBlockProps {
   children: ReactNode
 }
 
+const childrenMatchRegex = /\n$/
+
 const CodeBlock = ({ match, children }: CodeBlockProps) => {
   const [isCopied, toggleCopied] = useToggle()
-  const cleanedChildren = String(children).replace(/\n$/, '')
+  const cleanedChildren = String(children).replace(childrenMatchRegex, '')
 
   const handleCopyClick = () => {
     void (async () => {

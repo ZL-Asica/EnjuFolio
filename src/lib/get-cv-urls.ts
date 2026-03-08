@@ -1,5 +1,8 @@
 import { EnjuConfig } from '@/enju.config'
 
+const rawFileRegex = /^[a-z][a-z0-9+.-]*:/i
+const googleDriveFileRegex = /\/file\/d\/([^/]+)/
+
 const cvSource: CVSource = (() => {
   const raw = EnjuConfig.cvFileLink?.trim()
   if (!raw) {
@@ -8,7 +11,7 @@ const cvSource: CVSource = (() => {
 
   // 1. No protocol / relative directory → Treat as local file
   //   Example: '/cv/elara-liu-cv.pdf' or 'cv.pdf'
-  const looksLikeRelative = !/^[a-z][a-z0-9+.-]*:/i.test(raw)
+  const looksLikeRelative = !rawFileRegex.test(raw)
   if (looksLikeRelative) {
     return {
       kind: 'file',
@@ -41,7 +44,7 @@ const cvSource: CVSource = (() => {
   //  - https://drive.google.com/uc?id=FILE_ID&export=download
   let fileId: string | null = null
 
-  const fileMatch = url.pathname.match(/\/file\/d\/([^/]+)/)
+  const fileMatch = url.pathname.match(googleDriveFileRegex)
   if (fileMatch && fileMatch[1]) {
     fileId = fileMatch[1]
   }

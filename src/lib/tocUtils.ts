@@ -23,7 +23,7 @@ export const findClosestSlug = (
   headings: HTMLElement[],
   offset: number,
   triggerOffset: number = 150,
-): string | null => {
+): string | null | undefined => {
   const mapped = headings
     .map((heading) => {
       const rect = heading.getBoundingClientRect()
@@ -41,7 +41,7 @@ export const findClosestSlug = (
   )
 
   if (thresholdPassed.length > 0) {
-    return thresholdPassed[thresholdPassed.length - 1].heading.id
+    return thresholdPassed.at(-1)?.heading.id
   }
 
   return null

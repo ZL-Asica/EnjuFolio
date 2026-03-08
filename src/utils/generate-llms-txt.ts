@@ -7,6 +7,9 @@ import { EnjuConfig } from '@/enju.config'
 import { readAllFileMeta } from '@/utils'
 import { CVPageDescription, HomePageDescription, ProjectsPageDescription, ResearchPageDescription } from './pages-description'
 
+const frontmatterRegex = /^---[\s\S]*?---\s*/u
+const level2HeaderRegex = /\n## /g
+
 // ===== helpers =====
 const CONTENT_ROOT = path.join(process.cwd(), 'src', 'contents')
 
@@ -14,9 +17,9 @@ const cleanFrontmatter = (raw: string): string =>
   raw
     .trim()
     // Get rid of frontmatter
-    .replace(/^---[\s\S]*?---\s*/u, '')
+    .replace(frontmatterRegex, '')
     // Downgrade level 2 headings to avoid competing with outer document hierarchy
-    .replace(/\n## /g, '\n### ')
+    .replace(level2HeaderRegex, '\n### ')
 
 const readRawContent = async (
   type: PageType,
@@ -33,6 +36,8 @@ const readRawContent = async (
 }
 
 // ===== sections =====
+
+const sectionsRegex = /\s+/g
 
 const buildSectionForType = async (
   type: PageType,
@@ -54,7 +59,7 @@ const buildSectionForType = async (
   for (const meta of metas) {
     const url = `${siteUrl}/${type}/${meta.slug}`
     const abstract = (meta.abstract ?? '')
-      .replace(/\s+/g, ' ')
+      .replace(sectionsRegex, ' ')
       .trim()
     const venue
       = meta.venue != null && meta.venue !== ''
