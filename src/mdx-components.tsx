@@ -7,7 +7,7 @@ import { CodeBlock, KEY_ICONS } from './components/parser'
 import DividerLine from './components/parser/DividerLine'
 import { generateHierarchicalSlug, slugPrefix } from './utils'
 
-const programminglanguagesRegex = /language-(\w+)/
+const programmingLanguagesRegex = /language-(\w+)/
 const kbdKeysRegex = /\s+/g
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
@@ -250,7 +250,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 
     // Code related
     code: ({ className, children, ...props }) => {
-      const match = typeof className === 'string' ? programminglanguagesRegex.exec(className) : null
+      const match = typeof className === 'string' ? programmingLanguagesRegex.exec(className) : null
       return match
         ? (
             <CodeBlock match={match}>
