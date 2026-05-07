@@ -8,6 +8,8 @@ import { getMDXContent } from './mdx-loader'
 
 const baseDir = path.join(process.cwd(), 'src', 'contents')
 
+const mdxFileRegex = /\.mdx$/
+
 export const readFilesPaths = async (fileDir: string): Promise<string[]> => {
   const actualPath = path.join(baseDir, fileDir)
 
@@ -20,7 +22,7 @@ export const readFilesPaths = async (fileDir: string): Promise<string[]> => {
       const isFile = fs.statSync(filePath).isFile()
       return isFile && file.endsWith('.mdx')
     },
-    ).map(file => encodeURIComponent(file.replace(/\.mdx$/, '')))
+    ).map(file => encodeURIComponent(file.replace(mdxFileRegex, '')))
 
     if (files.length === 0) {
       console.warn(`No files found in directory ${actualPath}`)
@@ -69,6 +71,8 @@ export const readAllFileMeta = async (
   })
 }
 
+const frontmatterRegex = /---\n[\s\S]+?---\n/
+
 export const readFileContent = async (
   slug: string,
   pageType?: PageType,
@@ -88,7 +92,6 @@ export const readFileContent = async (
   }
 
   // Drop frontmatter if exists
-  const frontmatterRegex = /---\n[\s\S]+?---\n/
   const match = content.match(frontmatterRegex)
   if (match) {
     content = content.replace(match[0], '')

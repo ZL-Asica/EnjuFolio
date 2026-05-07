@@ -47,7 +47,7 @@ const useTOCLogic = (
 
     const slug = findClosestSlug(headingsRef.current, visibleOffset)
 
-    if (slug !== null && slug !== activeSlugRef.current) {
+    if (slug !== undefined && slug !== null && slug !== activeSlugRef.current) {
       activeSlugRef.current = slug
       setActiveSlug(slug)
     }

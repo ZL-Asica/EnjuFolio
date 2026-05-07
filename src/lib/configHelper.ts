@@ -29,7 +29,7 @@ export const MetaAuthorName = EnjuConfig.metaInfo.name ?? EnjuConfig.author
  * 2. homePage.name.split(' ')[homePage.name.split(' ').length - 1]
  * 3. author.split(' ')[author.split(' ').length - 1]
  */
-export const familyName = EnjuConfig.metaInfo.familyName ?? EnjuConfig.homePage.name.split(' ')[EnjuConfig.homePage.name.split(' ').length - 1] ?? EnjuConfig.author.split(' ')[EnjuConfig.author.split(' ').length - 1]
+export const familyName = EnjuConfig.metaInfo.familyName ?? EnjuConfig.homePage.name.split(' ').at(-1) ?? EnjuConfig.author.split(' ').at(-1)
 
 /**
  * Get the given name

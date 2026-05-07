@@ -29,13 +29,15 @@ export const slugPrefix = (slug: string, level: number): string => {
   return `${parts.slice(0, level - 1).join('.')} `
 }
 
+const headingRegex = /^(#{2,6})\s+(\S.*)$/gm
+const rawTitleRegex = /[*`]/g
+
 export const generateTOC = async (
   pageType: PageType,
   slug: string,
 ): Promise<TocItems[]> => {
   const content = await readFileContent(slug, pageType)
 
-  const headingRegex = /^(#{2,6})\s+(\S.*)$/gm
   const toc: TocItems[] = []
   const headingLevels = { h2: 0, h3: 0, h4: 0, h5: 0, h6: 0 }
 
@@ -49,7 +51,7 @@ export const generateTOC = async (
     const level = `h${hashes.length}` as keyof typeof headingLevels
 
     // Remove markdown formatting from title and trim whitespace
-    const title = rawTitle.replace(/[*`]/g, '').trim()
+    const title = rawTitle.replace(rawTitleRegex, '').trim()
     const slug = generateHierarchicalSlug(level, headingLevels)
 
     toc.push({ slug, title, level: Number.parseInt(level.slice(1), 10) })
