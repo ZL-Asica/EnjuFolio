@@ -57,6 +57,7 @@ export const readAllFileMeta = async (
         date: md.date ?? new Date().toISOString(),
         abstract: md.abstract,
         redirect: md.redirect,
+        thumbnail: md.thumbnail,
         doi: md.doi,
         pdf: md.pdf,
         url: md.url,

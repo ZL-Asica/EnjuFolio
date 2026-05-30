@@ -22,10 +22,11 @@
     "dev": "next dev",
     "build": "pnpm run lint:fix && next build",
     "start": "next start",
-    "test": "true",
+    "test": "pnpm run lint && pnpm run typecheck",
     "lint": "eslint .",
-    "lint:ci": "eslint . --max-warnings=0 || true",
+    "lint:ci": "eslint . --max-warnings=0",
     "lint:fix": "eslint . --fix",
+    "typecheck": "tsc --noEmit",
     "postinstall": "husky || true"
   },
   "dependencies": {

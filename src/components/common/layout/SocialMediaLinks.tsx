@@ -15,6 +15,11 @@ import {
 import { EnjuConfig } from '@/enju.config'
 import { showRss } from '@/lib/configHelper'
 
+const configuredOrcid = EnjuConfig.socialLinks.orcid?.trim()
+const orcidUrl = configuredOrcid !== undefined && configuredOrcid !== ''
+  ? `https://orcid.org/${configuredOrcid}`
+  : undefined
+
 const socialData: SocialData = {
   github: {
     url: EnjuConfig.socialLinks.github,
@@ -32,7 +37,7 @@ const socialData: SocialData = {
     label: 'Instagram',
   },
   orcid: {
-    url: `https://orcid.org/${EnjuConfig.socialLinks.orcid}`,
+    url: orcidUrl,
     Icon: FaOrcid,
     label: 'ORCID',
   },
