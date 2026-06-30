@@ -11,7 +11,7 @@ export const EnjuConfig: EnjuFolioConfig = {
     picture: '/images/profile.webp',
     otherInfo: '刘 卓然',
     pronouns: '(She / Her)',
-    position: 'Master of Science in Computer Science @ Northwestern University',
+    position: 'Ph.D. student in Computer Science and Informatics @ Emory University',
     hobbies: [
       { emoji: '☕', name: 'Pour-over coffee' },
       { emoji: '🥐', name: 'Bakeries & pastries' },
@@ -25,9 +25,12 @@ export const EnjuConfig: EnjuFolioConfig = {
     maximumNewsItemsOnHome: 5,
   },
   metaInfo: {
-    personalDescription: 'PhD applicant in Human–Computer Interaction and human-centered AI for everyday health, focusing on intelligent systems that help patients, caregivers, and clinicians build shared understanding from longitudinal health and experience data.',
-    affiliation: 'Northwestern University',
-    alumniOf: 'University of California, Irvine',
+    personalDescription: 'Ph.D. student in Computer Science and Informatics at Emory University working in Human–Computer Interaction and human-centered AI for everyday health, focusing on intelligent systems that help patients, caregivers, and clinicians build shared understanding from longitudinal health and experience data.',
+    affiliation: 'Emory University',
+    alumniOf: [
+      'University of California, Irvine',
+      'Northwestern University',
+    ],
     name: 'Zhuoran (Elara) Liu',
     familyName: 'Liu',
     givenName: 'Zhuoran',
@@ -115,11 +118,8 @@ export const EnjuConfig: EnjuFolioConfig = {
   socialLinks: {
     github: 'https://github.com/ZL-Asica',
     linkedin: 'https://www.linkedin.com/in/elara-liu',
-    // instagram: 'https://www.instagram.com/zl_asica',
     // orcid: 'https://orcid.org/0009-0008-7221-2324',
-    // telegram: 'https://t.me/zl_asica',
-    // bluesky: 'https://bsky.app/profile/zla.app',
-    email: 'elara.liu@u.northwestern.edu',
+    email: 'elara.liu@emory.edu',
     rss: {
       research: true,
       projects: true,
