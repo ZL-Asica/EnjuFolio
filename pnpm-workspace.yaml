@@ -1,6 +1,11 @@
+minimumReleaseAgeExclude:
+  - postcss@8.5.10
 shellEmulator: true
 
 trustPolicy: no-downgrade
 
 allowBuilds:
   sharp: true
+
+overrides:
+  postcss@<8.5.10: ^8.5.10
