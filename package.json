@@ -2,7 +2,7 @@
   "name": "enju-folio",
   "version": "0.2.2",
   "private": true,
-  "packageManager": "pnpm@11.0.8",
+  "packageManager": "pnpm@11.24.0",
   "author": {
     "name": "ZL Asica",
     "url": "https://zla.app"
