@@ -1,10 +1,12 @@
 'use client'
 
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
 function Custom404() {
   const [countdown, setCountdown] = useState(10)
+  const router = useRouter()
 
   useEffect(() => {
     // Set up a countdown timer
@@ -14,7 +16,7 @@ function Custom404() {
 
     // Redirect after 10 seconds
     const redirectTimer = setTimeout(() => {
-      globalThis.location.href = '/'
+      router.push('/')
     }, 10_000)
 
     // Clean up both timers on component unmount
@@ -22,7 +24,7 @@ function Custom404() {
       clearTimeout(redirectTimer)
       clearInterval(timer)
     }
-  }, [])
+  }, [router])
 
   return (
     <div className="mx-8 mt-[30vh] flex flex-col items-center justify-center text-center">
