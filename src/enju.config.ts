@@ -3,7 +3,7 @@ export const EnjuConfig: EnjuFolioConfig = {
   subTitle: 'Elara\'s Portfolio',
   siteShortName: 'Elara',
   siteUrl: 'https://elaraliu.com',
-  cvFileLink: 'https://drive.google.com/file/d/1VKoOIOG33EzrZ1zqiE6a5SaIyphygqSa/preview',
+  cvFileLink: 'https://drive.google.com/file/d/1teVOjYNt4p1AzSJR_xc3bbrJCpK5e9zP/preview',
   author: 'Elara Liu',
   otherNames: ['Zhuoran Liu'],
   homePage: {
@@ -13,7 +13,7 @@ export const EnjuConfig: EnjuFolioConfig = {
     pronouns: '(She / Her)',
     position: 'Ph.D. student in Computer Science and Informatics @ Emory University',
     hobbies: [
-      { emoji: '☕', name: 'Pour-over coffee' },
+      { emoji: '☕', name: 'Coffee' },
       { emoji: '🥐', name: 'Bakeries & pastries' },
       { emoji: '🏂', name: 'Snowboarding' },
       { emoji: '💻', name: 'Open-source' },
