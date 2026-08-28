@@ -5,15 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/ZL-Asica/EnjuFolio/compare/v0.2.2...HEAD)
+## [Unreleased](https://github.com/ZL-Asica/EnjuFolio/compare/v0.2.3...HEAD)
 
-## [0.2.2] - 2026-01-30
+## [0.2.2](https://github.com/ZL-Asica/EnjuFolio/compare/v0.2.1...v0.2.2) - 2026-01-30
 
 ### Updated
 
 - Update dependencies to address security vulnerabilities reported by GitHub.
 
-## [0.2.1] - 2025-12-14
+## [0.2.1](https://github.com/ZL-Asica/EnjuFolio/compare/v0.2.0...v0.2.1) - 2025-12-14
 
 ### Fixed
 
@@ -25,9 +25,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Improved accessibility in header and menu components.
   - Added `aria-hidden="true"` to decorative icons.
   - Added skip to main content link for better keyboard navigation.
+  
 - Update auto realse GitHub workflow.
 
-## [0.2.0] - 2025-11-23
+## [0.2.0](https://github.com/ZL-Asica/EnjuFolio/compare/v0.1.0...v0.2.0) - 2025-11-23
 
 ### Added
 
@@ -36,19 +37,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Collapsible section design to avoid overwhelming the UI.
   - Custom styling for lists within the guides for better readability.
   - Content stored in `src/contents/AILLMGuides.mdx` for easy editing.
+  
 
 ### Changed
 
 - Improve SEO for meta and JSON-LD
+  
   - Extract description to one place in `src/utils/pages-descriptions.ts` for consistency and easier updates.
   - Add multiple fileds in JSON-LD for better search engine understanding and LLM's consumption.
   - Updated `enju.config.ts` to reflect these changes.
-
+  
 - Improve `llms.txt` generation
+  
   - Some minor stylling issues fixed.
   - Add slot to inject custom content at the top of the file.
+  
 
-## [0.1.0] - 2025-11-13
+## [0.1.0](https://github.com/ZL-Asica/EnjuFolio/releases/tag/v0.1.0) - 2025-11-13
 
 ### Added
 
@@ -89,7 +94,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Dependency tree cleaned up and updated for the first public release.
 - GitHub workflows, commit linting, and basic project metadata (README status + watch instructions) to support open-source use and contributions.
 
-[0.1.0]: https://github.com/ZL-Asica/EnjuFolio/releases/tag/v0.1.0
-[0.2.0]: https://github.com/ZL-Asica/EnjuFolio/compare/v0.1.0...v0.2.0
-[0.2.1]: https://github.com/ZL-Asica/EnjuFolio/compare/v0.2.0...v0.2.1
-[0.2.2]: https://github.com/ZL-Asica/EnjuFolio/compare/v0.2.1...v0.2.2
+## [v0.2.3](https://github.com/ZL-Asica/EnjuFolio/compare/v0.2.2...v0.2.3) - 2026-08-28
+
+<!-- Release notes generated using configuration in .github/release.yml at main -->
+### 🐛 Bug Fixes
+
+- fix(audit): address portfolio metadata and CI checks ([#44](https://github.com/ZL-Asica/EnjuFolio/pull/44)) by @ZL-Asica
+- fix(ci): update release PR action runtime ([#51](https://github.com/ZL-Asica/EnjuFolio/pull/51)) by @ZL-Asica
